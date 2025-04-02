@@ -1,0 +1,18 @@
+{
+    "highgain": {
+        "optimalChoice": "set2_1.png",
+        "suboptimalChoice": "set2_2.png"
+    },
+    "highloss": {
+        "optimalChoice": "set2_5.png",
+        "suboptimalChoice": "set2_6.png"
+    },
+    "lowgain": {
+        "optimalChoice": "set2_3.png",
+        "suboptimalChoice": "set2_4.png"
+    },
+    "lowloss": {
+        "optimalChoice": "set2_7.png",
+        "suboptimalChoice": "set2_8.png"
+    }
+}
