@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Sun Apr  6 14:49:52 2025
+    on Mon Apr  7 16:17:19 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -581,7 +581,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     summary = visual.TextStim(win=win, name='summary',
         text="Directions to remember:  \n\n1. Try to choose the picture that gives you the best chance of winning money and avoiding losing money. \n\n2. Press the left button with your POINTER finger to select the image on the left side of the screen. Press the right button with your MIDDLE finger to select the image on the right side of the screen.  \n\n3. The pictures will sometimes appear on opposite sides of the screen. This does not change whether they will win or lose.  \n\n4. Make your choice when you see the pictures. If you choose after that, your response won't be counted.  \n\n5. The money that you win in this task will be YOURS TO KEEP.",
         font='Arial',
-        pos=(0, 0), draggable=False, height=1.0, wrapWidth=40.0, ori=0.0, 
+        pos=(0, 0), draggable=False, height=1.0, wrapWidth=30.0, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -646,7 +646,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     startFixStatic = visual.TextStim(win=win, name='startFixStatic',
         text='+',
         font='Arial',
-        pos=(0, 0), draggable=False, height=3.0, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -690,7 +690,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         win=win,
         name='leftCue', 
         image='default.png', mask=None, anchor='center',
-        ori=0.0, pos=(-8, 0), draggable=False, size=(9, 9),
+        ori=0.0, pos=(-5, 0), draggable=False, size=(6, 6),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-5.0)
@@ -698,7 +698,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         win=win,
         name='rightCue', 
         image='default.png', mask=None, anchor='center',
-        ori=0.0, pos=(8, 0), draggable=False, size=(9, 9),
+        ori=0.0, pos=(5, 0), draggable=False, size=(6, 6),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-6.0)
@@ -715,11 +715,11 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     def selectionPosition(response):
         '''Set position of selectionCue'''
-        side = 1.4 if response == responseKeys['right'] else -1.4  # For fMRI, button 1 == left and button 2 == right, so positive will shift right and negative will shift left
+        side = 1.2 if response == responseKeys['right'] else -1.2  # For fMRI, button 1 == left and button 2 == right, so positive will shift right and negative will shift left
         return [side * 180,0]
     
     # Cue Choice Indicator
-    selectionIndicator = visual.Polygon(win, edges =4, ori=45, radius=300, 
+    selectionIndicator = visual.Polygon(win, edges =4, ori=45, radius=250, 
                                     name = 'selectionIndicator', 
                                     lineColor = 'white', fillColor=None,
                                     units ='pix', lineWidth=2, interpolate=True)
@@ -747,13 +747,13 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         win=win, name='frame1Fix',
         width=(30, 26)[0], height=(30, 26)[1],
         ori=0.0, pos=(0, 0), draggable=False, anchor='center',
-        lineWidth=2.0,
+        lineWidth=4.0,
         colorSpace='rgb', lineColor='white', fillColor=None,
         opacity=None, depth=0.0, interpolate=True)
     outcomeDelayFix = visual.TextStim(win=win, name='outcomeDelayFix',
-        text='+ \nTEST',
+        text='+',
         font='Arial',
-        pos=(0, 0), draggable=False, height=0.2, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-1.0);
@@ -794,7 +794,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     outcomeText = visual.TextStim(win=win, name='outcomeText',
         text='',
         font='Arial',
-        pos=(0, 0), draggable=False, height=0.8, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-2.0);
@@ -803,7 +803,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     fixationCrosshair = visual.TextStim(win=win, name='fixationCrosshair',
         text='+',
         font='Arial',
-        pos=(0, 0), draggable=False, height=0.2, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -3313,8 +3313,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # update component parameters for each repeat
             # Run 'Begin Routine' code from loopDurationCode
             currentLoop.addData('fixationTime', fmriClock.getTime())
-            
-            print(fixationDuration)
             # store start times for fixation
             fixation.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
             fixation.tStart = globalClock.getTime(format='float')
@@ -3422,7 +3420,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             fixation.tStopRefresh = tThisFlipGlobal
             thisExp.addData('fixation.stopped', fixation.tStop)
             # Run 'End Routine' code from loopDurationCode
-            logging.exp("Measured Fixation Dureation: %f" % t)
+            logging.exp("Measured Fixation Duration: %f" % t)
             logging.exp("Trials Clock: %f" % trialsClock.getTime())
             # the Routine "fixation" was not non-slip safe, so reset the non-slip timer
             routineTimer.reset()
