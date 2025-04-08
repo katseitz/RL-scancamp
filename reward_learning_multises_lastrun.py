@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
+
     on Tue Apr  8 10:25:45 2025
+    
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -715,11 +717,11 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     def selectionPosition(response):
         '''Set position of selectionCue'''
-        side = 1.2 if response == responseKeys['right'] else -1.2  # For fMRI, button 1 == left and button 2 == right, so positive will shift right and negative will shift left
+        side = 1 if response == responseKeys['right'] else -1  # For fMRI, button 1 == left and button 2 == right, so positive will shift right and negative will shift left
         return [side * 180,0]
     
     # Cue Choice Indicator
-    selectionIndicator = visual.Polygon(win, edges =4, ori=45, radius=250, 
+    selectionIndicator = visual.Polygon(win, edges =4, ori=45, radius=200, 
                                     name = 'selectionIndicator', 
                                     lineColor = 'white', fillColor=None,
                                     units ='pix', lineWidth=2, interpolate=True)
