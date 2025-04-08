@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-
-    on Tue Apr  8 10:25:45 2025
-    
+    on Tue Apr  8 15:18:46 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -45,10 +43,8 @@ psychopyVersion = '2024.2.4'
 expName = 'reward_learning_multises'  # from the Builder filename that created this script
 # information about this experiment
 expInfo = {
-    'participant': f"{randint(0, 999999):06.0f}",
-    'session': '1',
-    'vers': 'A',
-    'img_set': ["1", "2", "3"],
+    'participant': ["1", "2", "3", "4", "5", "6", "7", "8"],
+    'session': ["ses-1", "ses-2", "ses-3", "ses-4", "ses-5", "ses-6", "ses-7", "ses-8"],
     'mriMode': 'Scan',
     'practice': 'no',
     'date|hid': data.getDateStr(),
@@ -132,7 +128,7 @@ def setupData(expInfo, dataDir=None):
     thisExp = data.ExperimentHandler(
         name=expName, version='',
         extraInfo=expInfo, runtimeInfo=None,
-        originPath='/Users/katieinsel/Documents/RL-scancamp/reward_learning_multises_lastrun.py',
+        originPath='/Users/katharinaseitz/Documents/projects/RL-scancamp/reward_learning_multises_lastrun.py',
         savePickle=True, saveWideText=True,
         dataFileName=dataDir + os.sep + filename, sortColumns='time'
     )
@@ -496,25 +492,30 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # --- Initialize components for Routine "gainDirs" ---
     advanceScreenPress3 = keyboard.Keyboard(deviceName='advanceScreenPress3')
     # Run 'Begin Experiment' code from setFrameColors
-    if expInfo['vers']=="A":
+    import pandas as pd
+    version_df = pd.read_csv("stimuli_sets/which_vers.csv")
+    version = version_df.loc[version_df['Participant'] == int(expInfo['participant']), expInfo['session']].values[0]
+    
+    
+    if version=="A":
         highgainColor="Tomato"
         lowgainColor="DarkTurquoise"
         highlossColor="Gold"
         lowlossColor="DarkOrchid"
     
-    if expInfo['vers']=="B":
+    if version=="B":
         highgainColor="DarkTurquoise"
         lowgainColor="Gold"
         highlossColor="DarkOrchid"
         lowlossColor="Tomato"
     
-    if expInfo['vers']=="C":
+    if version=="C":
         highgainColor="DarkOrchid"
         lowgainColor="Tomato"
         highlossColor="DarkTurquoise"
         lowlossColor="Gold"
     
-    if expInfo['vers']=="D":
+    if version=="D":
         highgainColor="Gold"
         lowgainColor="DarkOrchid"
         highlossColor="Tomato"
@@ -591,10 +592,19 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     responseKeys = dict(left = '1', right = '2')
     allowedKeys = ['1','2']#responseKeys.values()
     # Run 'Begin Experiment' code from conditionsFiles
-    milConditionsFile1 = 'conditions/MIL_stakes_cond' + expInfo['vers'] + '_block1.csv' 
-    milConditionsFile2 = 'conditions/MIL_stakes_cond' + expInfo['vers'] + '_block2.csv'
-    milConditionsFile3 = 'conditions/MIL_stakes_cond' + expInfo['vers'] + '_block3.csv'
-    milConditionsFile4 = 'conditions/MIL_stakes_cond' + expInfo['vers'] + '_block4.csv'
+    import pandas as pd
+    
+    sets = pd.read_csv("stimuli_sets/which_set.csv")
+    print(expInfo["participant"])
+    imgSet = sets.loc[sets['Participant'] == int(expInfo["participant"]), expInfo["session"]].values[0]
+    
+    print(version, imgSet)
+    
+    
+    milConditionsFile1 = 'conditions/MIL_stakes_cond' + version + '_block1.csv' 
+    milConditionsFile2 = 'conditions/MIL_stakes_cond' + version + '_block2.csv'
+    milConditionsFile3 = 'conditions/MIL_stakes_cond' + version + '_block3.csv'
+    milConditionsFile4 = 'conditions/MIL_stakes_cond' + version + '_block4.csv'
     
     logging.exp("Using conditions file: %s" % milConditionsFile1)
     advanceScreenPress4 = keyboard.Keyboard(deviceName='advanceScreenPress4')
@@ -660,15 +670,15 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         with open(jsonfile,'r') as f:
             cuePairs = json.load(f)
     else:
-        #imageList = 'conditions/'+ 'PicList_'+ expInfo['vers'] + '.csv'
-        imageList = 'conditions/'+ 'PicList_'+ expInfo['img_set'] + '_' + expInfo['vers'] + '.csv'
+        imageList = 'conditions/'+ 'PicList_'+ version + '.csv'
+        print(imageList)
         with open(imageList, 'r') as f:
             allImages=[s.strip() for s in f.readlines()]
             cuePairs = {
-                'highgain': {'optimalChoice': allImages[0], 'suboptimalChoice': allImages[1]}, 
-                'lowgain': {'optimalChoice': allImages[2], 'suboptimalChoice': allImages[3]}, 
-                'highloss': {'optimalChoice': allImages[4], 'suboptimalChoice': allImages[5]},
-                'lowloss': {'optimalChoice': allImages[6], 'suboptimalChoice': allImages[7]}
+                'highgain': {'optimalChoice': imgSet + '_' + allImages[0], 'suboptimalChoice': imgSet + '_' +  allImages[1]}, 
+                'lowgain': {'optimalChoice': imgSet + '_' + allImages[2], 'suboptimalChoice': imgSet + '_' + allImages[3]}, 
+                'highloss': {'optimalChoice': imgSet + '_' + allImages[4], 'suboptimalChoice': imgSet +'_' +  allImages[5]},
+                'lowloss': {'optimalChoice': imgSet + '_' + allImages[6], 'suboptimalChoice': imgSet + '_' + allImages[7]}
         }
     
         logging.info('Cue Pairs: %s' % cuePairs)
@@ -2430,7 +2440,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             
             # update component parameters for each repeat
             optimalImg = cuePairs[condition]['optimalChoice']
+            print(optimalImg)
             suboptimalImg = cuePairs[condition]['suboptimalChoice']
+            print(suboptimalImg)
             currentLoop.addData('optimalImg', optimalImg)
             currentLoop.addData('suboptimalImg', suboptimalImg)
             
