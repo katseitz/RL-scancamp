@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Mon Apr  7 16:17:19 2025
+    on Tue Apr  8 10:25:45 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -130,7 +130,7 @@ def setupData(expInfo, dataDir=None):
     thisExp = data.ExperimentHandler(
         name=expName, version='',
         extraInfo=expInfo, runtimeInfo=None,
-        originPath='/Users/katharinaseitz/Documents/projects/RL-scancamp/reward_learning_multises_lastrun.py',
+        originPath='/Users/katieinsel/Documents/RL-scancamp/reward_learning_multises_lastrun.py',
         savePickle=True, saveWideText=True,
         dataFileName=dataDir + os.sep + filename, sortColumns='time'
     )
@@ -681,7 +681,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     framecolor=None
     frame1 = visual.Rect(
         win=win, name='frame1',
-        width=(30,26)[0], height=(30,26)[1],
+        width=(30,20)[0], height=(30,20)[1],
         ori=0.0, pos=(0, 0), draggable=False, anchor='center',
         lineWidth=4.0,
         colorSpace='rgb', lineColor='white', fillColor=None,
@@ -690,7 +690,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         win=win,
         name='leftCue', 
         image='default.png', mask=None, anchor='center',
-        ori=0.0, pos=(-5, 0), draggable=False, size=(6, 6),
+        ori=0.0, pos=(-7, 0), draggable=False, size=(8, 8),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-5.0)
@@ -698,7 +698,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         win=win,
         name='rightCue', 
         image='default.png', mask=None, anchor='center',
-        ori=0.0, pos=(5, 0), draggable=False, size=(6, 6),
+        ori=0.0, pos=(7, 0), draggable=False, size=(8, 8),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-6.0)
@@ -730,14 +730,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     topFrameText = visual.TextStim(win=win, name='topFrameText',
         text='',
         font='Arial',
-        pos=(0, 10), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
+        pos=(0, 8), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-11.0);
     bottomFrameText = visual.TextStim(win=win, name='bottomFrameText',
         text='',
         font='Arial',
-        pos=(0, -10), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
+        pos=(0, -8), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-12.0);
@@ -745,7 +745,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # --- Initialize components for Routine "outcomeDelayRoutine" ---
     frame1Fix = visual.Rect(
         win=win, name='frame1Fix',
-        width=(30, 26)[0], height=(30, 26)[1],
+        width=(30, 20)[0], height=(30, 20)[1],
         ori=0.0, pos=(0, 0), draggable=False, anchor='center',
         lineWidth=4.0,
         colorSpace='rgb', lineColor='white', fillColor=None,
@@ -760,14 +760,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     topFrameTextFix = visual.TextStim(win=win, name='topFrameTextFix',
         text='',
         font='Arial',
-        pos=(0, 10), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
+        pos=(0, 8), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-2.0);
     bottomFrameTextFix = visual.TextStim(win=win, name='bottomFrameTextFix',
         text='',
         font='Arial',
-        pos=(0, -10), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
+        pos=(0, -8), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-3.0);
@@ -798,6 +798,13 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-2.0);
+    framOut = visual.Rect(
+        win=win, name='framOut',
+        width=(30, 20)[0], height=(30, 20)[1],
+        ori=0.0, pos=(0, 0), draggable=False, anchor='center',
+        lineWidth=4.0,
+        colorSpace='rgb', lineColor='white', fillColor=None,
+        opacity=None, depth=-3.0, interpolate=True)
     
     # --- Initialize components for Routine "fixation" ---
     fixationCrosshair = visual.TextStim(win=win, name='fixationCrosshair',
@@ -807,6 +814,13 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
+    frameFix = visual.Rect(
+        win=win, name='frameFix',
+        width=(30, 20)[0], height=(30, 20)[1],
+        ori=0.0, pos=(0, 0), draggable=False, anchor='center',
+        lineWidth=4.0,
+        colorSpace='rgb', lineColor='white', fillColor=None,
+        opacity=None, depth=-2.0, interpolate=True)
     
     # --- Initialize components for Routine "breakScreen" ---
     breakText = visual.TextStim(win=win, name='breakText',
@@ -3118,7 +3132,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # create an object to store info about Routine outcomeRoutine
             outcomeRoutine = data.Routine(
                 name='outcomeRoutine',
-                components=[outcomeText],
+                components=[outcomeText, framOut],
             )
             outcomeRoutine.status = NOT_STARTED
             continueRoutine = True
@@ -3210,7 +3224,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             if isinstance(trials, data.TrialHandler2) and thisTrial.thisN != trials.thisTrial.thisN:
                 continueRoutine = False
             outcomeRoutine.forceEnded = routineForceEnded = not continueRoutine
-            while continueRoutine and routineTimer.getTime() < 1.0:
+            while continueRoutine:
                 # get current time
                 t = routineTimer.getTime()
                 tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -3251,6 +3265,40 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         # update status
                         outcomeText.status = FINISHED
                         outcomeText.setAutoDraw(False)
+                
+                # *framOut* updates
+                
+                # if framOut is starting this frame...
+                if framOut.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    framOut.frameNStart = frameN  # exact frame index
+                    framOut.tStart = t  # local t and not account for scr refresh
+                    framOut.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(framOut, 'tStartRefresh')  # time at next scr refresh
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'framOut.started')
+                    # update status
+                    framOut.status = STARTED
+                    framOut.setAutoDraw(True)
+                
+                # if framOut is active this frame...
+                if framOut.status == STARTED:
+                    # update params
+                    pass
+                
+                # if framOut is stopping this frame...
+                if framOut.status == STARTED:
+                    # is it time to stop? (based on global clock, using actual start)
+                    if tThisFlipGlobal > framOut.tStartRefresh + outcomeDelay-frameTolerance:
+                        # keep track of stop time/frame for later
+                        framOut.tStop = t  # not accounting for scr refresh
+                        framOut.tStopRefresh = tThisFlipGlobal  # on global time
+                        framOut.frameNStop = frameN  # exact frame index
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 'framOut.stopped')
+                        # update status
+                        framOut.status = FINISHED
+                        framOut.setAutoDraw(False)
                 
                 # check for quit (typically the Esc key)
                 if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -3294,19 +3342,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # Run 'End Routine' code from defineOutcomes
             expInfo['bank'] = bank
             currentLoop.addData('feedbackOffTime', fmriClock.getTime())
-            # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-            if outcomeRoutine.maxDurationReached:
-                routineTimer.addTime(-outcomeRoutine.maxDuration)
-            elif outcomeRoutine.forceEnded:
-                routineTimer.reset()
-            else:
-                routineTimer.addTime(-1.000000)
+            # the Routine "outcomeRoutine" was not non-slip safe, so reset the non-slip timer
+            routineTimer.reset()
             
             # --- Prepare to start Routine "fixation" ---
             # create an object to store info about Routine fixation
             fixation = data.Routine(
                 name='fixation',
-                components=[fixationCrosshair],
+                components=[fixationCrosshair, frameFix],
             )
             fixation.status = NOT_STARTED
             continueRoutine = True
@@ -3379,6 +3422,40 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         # update status
                         fixationCrosshair.status = FINISHED
                         fixationCrosshair.setAutoDraw(False)
+                
+                # *frameFix* updates
+                
+                # if frameFix is starting this frame...
+                if frameFix.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    frameFix.frameNStart = frameN  # exact frame index
+                    frameFix.tStart = t  # local t and not account for scr refresh
+                    frameFix.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(frameFix, 'tStartRefresh')  # time at next scr refresh
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'frameFix.started')
+                    # update status
+                    frameFix.status = STARTED
+                    frameFix.setAutoDraw(True)
+                
+                # if frameFix is active this frame...
+                if frameFix.status == STARTED:
+                    # update params
+                    pass
+                
+                # if frameFix is stopping this frame...
+                if frameFix.status == STARTED:
+                    # is it time to stop? (based on global clock, using actual start)
+                    if tThisFlipGlobal > frameFix.tStartRefresh + outcomeDelay-frameTolerance:
+                        # keep track of stop time/frame for later
+                        frameFix.tStop = t  # not accounting for scr refresh
+                        frameFix.tStopRefresh = tThisFlipGlobal  # on global time
+                        frameFix.frameNStop = frameN  # exact frame index
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 'frameFix.stopped')
+                        # update status
+                        frameFix.status = FINISHED
+                        frameFix.setAutoDraw(False)
                 
                 # check for quit (typically the Esc key)
                 if defaultKeyboard.getKeys(keyList=["escape"]):
