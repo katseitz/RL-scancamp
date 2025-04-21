@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Tue Apr  8 15:18:46 2025
+    on Tue Apr 15 15:37:41 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -2440,9 +2440,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             
             # update component parameters for each repeat
             optimalImg = cuePairs[condition]['optimalChoice']
-            print(optimalImg)
             suboptimalImg = cuePairs[condition]['suboptimalChoice']
-            print(suboptimalImg)
             currentLoop.addData('optimalImg', optimalImg)
             currentLoop.addData('suboptimalImg', suboptimalImg)
             
