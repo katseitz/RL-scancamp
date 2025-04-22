@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Sun Mar 30 15:42:42 2025
+    on Tue Apr 15 15:42:24 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -129,7 +129,7 @@ def setupData(expInfo, dataDir=None):
     thisExp = data.ExperimentHandler(
         name=expName, version='',
         extraInfo=expInfo, runtimeInfo=None,
-        originPath='/Users/katharinaseitz/Documents/projects/reward_learning_scan_camp/reward_learning_task_lastrun.py',
+        originPath='/Users/katharinaseitz/Documents/projects/RL-scancamp/reward_learning_task_lastrun.py',
         savePickle=True, saveWideText=True,
         dataFileName=dataDir + os.sep + filename, sortColumns='time'
     )
@@ -801,7 +801,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     fixationCrosshair = visual.TextStim(win=win, name='fixationCrosshair',
         text='+',
         font='Arial',
-        pos=(0, 0), draggable=False, height=0.1, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
