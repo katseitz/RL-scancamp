@@ -1,0 +1,9 @@
+﻿Participant,ses-1,ses-2,ses-3,ses-4,ses-5,ses-6,ses-7,ses-8
+01,set8,set5,set7,set4,set2,set6,set3,set1
+02,set8,set3,set4,set6,set5,set7,set1,set2
+03,set2,set8,set5,set1,set3,set6,set4,set7
+04,set5,set6,set7,set3,set1,set4,set2,set8
+05,set2,set7,set3,set4,set8,set5,set6,set1
+06,set2,set4,set3,set7,set5,set6,set8,set1
+07,set6,set1,set7,set8,set3,set4,set2,set5
+08,set5,set3,set2,set1,set4,set8,set7,set6
