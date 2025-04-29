@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Mon Apr 28 08:04:56 2025
+    on Tue Apr 29 15:18:41 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -717,7 +717,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         win=win,
         name='leftCue', 
         image='default.png', mask=None, anchor='center',
-        ori=0.0, pos=(-6, 0), draggable=False, size=(4, 4),
+        ori=0.0, pos=(-4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-5.0)
@@ -725,7 +725,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         win=win,
         name='rightCue', 
         image='default.png', mask=None, anchor='center',
-        ori=0.0, pos=(6, 0), draggable=False, size=(4, 4),
+        ori=0.0, pos=(4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-6.0)
@@ -742,11 +742,11 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     def selectionPosition(response):
         '''Set position of selectionCue'''
-        side = 1.1 if response == responseKeys['right'] else -1.1  # For fMRI, button 1 == left and button 2 == right, so positive will shift right and negative will shift left
+        side = .75 if response == responseKeys['right'] else -.75  # For fMRI, button 1 == left and button 2 == right, so positive will shift right and negative will shift left
         return [side * 180,0]
     
     # Cue Choice Indicator
-    selectionIndicator = visual.Polygon(win, edges =4, ori=45, radius=150, 
+    selectionIndicator = visual.Polygon(win, edges =4, ori=45, radius=180, 
                                     name = 'selectionIndicator', 
                                     lineColor = 'white', fillColor=None,
                                     units ='pix', lineWidth=2, interpolate=True)
@@ -757,14 +757,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     topFrameText = visual.TextStim(win=win, name='topFrameText',
         text='',
         font='Arial',
-        pos=(0, 4.5), draggable=False, height=0.5, wrapWidth=None, ori=0.0, 
+        pos=(0, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-11.0);
     bottomFrameText = visual.TextStim(win=win, name='bottomFrameText',
         text='',
         font='Arial',
-        pos=(0, -4.25), draggable=False, height=0.5, wrapWidth=None, ori=0.0, 
+        pos=(0, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-12.0);
@@ -787,14 +787,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     topFrameTextFix = visual.TextStim(win=win, name='topFrameTextFix',
         text='',
         font='Arial',
-        pos=(0, 4.5), draggable=False, height=0.5, wrapWidth=None, ori=0.0, 
+        pos=(0, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-2.0);
     bottomFrameTextFix = visual.TextStim(win=win, name='bottomFrameTextFix',
         text='',
         font='Arial',
-        pos=(0, -4.25), draggable=False, height=0.5, wrapWidth=None, ori=0.0, 
+        pos=(0, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-3.0);
@@ -835,14 +835,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     topFrameTextOut = visual.TextStim(win=win, name='topFrameTextOut',
         text='',
         font='Arial',
-        pos=(0, 4.5), draggable=False, height=0.5, wrapWidth=None, ori=0.0, 
+        pos=(0, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-4.0);
     bottomFrameTextOut = visual.TextStim(win=win, name='bottomFrameTextOut',
         text='',
         font='Arial',
-        pos=(0, -4.25), draggable=False, height=0.5, wrapWidth=None, ori=0.0, 
+        pos=(0, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-5.0);
@@ -877,7 +877,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     endExperiment = visual.TextStim(win=win, name='endExperiment',
         text='You finished the game!',
         font='Arial',
-        pos=(0, 0), draggable=False, height=0.3, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);

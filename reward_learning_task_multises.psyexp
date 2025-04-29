@@ -1002,7 +1002,7 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.3" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="1" valType="num" updates="constant" name="letterHeight"/>
         <Param val="endExperiment" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
@@ -1371,9 +1371,9 @@
         <Param val="leftCue" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(-6, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="(-4, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(4, 4)" valType="list" updates="constant" name="size"/>
+        <Param val="(7, 7)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.5" valType="code" updates="None" name="startVal"/>
@@ -1400,9 +1400,9 @@
         <Param val="rightCue" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(6, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="(4, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="(4, 4)" valType="list" updates="constant" name="size"/>
+        <Param val="(7, 7)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.5" valType="code" updates="None" name="startVal"/>
@@ -1466,8 +1466,8 @@
       <CodeComponent name="selectionIndicatorCode" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="selectionDuration = 3&amp;#10;&amp;#10;def selectionPosition(response):&amp;#10;    '''Set position of selectionCue'''&amp;#10;    side = 1.1 if response == responseKeys['right'] else -1.1  # For fMRI, button 1 == left and button 2 == right, so positive will shift right and negative will shift left&amp;#10;    return [side * 180,0]&amp;#10;&amp;#10;# Cue Choice Indicator&amp;#10;selectionIndicator = visual.Polygon(win, edges =4, ori=45, radius=150, &amp;#10;                                name = 'selectionIndicator', &amp;#10;                                lineColor = 'white', fillColor=None,&amp;#10;                                units ='pix', lineWidth=2, interpolate=True)&amp;#10;&amp;#10;#vertices=[[0,0], [0,260], [260,260], [260,0]]&amp;#10;&amp;#10;Choice=None" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="selectionDuration = 3;&amp;#10;function selectionPosition(response) {&amp;#10;    /* Set position of selectionCue */&amp;#10;    var side;&amp;#10;    side = ((response === responseKeys[&quot;right&quot;]) ? 1.1 : (- 1.1));&amp;#10;    return [(side * 180), 0];&amp;#10;}&amp;#10;selectionIndicator = new visual.Polygon(psychoJS.window, {&quot;edges&quot;: 4, &quot;ori&quot;: 45, &quot;radius&quot;: 150, &quot;name&quot;: &quot;selectionIndicator&quot;, &quot;lineColor&quot;: &quot;white&quot;, &quot;fillColor&quot;: null, &quot;units&quot;: &quot;pix&quot;, &quot;lineWidth&quot;: 2, &quot;interpolate&quot;: true});&amp;#10;Choice = null;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="selectionDuration = 3&amp;#10;&amp;#10;def selectionPosition(response):&amp;#10;    '''Set position of selectionCue'''&amp;#10;    side = .75 if response == responseKeys['right'] else -.75  # For fMRI, button 1 == left and button 2 == right, so positive will shift right and negative will shift left&amp;#10;    return [side * 180,0]&amp;#10;&amp;#10;# Cue Choice Indicator&amp;#10;selectionIndicator = visual.Polygon(win, edges =4, ori=45, radius=180, &amp;#10;                                name = 'selectionIndicator', &amp;#10;                                lineColor = 'white', fillColor=None,&amp;#10;                                units ='pix', lineWidth=2, interpolate=True)&amp;#10;&amp;#10;#vertices=[[0,0], [0,260], [260,260], [260,0]]&amp;#10;&amp;#10;Choice=None" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="selectionDuration = 3;&amp;#10;function selectionPosition(response) {&amp;#10;    /* Set position of selectionCue */&amp;#10;    var side;&amp;#10;    side = ((response === responseKeys[&quot;right&quot;]) ? 0.75 : (- 0.75));&amp;#10;    return [(side * 180), 0];&amp;#10;}&amp;#10;selectionIndicator = new visual.Polygon(psychoJS.window, {&quot;edges&quot;: 4, &quot;ori&quot;: 45, &quot;radius&quot;: 180, &quot;name&quot;: &quot;selectionIndicator&quot;, &quot;lineColor&quot;: &quot;white&quot;, &quot;fillColor&quot;: null, &quot;units&quot;: &quot;pix&quot;, &quot;lineWidth&quot;: 2, &quot;interpolate&quot;: true});&amp;#10;Choice = null;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="cueEndTime = 3;&amp;#10;selectionIndicator.status = NOT_STARTED;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="# Initialize cue end time for cues and selection indicator.&amp;#10;# If no response is made in this time, the trial ends.&amp;#10;# Otherwise, cueEndTime is updated to response&amp;#10;# time plus the selection duration.&amp;#10;cueEndTime = 3&amp;#10;selectionIndicator.status = NOT_STARTED" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
@@ -1490,11 +1490,11 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.5" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="0.7" valType="num" updates="constant" name="letterHeight"/>
         <Param val="topFrameText" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, 4.5)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, 5.5)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -1517,11 +1517,11 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.5" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="0.7" valType="num" updates="constant" name="letterHeight"/>
         <Param val="bottomFrameText" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, -4.25)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -5.5)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -1618,11 +1618,11 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.5" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="0.7" valType="num" updates="constant" name="letterHeight"/>
         <Param val="topFrameTextFix" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, 4.5)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, 5.5)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -1645,11 +1645,11 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.5" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="0.7" valType="num" updates="constant" name="letterHeight"/>
         <Param val="bottomFrameTextFix" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, -4.25)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -5.5)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -1780,11 +1780,11 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.5" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="0.7" valType="num" updates="constant" name="letterHeight"/>
         <Param val="topFrameTextOut" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, 4.5)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, 5.5)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -1807,11 +1807,11 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.5" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="0.7" valType="num" updates="constant" name="letterHeight"/>
         <Param val="bottomFrameTextOut" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, -4.25)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -5.5)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
