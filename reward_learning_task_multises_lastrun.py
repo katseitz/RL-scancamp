@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Thu May  8 15:32:45 2025
+    on Fri May  9 11:31:59 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -46,7 +46,7 @@ expInfo = {
     'participant': ["1", "2", "3", "4", "5", "6", "7", "8", "pilot-1", "pilot-2", "pilot-3", "pilot-4", "pilot-5", "pilot-6", "pilot-7", "pilot-8", "pilot-9", "pilot-10"],
     'session': ["ses-1", "ses-2", "ses-3", "ses-4", "ses-5", "ses-6", "ses-7", "ses-8"],
     'startFromRun': ["1", "2"],
-    'mriMode': 'Scan',
+    'mode': ["pilot", "scan"],
     'practice': ["yes", "no"],
     'date|hid': data.getDateStr(),
     'expName|hid': expName,
@@ -453,13 +453,27 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     advanceScreenPress = keyboard.Keyboard(deviceName='advanceScreenPress')
     # Run 'Begin Experiment' code from initializeVarCode
     import pandas as pd
+    
     #are we doing practice
     if(expInfo["practice"] == "yes"):
         pracBlockRepeats = 1
     else:
         pracBlockRepeats = 0
         
-        
+    #pilot mode (on computer) vs scan mode in scanner
+    if(expInfo["mode"] == "pilot"):
+        leftKey = "left"
+        rightKey = "right"
+        responseKeys = dict(left = 'left', right = 'right')
+        allowedKeys = ['left','right']
+        PracCorrect = ["left", "left", "right", "left", "left"]
+    else:
+        leftKey = "1"
+        rightKey = "2"
+        responseKeys = dict(left = '1', right = '2')
+        allowedKeys = ['1','2']
+        PracCorrect = ["1", "1", "2", "1", "1"]
+    
     
     #what is the participant's version
     if(not("pilot" in expInfo["participant"])):
@@ -478,9 +492,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "pracDir1" ---
     choiceDirText = visual.TextStim(win=win, name='choiceDirText',
-        text='There will be two pictures on the screen, one on the left and one on the right. Press the button with your pointer finger to choose the picture on the left, and press the button with your middle finger to choose the picture on the right. The pictures will change sides, but this does not affect whether or not the picture is correct.\n\nMake your choice as fast as you can. Once you choose, a box will show up on the screen. If you choose too late, your choice will not count.\n\nPress the space bar to proceed.',
+        text='There will be two pictures on the screen, one on the left and one on the right. Press the button with your pointer finger to choose the picture on the left, and press the button with your middle finger to choose the picture on the right. The pictures will change sides, but this does not affect whether or not the picture is correct.\n\n\n\n\n\n\n\n\n\n\nMake your choice as fast as you can. Once you choose, a box will show up on the screen. If you choose too late, your choice will not count.\n\nPress the space bar to proceed.',
         font='Arial',
-        pos=(0, 5), draggable=False, height=1.0, wrapWidth=40.0, ori=0.0, 
+        pos=(0, 0), draggable=False, height=1.0, wrapWidth=40.0, ori=0.0, 
         color=[1.0000, 1.0000, 1.0000], colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
@@ -489,7 +503,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         win=win,
         name='prac2Image', 
         image='images/prac2.png', mask=None, anchor='center',
-        ori=0.0, pos=(-4, -10), draggable=False, size=(7, 7),
+        ori=0.0, pos=(-4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-2.0)
@@ -497,14 +511,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         win=win,
         name='prac1Image', 
         image='images/prac1.png', mask=None, anchor='center',
-        ori=0.0, pos=(4, -10), draggable=False, size=(7, 7),
+        ori=0.0, pos=(4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-3.0)
     pracRespPress = keyboard.Keyboard(deviceName='pracRespPress')
     
     # --- Initialize components for Routine "pracDir2" ---
-    text = visual.TextStim(win=win, name='text',
+    fixDirText = visual.TextStim(win=win, name='fixDirText',
         text='After you make a choice, you will see a + on the screen for a few seconds. Next, you will get feedback telling you if you are correct or incorrect.\n\n\n\n\n\nDo you have any questions?\n\nPress space bar to start the practice.',
         font='Arial',
         pos=(0, 0), draggable=False, height=1.0, wrapWidth=30.0, ori=0.0, 
@@ -560,8 +574,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
-    # Run 'Begin Experiment' code from outcomeCode_2
+    # Run 'Begin Experiment' code from outcomeCode
     pracOutcome = None
+    
     
     # --- Initialize components for Routine "pracOut" ---
     pracOutText = visual.TextStim(win=win, name='pracOutText',
@@ -581,65 +596,135 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "gainDirs" ---
     advanceScreenPress3 = keyboard.Keyboard(deviceName='advanceScreenPress3')
-    frameDirText = visual.TextStim(win=win, name='frameDirText',
+    gainDirText = visual.TextStim(win=win, name='gainDirText',
         text='Sometimes you can win money during the game!\n\nFor the HIGH WIN pair, you can win 50 cents if you are correct or win 0 cents if you are incorrect. \n\nFor the LOW WIN pair, you can win 25 cents if you are correct or win 0 cents if you are incorrect. \n\nThere will be a box around the pictures. The numbers in the box will tell you whether you can win a high or low amount. \n\nThe money you win will be paid to you as bonus at the end of the game, so try your best!',
         font='Arial',
-        pos=(-5, 0), draggable=False, height=1.0, wrapWidth=20.0, ori=0.0, 
+        pos=(-6, 0), draggable=False, height=1.0, wrapWidth=20.0, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-1.0);
-    highgainframe1_2 = visual.Rect(
-        win=win, name='highgainframe1_2',
+    highgainframe = visual.Rect(
+        win=win, name='highgainframe',
         width=(8, 6)[0], height=(8, 6)[1],
-        ori=0.0, pos=(8, 8), draggable=False, anchor='center',
+        ori=0.0, pos=(10, 8), draggable=False, anchor='center',
         lineWidth=1.0,
         colorSpace='rgb', lineColor='white', fillColor=None,
         opacity=None, depth=-2.0, interpolate=True)
-    lowgainframe1_2 = visual.Rect(
-        win=win, name='lowgainframe1_2',
+    lowgainframe = visual.Rect(
+        win=win, name='lowgainframe',
         width=(8, 6)[0], height=(8, 6)[1],
-        ori=0.0, pos=(8, -8), draggable=False, anchor='center',
+        ori=0.0, pos=(10, -8), draggable=False, anchor='center',
         lineWidth=1.0,
         colorSpace='rgb', lineColor='white', fillColor=None,
         opacity=None, depth=-3.0, interpolate=True)
-    highgainTopLabel_2 = visual.TextStim(win=win, name='highgainTopLabel_2',
-        text='"+$0.50"',
+    highgainTopLabel = visual.TextStim(win=win, name='highgainTopLabel',
+        text='+$0.50',
         font='Arial',
-        pos=(8.5, 8), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
+        pos=(10, 10.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-4.0);
-    lowgainTopLabel_2 = visual.TextStim(win=win, name='lowgainTopLabel_2',
-        text='"+$0.25"',
+    lowgainTopLabel = visual.TextStim(win=win, name='lowgainTopLabel',
+        text='+$0.25',
         font='Arial',
-        pos=(0, 0), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
+        pos=(10, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-5.0);
-    highgainBottomLabel_2 = visual.TextStim(win=win, name='highgainBottomLabel_2',
-        text='"+$0.00"',
+    highgainBottomLabel = visual.TextStim(win=win, name='highgainBottomLabel',
+        text='+$0.00',
         font='Arial',
-        pos=(8.5, 8), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
+        pos=(10, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-6.0);
-    lowgainBottomLabel_2 = visual.TextStim(win=win, name='lowgainBottomLabel_2',
-        text='"+$0.00"',
+    lowgainBottomLabel = visual.TextStim(win=win, name='lowgainBottomLabel',
+        text='+$0.00',
         font='Arial',
-        pos=(0, 0), draggable=False, height=0.05, wrapWidth=None, ori=0.0, 
+        pos=(10, -10.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-7.0);
+    highGainLabel = visual.TextStim(win=win, name='highGainLabel',
+        text='HIGH GAIN',
+        font='Arial',
+        pos=(10, 8), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-8.0);
+    lowGainLabel = visual.TextStim(win=win, name='lowGainLabel',
+        text='LOW GAIN',
+        font='Arial',
+        pos=(10, -8), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-9.0);
     
     # --- Initialize components for Routine "lossDirs" ---
     advanceScreen4 = keyboard.Keyboard(deviceName='advanceScreen4')
-    lossFrameDirections = visual.TextStim(win=win, name='lossFrameDirections',
+    lossDirText = visual.TextStim(win=win, name='lossDirText',
         text='Sometimes you can lose money during the game!\n\nFor the HIGH LOSE pair, you can lose 0 cents if you are correct or lose 50 cents if you are incorrect.\n\nFor the LOW LOSE pair, you can lose 0 cents if you are correct or lose 25 cents if you are incorrect.\n\nThere will be a box around the pictures. The The numbers in the box will tell you whether you can lose a high or low amount.\n\nThe money you lose will be taken away from the bonus money you win at the end of the game, so try your best!',
         font='Arial',
-        pos=(0, 0), draggable=False, height=0.05, wrapWidth=None, ori=0.0, 
+        pos=(-6, 0), draggable=False, height=1.0, wrapWidth=20.0, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-1.0);
+    highLossFrame = visual.Rect(
+        win=win, name='highLossFrame',
+        width=(8, 6)[0], height=(8, 6)[1],
+        ori=0.0, pos=(10, 8), draggable=False, anchor='center',
+        lineWidth=1.0,
+        colorSpace='rgb', lineColor='white', fillColor=None,
+        opacity=None, depth=-2.0, interpolate=True)
+    lowLossFrame = visual.Rect(
+        win=win, name='lowLossFrame',
+        width=(8, 6)[0], height=(8, 6)[1],
+        ori=0.0, pos=(10, -8), draggable=False, anchor='center',
+        lineWidth=1.0,
+        colorSpace='rgb', lineColor='white', fillColor=None,
+        opacity=None, depth=-3.0, interpolate=True)
+    highLossTopLabel = visual.TextStim(win=win, name='highLossTopLabel',
+        text='-$0.00',
+        font='Arial',
+        pos=(10, 10.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-4.0);
+    lowLossTopLabel = visual.TextStim(win=win, name='lowLossTopLabel',
+        text='-$0.00',
+        font='Arial',
+        pos=(10, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-5.0);
+    highLossBottomLabel = visual.TextStim(win=win, name='highLossBottomLabel',
+        text='-$0.50',
+        font='Arial',
+        pos=(10, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-6.0);
+    lowLossBottomLabel = visual.TextStim(win=win, name='lowLossBottomLabel',
+        text='-$0.25',
+        font='Arial',
+        pos=(10, -10.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-7.0);
+    highLossLabel = visual.TextStim(win=win, name='highLossLabel',
+        text='HIGH LOSE',
+        font='Arial',
+        pos=(10, 8), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-8.0);
+    lowLossLabel = visual.TextStim(win=win, name='lowLossLabel',
+        text='LOW GAIN',
+        font='Arial',
+        pos=(10, -8), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-9.0);
     
     # --- Initialize components for Routine "summaryDirections" ---
     summary = visual.TextStim(win=win, name='summary',
@@ -649,10 +734,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
-    # Run 'Begin Experiment' code from allowedKeysCode
-    responseKeys = dict(left = '1', right = '2')
-    allowedKeys = ['1','2']#responseKeys.values()
-    
     # Run 'Begin Experiment' code from conditionsFiles
     import pandas as pd
     #load img set
@@ -683,22 +764,24 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         languageStyle='LTR',
         depth=0.0);
     advanceToTrigger = keyboard.Keyboard(deviceName='advanceToTrigger')
-    
-    # --- Initialize components for Routine "waitForScanner" ---
     # Run 'Begin Experiment' code from setRunFiles
     trialOrder = None
+    
+    # --- Initialize components for Routine "waitForScanner" ---
     waitScannerText = visual.TextStim(win=win, name='waitScannerText',
         text='Waiting for scanner (press 5 key to continue -- remove this later)',
         font='Arial',
         pos=(0, 0), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-1.0);
+        depth=0.0);
     # Run 'Begin Experiment' code from waitScannerCode
-      
     waitForScannerClock = core.Clock()
     fmriClock = core.Clock()
     trigger = 'usb'
+    
+    
+    
     ''' 
     #trigger = 'parallel'
     if trigger == 'parallel':
@@ -921,7 +1004,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         depth=0.0);
     advanceScreenPress_2 = keyboard.Keyboard(deviceName='advanceScreenPress_2')
     
-    # --- Initialize components for Routine "Done" ---
+    # --- Initialize components for Routine "done" ---
     endExperiment = visual.TextStim(win=win, name='endExperiment',
         text='You finished the game!',
         font='Arial',
@@ -1355,7 +1438,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # create an object to store info about Routine pracDir2
         pracDir2 = data.Routine(
             name='pracDir2',
-            components=[text, key_resp],
+            components=[fixDirText, key_resp],
         )
         pracDir2.status = NOT_STARTED
         continueRoutine = True
@@ -1397,23 +1480,23 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
-            # *text* updates
+            # *fixDirText* updates
             
-            # if text is starting this frame...
-            if text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # if fixDirText is starting this frame...
+            if fixDirText.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                text.frameNStart = frameN  # exact frame index
-                text.tStart = t  # local t and not account for scr refresh
-                text.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(text, 'tStartRefresh')  # time at next scr refresh
+                fixDirText.frameNStart = frameN  # exact frame index
+                fixDirText.tStart = t  # local t and not account for scr refresh
+                fixDirText.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fixDirText, 'tStartRefresh')  # time at next scr refresh
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'text.started')
+                thisExp.timestampOnFlip(win, 'fixDirText.started')
                 # update status
-                text.status = STARTED
-                text.setAutoDraw(True)
+                fixDirText.status = STARTED
+                fixDirText.setAutoDraw(True)
             
-            # if text is active this frame...
-            if text.status == STARTED:
+            # if fixDirText is active this frame...
+            if fixDirText.status == STARTED:
                 # update params
                 pass
             
@@ -1498,7 +1581,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         practice = data.TrialHandler2(
             name='practice',
             nReps=pracOn, 
-            method='random', 
+            method='sequential', 
             extraInfo=expInfo, 
             originPath=-1, 
             trialList=data.importConditions('conditions/MIL_teen_prac.xlsx'), 
@@ -1540,6 +1623,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             pracResp.keys = []
             pracResp.rt = []
             _pracResp_allKeys = []
+            # allowedKeys looks like a variable, so make sure it exists locally
+            if 'allowedKeys' in globals():
+                allowedKeys = globals()['allowedKeys']
             # Run 'Begin Routine' code from selectionCode
             # Initialize cue end time for cues and selection indicator.
             # If no response is made in this time, the trial ends.
@@ -1662,6 +1748,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     thisExp.timestampOnFlip(win, 'pracResp.started')
                     # update status
                     pracResp.status = STARTED
+                    # allowed keys looks like a variable named `allowedKeys`
+                    if not type(allowedKeys) in [list, tuple, np.ndarray]:
+                        if not isinstance(allowedKeys, str):
+                            allowedKeys = str(allowedKeys)
+                        elif not ',' in allowedKeys:
+                            allowedKeys = (allowedKeys,)
+                        else:
+                            allowedKeys = eval(allowedKeys)
                     # keyboard checking is just starting
                     waitOnFlip = True
                     win.callOnFlip(pracResp.clock.reset)  # t=0 on next screen flip
@@ -1681,7 +1775,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         pracResp.status = FINISHED
                         pracResp.status = FINISHED
                 if pracResp.status == STARTED and not waitOnFlip:
-                    theseKeys = pracResp.getKeys(keyList=['1', '2'], ignoreKeys=["escape"], waitRelease=False)
+                    theseKeys = pracResp.getKeys(keyList=list(allowedKeys), ignoreKeys=["escape"], waitRelease=False)
                     _pracResp_allKeys.extend(theseKeys)
                     if len(_pracResp_allKeys):
                         pracResp.keys = _pracResp_allKeys[0].name  # just the first key pressed
@@ -1779,11 +1873,13 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             pracJitter.status = NOT_STARTED
             continueRoutine = True
             # update component parameters for each repeat
-            # Run 'Begin Routine' code from outcomeCode_2
+            # Run 'Begin Routine' code from outcomeCode
+            print(practice.thisN)
+            print(leftImgPath)
             if pracResp.keys:
-                if pracResp.corr == 1:
+                if pracResp.keys == PracCorrect[practice.thisN]:
                     pracOutcome = "Correct!"
-                if pracResp.corr == 0:
+                else:
                     pracOutcome = "Incorrect!"
             else:
                 pracOutcome = "Missed"
@@ -2070,7 +2166,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # create an object to store info about Routine gainDirs
         gainDirs = data.Routine(
             name='gainDirs',
-            components=[advanceScreenPress3, frameDirText, highgainframe1_2, lowgainframe1_2, highgainTopLabel_2, lowgainTopLabel_2, highgainBottomLabel_2, lowgainBottomLabel_2],
+            components=[advanceScreenPress3, gainDirText, highgainframe, lowgainframe, highgainTopLabel, lowgainTopLabel, highgainBottomLabel, lowgainBottomLabel, highGainLabel, lowGainLabel],
         )
         gainDirs.status = NOT_STARTED
         continueRoutine = True
@@ -2079,8 +2175,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         advanceScreenPress3.keys = []
         advanceScreenPress3.rt = []
         _advanceScreenPress3_allKeys = []
-        highgainframe1_2.setLineColor('white')
-        lowgainframe1_2.setLineColor('white')
+        highgainframe.setLineColor('white')
+        lowgainframe.setLineColor('white')
+        # Run 'Begin Routine' code from gainDirText_2
+        gainDirText.alignText = 'left'
         # store start times for gainDirs
         gainDirs.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
         gainDirs.tStart = globalClock.getTime(format='float')
@@ -2142,143 +2240,183 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     # a response ends the routine
                     continueRoutine = False
             
-            # *frameDirText* updates
+            # *gainDirText* updates
             
-            # if frameDirText is starting this frame...
-            if frameDirText.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # if gainDirText is starting this frame...
+            if gainDirText.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                frameDirText.frameNStart = frameN  # exact frame index
-                frameDirText.tStart = t  # local t and not account for scr refresh
-                frameDirText.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(frameDirText, 'tStartRefresh')  # time at next scr refresh
+                gainDirText.frameNStart = frameN  # exact frame index
+                gainDirText.tStart = t  # local t and not account for scr refresh
+                gainDirText.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(gainDirText, 'tStartRefresh')  # time at next scr refresh
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'frameDirText.started')
+                thisExp.timestampOnFlip(win, 'gainDirText.started')
                 # update status
-                frameDirText.status = STARTED
-                frameDirText.setAutoDraw(True)
+                gainDirText.status = STARTED
+                gainDirText.setAutoDraw(True)
             
-            # if frameDirText is active this frame...
-            if frameDirText.status == STARTED:
+            # if gainDirText is active this frame...
+            if gainDirText.status == STARTED:
                 # update params
                 pass
             
-            # *highgainframe1_2* updates
+            # *highgainframe* updates
             
-            # if highgainframe1_2 is starting this frame...
-            if highgainframe1_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # if highgainframe is starting this frame...
+            if highgainframe.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                highgainframe1_2.frameNStart = frameN  # exact frame index
-                highgainframe1_2.tStart = t  # local t and not account for scr refresh
-                highgainframe1_2.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(highgainframe1_2, 'tStartRefresh')  # time at next scr refresh
+                highgainframe.frameNStart = frameN  # exact frame index
+                highgainframe.tStart = t  # local t and not account for scr refresh
+                highgainframe.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(highgainframe, 'tStartRefresh')  # time at next scr refresh
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'highgainframe1_2.started')
+                thisExp.timestampOnFlip(win, 'highgainframe.started')
                 # update status
-                highgainframe1_2.status = STARTED
-                highgainframe1_2.setAutoDraw(True)
+                highgainframe.status = STARTED
+                highgainframe.setAutoDraw(True)
             
-            # if highgainframe1_2 is active this frame...
-            if highgainframe1_2.status == STARTED:
+            # if highgainframe is active this frame...
+            if highgainframe.status == STARTED:
                 # update params
                 pass
             
-            # *lowgainframe1_2* updates
+            # *lowgainframe* updates
             
-            # if lowgainframe1_2 is starting this frame...
-            if lowgainframe1_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # if lowgainframe is starting this frame...
+            if lowgainframe.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                lowgainframe1_2.frameNStart = frameN  # exact frame index
-                lowgainframe1_2.tStart = t  # local t and not account for scr refresh
-                lowgainframe1_2.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(lowgainframe1_2, 'tStartRefresh')  # time at next scr refresh
+                lowgainframe.frameNStart = frameN  # exact frame index
+                lowgainframe.tStart = t  # local t and not account for scr refresh
+                lowgainframe.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(lowgainframe, 'tStartRefresh')  # time at next scr refresh
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'lowgainframe1_2.started')
+                thisExp.timestampOnFlip(win, 'lowgainframe.started')
                 # update status
-                lowgainframe1_2.status = STARTED
-                lowgainframe1_2.setAutoDraw(True)
+                lowgainframe.status = STARTED
+                lowgainframe.setAutoDraw(True)
             
-            # if lowgainframe1_2 is active this frame...
-            if lowgainframe1_2.status == STARTED:
+            # if lowgainframe is active this frame...
+            if lowgainframe.status == STARTED:
                 # update params
                 pass
             
-            # *highgainTopLabel_2* updates
+            # *highgainTopLabel* updates
             
-            # if highgainTopLabel_2 is starting this frame...
-            if highgainTopLabel_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # if highgainTopLabel is starting this frame...
+            if highgainTopLabel.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                highgainTopLabel_2.frameNStart = frameN  # exact frame index
-                highgainTopLabel_2.tStart = t  # local t and not account for scr refresh
-                highgainTopLabel_2.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(highgainTopLabel_2, 'tStartRefresh')  # time at next scr refresh
+                highgainTopLabel.frameNStart = frameN  # exact frame index
+                highgainTopLabel.tStart = t  # local t and not account for scr refresh
+                highgainTopLabel.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(highgainTopLabel, 'tStartRefresh')  # time at next scr refresh
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'highgainTopLabel_2.started')
+                thisExp.timestampOnFlip(win, 'highgainTopLabel.started')
                 # update status
-                highgainTopLabel_2.status = STARTED
-                highgainTopLabel_2.setAutoDraw(True)
+                highgainTopLabel.status = STARTED
+                highgainTopLabel.setAutoDraw(True)
             
-            # if highgainTopLabel_2 is active this frame...
-            if highgainTopLabel_2.status == STARTED:
+            # if highgainTopLabel is active this frame...
+            if highgainTopLabel.status == STARTED:
                 # update params
                 pass
             
-            # *lowgainTopLabel_2* updates
+            # *lowgainTopLabel* updates
             
-            # if lowgainTopLabel_2 is starting this frame...
-            if lowgainTopLabel_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # if lowgainTopLabel is starting this frame...
+            if lowgainTopLabel.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                lowgainTopLabel_2.frameNStart = frameN  # exact frame index
-                lowgainTopLabel_2.tStart = t  # local t and not account for scr refresh
-                lowgainTopLabel_2.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(lowgainTopLabel_2, 'tStartRefresh')  # time at next scr refresh
+                lowgainTopLabel.frameNStart = frameN  # exact frame index
+                lowgainTopLabel.tStart = t  # local t and not account for scr refresh
+                lowgainTopLabel.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(lowgainTopLabel, 'tStartRefresh')  # time at next scr refresh
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'lowgainTopLabel_2.started')
+                thisExp.timestampOnFlip(win, 'lowgainTopLabel.started')
                 # update status
-                lowgainTopLabel_2.status = STARTED
-                lowgainTopLabel_2.setAutoDraw(True)
+                lowgainTopLabel.status = STARTED
+                lowgainTopLabel.setAutoDraw(True)
             
-            # if lowgainTopLabel_2 is active this frame...
-            if lowgainTopLabel_2.status == STARTED:
+            # if lowgainTopLabel is active this frame...
+            if lowgainTopLabel.status == STARTED:
                 # update params
                 pass
             
-            # *highgainBottomLabel_2* updates
+            # *highgainBottomLabel* updates
             
-            # if highgainBottomLabel_2 is starting this frame...
-            if highgainBottomLabel_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # if highgainBottomLabel is starting this frame...
+            if highgainBottomLabel.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                highgainBottomLabel_2.frameNStart = frameN  # exact frame index
-                highgainBottomLabel_2.tStart = t  # local t and not account for scr refresh
-                highgainBottomLabel_2.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(highgainBottomLabel_2, 'tStartRefresh')  # time at next scr refresh
+                highgainBottomLabel.frameNStart = frameN  # exact frame index
+                highgainBottomLabel.tStart = t  # local t and not account for scr refresh
+                highgainBottomLabel.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(highgainBottomLabel, 'tStartRefresh')  # time at next scr refresh
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'highgainBottomLabel_2.started')
+                thisExp.timestampOnFlip(win, 'highgainBottomLabel.started')
                 # update status
-                highgainBottomLabel_2.status = STARTED
-                highgainBottomLabel_2.setAutoDraw(True)
+                highgainBottomLabel.status = STARTED
+                highgainBottomLabel.setAutoDraw(True)
             
-            # if highgainBottomLabel_2 is active this frame...
-            if highgainBottomLabel_2.status == STARTED:
+            # if highgainBottomLabel is active this frame...
+            if highgainBottomLabel.status == STARTED:
                 # update params
                 pass
             
-            # *lowgainBottomLabel_2* updates
+            # *lowgainBottomLabel* updates
             
-            # if lowgainBottomLabel_2 is starting this frame...
-            if lowgainBottomLabel_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # if lowgainBottomLabel is starting this frame...
+            if lowgainBottomLabel.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                lowgainBottomLabel_2.frameNStart = frameN  # exact frame index
-                lowgainBottomLabel_2.tStart = t  # local t and not account for scr refresh
-                lowgainBottomLabel_2.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(lowgainBottomLabel_2, 'tStartRefresh')  # time at next scr refresh
+                lowgainBottomLabel.frameNStart = frameN  # exact frame index
+                lowgainBottomLabel.tStart = t  # local t and not account for scr refresh
+                lowgainBottomLabel.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(lowgainBottomLabel, 'tStartRefresh')  # time at next scr refresh
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'lowgainBottomLabel_2.started')
+                thisExp.timestampOnFlip(win, 'lowgainBottomLabel.started')
                 # update status
-                lowgainBottomLabel_2.status = STARTED
-                lowgainBottomLabel_2.setAutoDraw(True)
+                lowgainBottomLabel.status = STARTED
+                lowgainBottomLabel.setAutoDraw(True)
             
-            # if lowgainBottomLabel_2 is active this frame...
-            if lowgainBottomLabel_2.status == STARTED:
+            # if lowgainBottomLabel is active this frame...
+            if lowgainBottomLabel.status == STARTED:
+                # update params
+                pass
+            
+            # *highGainLabel* updates
+            
+            # if highGainLabel is starting this frame...
+            if highGainLabel.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                highGainLabel.frameNStart = frameN  # exact frame index
+                highGainLabel.tStart = t  # local t and not account for scr refresh
+                highGainLabel.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(highGainLabel, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'highGainLabel.started')
+                # update status
+                highGainLabel.status = STARTED
+                highGainLabel.setAutoDraw(True)
+            
+            # if highGainLabel is active this frame...
+            if highGainLabel.status == STARTED:
+                # update params
+                pass
+            
+            # *lowGainLabel* updates
+            
+            # if lowGainLabel is starting this frame...
+            if lowGainLabel.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                lowGainLabel.frameNStart = frameN  # exact frame index
+                lowGainLabel.tStart = t  # local t and not account for scr refresh
+                lowGainLabel.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(lowGainLabel, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'lowGainLabel.started')
+                # update status
+                lowGainLabel.status = STARTED
+                lowGainLabel.setAutoDraw(True)
+            
+            # if lowGainLabel is active this frame...
+            if lowGainLabel.status == STARTED:
                 # update params
                 pass
             
@@ -2335,7 +2473,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # create an object to store info about Routine lossDirs
         lossDirs = data.Routine(
             name='lossDirs',
-            components=[advanceScreen4, lossFrameDirections],
+            components=[advanceScreen4, lossDirText, highLossFrame, lowLossFrame, highLossTopLabel, lowLossTopLabel, highLossBottomLabel, lowLossBottomLabel, highLossLabel, lowLossLabel],
         )
         lossDirs.status = NOT_STARTED
         continueRoutine = True
@@ -2344,6 +2482,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         advanceScreen4.keys = []
         advanceScreen4.rt = []
         _advanceScreen4_allKeys = []
+        highLossFrame.setLineColor('white')
+        lowLossFrame.setLineColor('white')
+        # Run 'Begin Routine' code from lossTextCode
+        lossDirText.alignText = 'left'
         # store start times for lossDirs
         lossDirs.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
         lossDirs.tStart = globalClock.getTime(format='float')
@@ -2405,23 +2547,183 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     # a response ends the routine
                     continueRoutine = False
             
-            # *lossFrameDirections* updates
+            # *lossDirText* updates
             
-            # if lossFrameDirections is starting this frame...
-            if lossFrameDirections.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # if lossDirText is starting this frame...
+            if lossDirText.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                lossFrameDirections.frameNStart = frameN  # exact frame index
-                lossFrameDirections.tStart = t  # local t and not account for scr refresh
-                lossFrameDirections.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(lossFrameDirections, 'tStartRefresh')  # time at next scr refresh
+                lossDirText.frameNStart = frameN  # exact frame index
+                lossDirText.tStart = t  # local t and not account for scr refresh
+                lossDirText.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(lossDirText, 'tStartRefresh')  # time at next scr refresh
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'lossFrameDirections.started')
+                thisExp.timestampOnFlip(win, 'lossDirText.started')
                 # update status
-                lossFrameDirections.status = STARTED
-                lossFrameDirections.setAutoDraw(True)
+                lossDirText.status = STARTED
+                lossDirText.setAutoDraw(True)
             
-            # if lossFrameDirections is active this frame...
-            if lossFrameDirections.status == STARTED:
+            # if lossDirText is active this frame...
+            if lossDirText.status == STARTED:
+                # update params
+                pass
+            
+            # *highLossFrame* updates
+            
+            # if highLossFrame is starting this frame...
+            if highLossFrame.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                highLossFrame.frameNStart = frameN  # exact frame index
+                highLossFrame.tStart = t  # local t and not account for scr refresh
+                highLossFrame.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(highLossFrame, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'highLossFrame.started')
+                # update status
+                highLossFrame.status = STARTED
+                highLossFrame.setAutoDraw(True)
+            
+            # if highLossFrame is active this frame...
+            if highLossFrame.status == STARTED:
+                # update params
+                pass
+            
+            # *lowLossFrame* updates
+            
+            # if lowLossFrame is starting this frame...
+            if lowLossFrame.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                lowLossFrame.frameNStart = frameN  # exact frame index
+                lowLossFrame.tStart = t  # local t and not account for scr refresh
+                lowLossFrame.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(lowLossFrame, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'lowLossFrame.started')
+                # update status
+                lowLossFrame.status = STARTED
+                lowLossFrame.setAutoDraw(True)
+            
+            # if lowLossFrame is active this frame...
+            if lowLossFrame.status == STARTED:
+                # update params
+                pass
+            
+            # *highLossTopLabel* updates
+            
+            # if highLossTopLabel is starting this frame...
+            if highLossTopLabel.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                highLossTopLabel.frameNStart = frameN  # exact frame index
+                highLossTopLabel.tStart = t  # local t and not account for scr refresh
+                highLossTopLabel.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(highLossTopLabel, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'highLossTopLabel.started')
+                # update status
+                highLossTopLabel.status = STARTED
+                highLossTopLabel.setAutoDraw(True)
+            
+            # if highLossTopLabel is active this frame...
+            if highLossTopLabel.status == STARTED:
+                # update params
+                pass
+            
+            # *lowLossTopLabel* updates
+            
+            # if lowLossTopLabel is starting this frame...
+            if lowLossTopLabel.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                lowLossTopLabel.frameNStart = frameN  # exact frame index
+                lowLossTopLabel.tStart = t  # local t and not account for scr refresh
+                lowLossTopLabel.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(lowLossTopLabel, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'lowLossTopLabel.started')
+                # update status
+                lowLossTopLabel.status = STARTED
+                lowLossTopLabel.setAutoDraw(True)
+            
+            # if lowLossTopLabel is active this frame...
+            if lowLossTopLabel.status == STARTED:
+                # update params
+                pass
+            
+            # *highLossBottomLabel* updates
+            
+            # if highLossBottomLabel is starting this frame...
+            if highLossBottomLabel.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                highLossBottomLabel.frameNStart = frameN  # exact frame index
+                highLossBottomLabel.tStart = t  # local t and not account for scr refresh
+                highLossBottomLabel.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(highLossBottomLabel, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'highLossBottomLabel.started')
+                # update status
+                highLossBottomLabel.status = STARTED
+                highLossBottomLabel.setAutoDraw(True)
+            
+            # if highLossBottomLabel is active this frame...
+            if highLossBottomLabel.status == STARTED:
+                # update params
+                pass
+            
+            # *lowLossBottomLabel* updates
+            
+            # if lowLossBottomLabel is starting this frame...
+            if lowLossBottomLabel.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                lowLossBottomLabel.frameNStart = frameN  # exact frame index
+                lowLossBottomLabel.tStart = t  # local t and not account for scr refresh
+                lowLossBottomLabel.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(lowLossBottomLabel, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'lowLossBottomLabel.started')
+                # update status
+                lowLossBottomLabel.status = STARTED
+                lowLossBottomLabel.setAutoDraw(True)
+            
+            # if lowLossBottomLabel is active this frame...
+            if lowLossBottomLabel.status == STARTED:
+                # update params
+                pass
+            
+            # *highLossLabel* updates
+            
+            # if highLossLabel is starting this frame...
+            if highLossLabel.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                highLossLabel.frameNStart = frameN  # exact frame index
+                highLossLabel.tStart = t  # local t and not account for scr refresh
+                highLossLabel.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(highLossLabel, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'highLossLabel.started')
+                # update status
+                highLossLabel.status = STARTED
+                highLossLabel.setAutoDraw(True)
+            
+            # if highLossLabel is active this frame...
+            if highLossLabel.status == STARTED:
+                # update params
+                pass
+            
+            # *lowLossLabel* updates
+            
+            # if lowLossLabel is starting this frame...
+            if lowLossLabel.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                lowLossLabel.frameNStart = frameN  # exact frame index
+                lowLossLabel.tStart = t  # local t and not account for scr refresh
+                lowLossLabel.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(lowLossLabel, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'lowLossLabel.started')
+                # update status
+                lowLossLabel.status = STARTED
+                lowLossLabel.setAutoDraw(True)
+            
+            # if lowLossLabel is active this frame...
+            if lowLossLabel.status == STARTED:
                 # update params
                 pass
             
@@ -2666,6 +2968,19 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         advanceToTrigger.keys = []
         advanceToTrigger.rt = []
         _advanceToTrigger_allKeys = []
+        # Run 'Begin Routine' code from setRunFiles
+        print(Runs)
+        if expInfo["startFromRun"] == "1":
+            if Runs == 'Run1':
+                trialOrder = milConditionsFile1
+            if Runs == 'Run2':
+                trialOrder = milConditionsFile2
+        else:
+            if Runs == 'Run1':
+                trialOrder = milConditionsFile1 #which has been set to 2 earlier
+        
+        
+        
         # store start times for getReady
         getReady.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
         getReady.tStart = globalClock.getTime(format='float')
@@ -2819,20 +3134,11 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         waitForScanner.status = NOT_STARTED
         continueRoutine = True
         # update component parameters for each repeat
-        # Run 'Begin Routine' code from setRunFiles
-        print(Runs)
-        if expInfo["startFromRun"] == "1":
-            if Runs == 'Run1':
-                trialOrder = milConditionsFile1
-            if Runs == 'Run2':
-                trialOrder = milConditionsFile2
-        else:
-            if Runs == 'Run1':
-                trialOrder = milConditionsFile1 #which has been set to 2 earlier
-        
-        
-        
         # Run 'Begin Routine' code from waitScannerCode
+        #skip scanner trigger if 
+        if(expInfo["mode"] != "scan"):
+            continueRoutine = False
+        
         '''
         if expInfo['mriMode'] != 'Off':
             if trigger == 'usb':
@@ -4358,28 +4664,28 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # if running in a Session with a Liaison client, send data up to now
         thisSession.sendExperimentData()
     
-    # --- Prepare to start Routine "Done" ---
-    # create an object to store info about Routine Done
-    Done = data.Routine(
-        name='Done',
+    # --- Prepare to start Routine "done" ---
+    # create an object to store info about Routine done
+    done = data.Routine(
+        name='done',
         components=[endExperiment, endTaskPress],
     )
-    Done.status = NOT_STARTED
+    done.status = NOT_STARTED
     continueRoutine = True
     # update component parameters for each repeat
     # create starting attributes for endTaskPress
     endTaskPress.keys = []
     endTaskPress.rt = []
     _endTaskPress_allKeys = []
-    # store start times for Done
-    Done.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
-    Done.tStart = globalClock.getTime(format='float')
-    Done.status = STARTED
-    thisExp.addData('Done.started', Done.tStart)
-    Done.maxDuration = None
+    # store start times for done
+    done.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
+    done.tStart = globalClock.getTime(format='float')
+    done.status = STARTED
+    thisExp.addData('done.started', done.tStart)
+    done.maxDuration = None
     # keep track of which components have finished
-    DoneComponents = Done.components
-    for thisComponent in Done.components:
+    doneComponents = done.components
+    for thisComponent in done.components:
         thisComponent.tStart = None
         thisComponent.tStop = None
         thisComponent.tStartRefresh = None
@@ -4391,8 +4697,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     _timeToFirstFrame = win.getFutureFlipTime(clock="now")
     frameN = -1
     
-    # --- Run Routine "Done" ---
-    Done.forceEnded = routineForceEnded = not continueRoutine
+    # --- Run Routine "done" ---
+    done.forceEnded = routineForceEnded = not continueRoutine
     while continueRoutine:
         # get current time
         t = routineTimer.getTime()
@@ -4468,10 +4774,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
-            Done.forceEnded = routineForceEnded = True
+            done.forceEnded = routineForceEnded = True
             break
         continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in Done.components:
+        for thisComponent in done.components:
             if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                 continueRoutine = True
                 break  # at least one component has not yet finished
@@ -4480,14 +4786,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
             win.flip()
     
-    # --- Ending Routine "Done" ---
-    for thisComponent in Done.components:
+    # --- Ending Routine "done" ---
+    for thisComponent in done.components:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # store stop times for Done
-    Done.tStop = globalClock.getTime(format='float')
-    Done.tStopRefresh = tThisFlipGlobal
-    thisExp.addData('Done.stopped', Done.tStop)
+    # store stop times for done
+    done.tStop = globalClock.getTime(format='float')
+    done.tStopRefresh = tThisFlipGlobal
+    thisExp.addData('done.stopped', done.tStop)
     # check responses
     if endTaskPress.keys in ['', [], None]:  # No response was made
         endTaskPress.keys = None
@@ -4496,7 +4802,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         thisExp.addData('endTaskPress.rt', endTaskPress.rt)
         thisExp.addData('endTaskPress.duration', endTaskPress.duration)
     thisExp.nextEntry()
-    # the Routine "Done" was not non-slip safe, so reset the non-slip timer
+    # the Routine "done" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
     # mark experiment as finished
