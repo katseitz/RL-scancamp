@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Fri May  9 11:31:59 2025
+    on Fri May  9 17:11:55 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -40,7 +40,7 @@ deviceManager = hardware.DeviceManager()
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 # store info about the experiment session
 psychopyVersion = '2024.2.4'
-expName = 'reward_learning_task_multises2'  # from the Builder filename that created this script
+expName = 'reward_learning_multises'  # from the Builder filename that created this script
 # information about this experiment
 expInfo = {
     'participant': ["1", "2", "3", "4", "5", "6", "7", "8", "pilot-1", "pilot-2", "pilot-3", "pilot-4", "pilot-5", "pilot-6", "pilot-7", "pilot-8", "pilot-9", "pilot-10"],
@@ -881,8 +881,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                                     name = 'selectionIndicator', 
                                     lineColor = 'white', fillColor=None,
                                     units ='pix', lineWidth=2, interpolate=True)
-    
-    #vertices=[[0,0], [0,260], [260,260], [260,0]]
     
     Choice=None
     topFrameText = visual.TextStim(win=win, name='topFrameText',
@@ -2796,6 +2794,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     advanceScreenPress4.keys = []
     advanceScreenPress4.rt = []
     _advanceScreenPress4_allKeys = []
+    # Run 'Begin Routine' code from summaryLeftCode
+    summary.alignText = 'left'
     # store start times for summaryDirections
     summaryDirections.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
     summaryDirections.tStart = globalClock.getTime(format='float')
@@ -3290,6 +3290,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         thisExp.addData('waitForScanner.stopped', waitForScanner.tStop)
         # Run 'End Routine' code from waitScannerCode
         #routineTimer.reset()
+        fmriClock.reset()
         # check responses
         if scannerTriggerKey.keys in ['', [], None]:  # No response was made
             scannerTriggerKey.keys = None
@@ -3529,6 +3530,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     if leftCue.autoDraw==True:
                         currentLoop.addData('cueOnTime', fmriClock.getTime())
                         cueTimeAdded = True
+                        
                 #if not chooseTimeAdded and chooseText.status == STARTED:
                 #    currentLoop.addData('chooseTime', fmriClock.getTime())
                 #    chooseTimeAdded = True
@@ -3801,8 +3803,21 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             cue.tStop = globalClock.getTime(format='float')
             cue.tStopRefresh = tThisFlipGlobal
             thisExp.addData('cue.stopped', cue.tStop)
+            # Run 'End Routine' code from setCues
+            if cueResp.keys == responseKeys['left']:
+                currentLoop.addData('optedSide', 'left')
+                currentLoop.addData('optedImg', leftImage)
+                
+            elif cueResp.keys == responseKeys['right']:
+                currentLoop.addData('optedSide', 'right')
+                currentLoop.addData('optedImg', rightImage)
+                
+            else: 
+                currentLoop.addData('optedSide', 'NA')
+                currentLoop.addData('optedImg', 'NA')
             # Run 'End Routine' code from setImageTiming
             currentLoop.addData('cueOffTime', fmriClock.getTime())
+            
             # check responses
             if cueResp.keys in ['', [], None]:  # No response was made
                 cueResp.keys = None
@@ -4058,16 +4073,16 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # update component parameters for each repeat
             # Run 'Begin Routine' code from rightChoice
             if cueResp.keys==sidePositions[optimalImg]:
-                Choice=1
+                Choice="optimal"
             elif cueResp.keys==sidePositions[suboptimalImg]:
-                Choice=2
+                Choice="suboptimal"
             else: 
                 Choice="NA"
                 
             Accuracy=cueResp.corr
             
-            currentLoop.addData('Choice', Choice)
-            currentLoop.addData('Accuracy', Accuracy)
+            currentLoop.addData('optedFor', Choice)
+            currentLoop.addData('accuracy', Accuracy)
             # Run 'Begin Routine' code from defineOutcomes
             if condition == 'highgain':
                 trueOperator = "+"
@@ -4113,7 +4128,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             bank += change
             
             currentLoop.addData('Feedback', Feedback)
-            currentLoop.addData('trialChange', change)
+            currentLoop.addData('gainLossAmount', change)
             currentLoop.addData('runningBankTotal', bank)
             currentLoop.addData('feedbackTime', fmriClock.getTime())
             
@@ -4523,6 +4538,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             trials.finished = True
             runs.finished = True
             continueRoutine = False  #add this line to end the current routine early
+        else:
+            if runs.thisN == 1:
+                continueRoutine = False 
         #if expInfo["startFromRun"] == "2":
         #   print("trying to end this damn round")
         #   #continueRoutine = False
