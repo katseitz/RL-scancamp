@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Fri May  9 17:11:55 2025
+    on Fri May 16 14:13:00 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -269,17 +269,11 @@ def setupDevices(expInfo, thisExp, win):
             deviceClass='keyboard',
             deviceName='advanceScreenPress',
         )
-    if deviceManager.getDevice('advanceScreenPress2') is None:
-        # initialise advanceScreenPress2
-        advanceScreenPress2 = deviceManager.addDevice(
+    if deviceManager.getDevice('pracPress') is None:
+        # initialise pracPress
+        pracPress = deviceManager.addDevice(
             deviceClass='keyboard',
-            deviceName='advanceScreenPress2',
-        )
-    if deviceManager.getDevice('pracRespPress') is None:
-        # initialise pracRespPress
-        pracRespPress = deviceManager.addDevice(
-            deviceClass='keyboard',
-            deviceName='pracRespPress',
+            deviceName='pracPress',
         )
     if deviceManager.getDevice('key_resp') is None:
         # initialise key_resp
@@ -466,13 +460,16 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         rightKey = "right"
         responseKeys = dict(left = 'left', right = 'right')
         allowedKeys = ['left','right']
-        PracCorrect = ["left", "left", "right", "left", "left"]
+        PracCorrect = ["left", "left", "right", "right", "left", "right", 
+                        "left", "left", "left", "right", "right", "left", 
+                        "right", "left", "left"]
     else:
-        leftKey = "1"
-        rightKey = "2"
+        leftKey = "2"
+        rightKey = "3"
         responseKeys = dict(left = '1', right = '2')
-        allowedKeys = ['1','2']
-        PracCorrect = ["1", "1", "2", "1", "1"]
+        allowedKeys = ['2','3']
+        PracCorrect = ["2", "2", "3", "3", "2", "3", "2", "2", "2", "3", "3", "2", "3", "2", "2"]
+    
     
     
     #what is the participant's version
@@ -492,13 +489,12 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "pracDir1" ---
     choiceDirText = visual.TextStim(win=win, name='choiceDirText',
-        text='There will be two pictures on the screen, one on the left and one on the right. Press the button with your pointer finger to choose the picture on the left, and press the button with your middle finger to choose the picture on the right. The pictures will change sides, but this does not affect whether or not the picture is correct.\n\n\n\n\n\n\n\n\n\n\nMake your choice as fast as you can. Once you choose, a box will show up on the screen. If you choose too late, your choice will not count.\n\nPress the space bar to proceed.',
+        text='There will be two pictures on the screen, one on the left and one on the right. Press the button with your pointer finger to choose the picture on the left, and press the button with your middle finger to choose the picture on the right. The pictures will change sides, but this does not affect whether or not the picture is correct.\n\n\n\n\n\n\n\n\n\n\nMake your choice as fast as you can. Once you choose, a box will show up on the screen. If you choose too late, your choice will not count.\n\nPractice selecting an image now by pressing with either finger. ',
         font='Arial',
         pos=(0, 0), draggable=False, height=1.0, wrapWidth=40.0, ori=0.0, 
         color=[1.0000, 1.0000, 1.0000], colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
-    advanceScreenPress2 = keyboard.Keyboard(deviceName='advanceScreenPress2')
     prac2Image = visual.ImageStim(
         win=win,
         name='prac2Image', 
@@ -506,7 +502,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         ori=0.0, pos=(-4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-2.0)
+        texRes=128.0, interpolate=True, depth=-1.0)
     prac1Image = visual.ImageStim(
         win=win,
         name='prac1Image', 
@@ -514,8 +510,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         ori=0.0, pos=(4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-3.0)
-    pracRespPress = keyboard.Keyboard(deviceName='pracRespPress')
+        texRes=128.0, interpolate=True, depth=-2.0)
+    pracPress = keyboard.Keyboard(deviceName='pracPress')
     
     # --- Initialize components for Routine "pracDir2" ---
     fixDirText = visual.TextStim(win=win, name='fixDirText',
@@ -562,7 +558,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     selectionIndicatorPrac = visual.Polygon(win, edges =4, ori=45, radius=180, 
                                     name = 'selectionIndicatorPrac', 
                                     lineColor = 'white', fillColor=None,
-                                    units ='pix', lineWidth=2, interpolate=True)
+                                    units ='pix', lineWidth=3, interpolate=True)
     
     Choice=None
     
@@ -801,6 +797,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             }
     '''
     scannerTriggerKey = keyboard.Keyboard(deviceName='scannerTriggerKey')
+    # Run 'Begin Experiment' code from frameOnCode
+    frame = visual.Rect(
+        win=win, name='frame1',
+        width=(20,13)[0], height=(20,13)[1],
+        ori=0.0, pos=(0, 0), draggable=False, anchor='center',
+        lineWidth=4.0,
+        colorSpace='rgb', lineColor='white', fillColor=None,
+        opacity=None, depth=-3.0, interpolate=True)
     
     # --- Initialize components for Routine "cue" ---
     startFixStatic = visual.TextStim(win=win, name='startFixStatic',
@@ -837,13 +841,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     topLabel=None
     bottomLabel=None
     framecolor=None
-    frame1 = visual.Rect(
-        win=win, name='frame1',
-        width=(20,13)[0], height=(20,13)[1],
-        ori=0.0, pos=(0, 0), draggable=False, anchor='center',
-        lineWidth=4.0,
-        colorSpace='rgb', lineColor='white', fillColor=None,
-        opacity=None, depth=-3.0, interpolate=True)
     leftCue = visual.ImageStim(
         win=win,
         name='leftCue', 
@@ -851,7 +848,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         ori=0.0, pos=(-4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-5.0)
+        texRes=128.0, interpolate=True, depth=-4.0)
     rightCue = visual.ImageStim(
         win=win,
         name='rightCue', 
@@ -859,7 +856,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         ori=0.0, pos=(4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-6.0)
+        texRes=128.0, interpolate=True, depth=-5.0)
     cueResp = keyboard.Keyboard(deviceName='cueResp')
     staticISI = clock.StaticPeriod(win=win, screenHz=expInfo['frameRate'], name='staticISI')
     # Run 'Begin Experiment' code from manageTrialsLoop
@@ -889,44 +886,37 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         pos=(0, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-11.0);
+        depth=-10.0);
     bottomFrameText = visual.TextStim(win=win, name='bottomFrameText',
         text='',
         font='Arial',
         pos=(0, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-12.0);
+        depth=-11.0);
     
     # --- Initialize components for Routine "outcomeDelayRoutine" ---
-    frame1Fix = visual.Rect(
-        win=win, name='frame1Fix',
-        width=(20, 13)[0], height=(20, 13)[1],
-        ori=0.0, pos=(0, 0), draggable=False, anchor='center',
-        lineWidth=4.0,
-        colorSpace='rgb', lineColor='white', fillColor=None,
-        opacity=None, depth=0.0, interpolate=True)
     outcomeDelayFix = visual.TextStim(win=win, name='outcomeDelayFix',
         text='+',
         font='Arial',
         pos=(0, 0), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-1.0);
+        depth=0.0);
     topFrameTextFix = visual.TextStim(win=win, name='topFrameTextFix',
         text='',
         font='Arial',
         pos=(0, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-2.0);
+        depth=-1.0);
     bottomFrameTextFix = visual.TextStim(win=win, name='bottomFrameTextFix',
         text='',
         font='Arial',
         pos=(0, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-3.0);
+        depth=-2.0);
     
     # --- Initialize components for Routine "outcomeRoutine" ---
     # Run 'Begin Experiment' code from rightChoice
@@ -950,31 +940,24 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     outcomeText = visual.TextStim(win=win, name='outcomeText',
         text='',
         font='Arial',
-        pos=(0, 0), draggable=False, height=1.0, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), draggable=False, height=1.3, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-2.0);
-    frameOut = visual.Rect(
-        win=win, name='frameOut',
-        width=(20,13)[0], height=(20,13)[1],
-        ori=0.0, pos=(0, 0), draggable=False, anchor='center',
-        lineWidth=4.0,
-        colorSpace='rgb', lineColor='white', fillColor=None,
-        opacity=None, depth=-3.0, interpolate=True)
     topFrameTextOut = visual.TextStim(win=win, name='topFrameTextOut',
         text='',
         font='Arial',
         pos=(0, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-4.0);
+        depth=-3.0);
     bottomFrameTextOut = visual.TextStim(win=win, name='bottomFrameTextOut',
         text='',
         font='Arial',
         pos=(0, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-5.0);
+        depth=-4.0);
     
     # --- Initialize components for Routine "fixation" ---
     fixationCrosshair = visual.TextStim(win=win, name='fixationCrosshair',
@@ -984,13 +967,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
-    frameFix = visual.Rect(
-        win=win, name='frameFix',
-        width=(20,13)[0], height=(20,13)[1],
-        ori=0.0, pos=(0, 0), draggable=False, anchor='center',
-        lineWidth=4.0,
-        colorSpace='rgb', lineColor='white', fillColor=None,
-        opacity=None, depth=-2.0, interpolate=True)
     
     # --- Initialize components for Routine "breakScreen" ---
     breakText = visual.TextStim(win=win, name='breakText',
@@ -1216,19 +1192,26 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # create an object to store info about Routine pracDir1
         pracDir1 = data.Routine(
             name='pracDir1',
-            components=[choiceDirText, advanceScreenPress2, prac2Image, prac1Image, pracRespPress],
+            components=[choiceDirText, prac2Image, prac1Image, pracPress],
         )
         pracDir1.status = NOT_STARTED
         continueRoutine = True
         # update component parameters for each repeat
-        # create starting attributes for advanceScreenPress2
-        advanceScreenPress2.keys = []
-        advanceScreenPress2.rt = []
-        _advanceScreenPress2_allKeys = []
-        # create starting attributes for pracRespPress
-        pracRespPress.keys = []
-        pracRespPress.rt = []
-        _pracRespPress_allKeys = []
+        # Run 'Begin Routine' code from selectionPracticeCode
+        # Initialize cue end time for cues and selection indicator.
+        # If no response is made in this time, the trial ends.
+        # Otherwise, cueEndTime is updated to response
+        # time plus the selection duration.
+        
+        selectionIndicatorPrac.status = NOT_STARTED
+        t_started = False
+        # create starting attributes for pracPress
+        pracPress.keys = []
+        pracPress.rt = []
+        _pracPress_allKeys = []
+        # allowedKeys looks like a variable, so make sure it exists locally
+        if 'allowedKeys' in globals():
+            allowedKeys = globals()['allowedKeys']
         # store start times for pracDir1
         pracDir1.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
         pracDir1.tStart = globalClock.getTime(format='float')
@@ -1282,34 +1265,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 # update params
                 pass
             
-            # *advanceScreenPress2* updates
-            waitOnFlip = False
-            
-            # if advanceScreenPress2 is starting this frame...
-            if advanceScreenPress2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                # keep track of start time/frame for later
-                advanceScreenPress2.frameNStart = frameN  # exact frame index
-                advanceScreenPress2.tStart = t  # local t and not account for scr refresh
-                advanceScreenPress2.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(advanceScreenPress2, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'advanceScreenPress2.started')
-                # update status
-                advanceScreenPress2.status = STARTED
-                # keyboard checking is just starting
-                waitOnFlip = True
-                win.callOnFlip(advanceScreenPress2.clock.reset)  # t=0 on next screen flip
-                win.callOnFlip(advanceScreenPress2.clearEvents, eventType='keyboard')  # clear events on next screen flip
-            if advanceScreenPress2.status == STARTED and not waitOnFlip:
-                theseKeys = advanceScreenPress2.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=False)
-                _advanceScreenPress2_allKeys.extend(theseKeys)
-                if len(_advanceScreenPress2_allKeys):
-                    advanceScreenPress2.keys = _advanceScreenPress2_allKeys[-1].name  # just the last key pressed
-                    advanceScreenPress2.rt = _advanceScreenPress2_allKeys[-1].rt
-                    advanceScreenPress2.duration = _advanceScreenPress2_allKeys[-1].duration
-                    # a response ends the routine
-                    continueRoutine = False
-            
             # *prac2Image* updates
             
             # if prac2Image is starting this frame...
@@ -1349,32 +1304,54 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             if prac1Image.status == STARTED:
                 # update params
                 pass
+            # Run 'Each Frame' code from selectionPracticeCode
+            # If the selection has been drawn for the selection duration,
+            # or the trial should end (cutting off the selection duration), end the routine
+            if t_started:
+                if t > t_started + 5:
+                    continueRoutine = False
             
-            # *pracRespPress* updates
+            # Start Drawing Selection Indicator if Selection has been made
+            if pracPress.keys and selectionIndicatorPrac.status == NOT_STARTED:
+                #cueComponents.append(selectionIndicatorPrac)
+                selectionIndicatorPrac.status = STARTED
+                selectionIndicatorPrac.setPos(selectionPosition(pracPress.keys))
+                selectionIndicatorPrac.setAutoDraw(True)
+                t_started = core.Clock().getTime()
+            
+            # *pracPress* updates
             waitOnFlip = False
             
-            # if pracRespPress is starting this frame...
-            if pracRespPress.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # if pracPress is starting this frame...
+            if pracPress.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                pracRespPress.frameNStart = frameN  # exact frame index
-                pracRespPress.tStart = t  # local t and not account for scr refresh
-                pracRespPress.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(pracRespPress, 'tStartRefresh')  # time at next scr refresh
+                pracPress.frameNStart = frameN  # exact frame index
+                pracPress.tStart = t  # local t and not account for scr refresh
+                pracPress.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(pracPress, 'tStartRefresh')  # time at next scr refresh
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'pracRespPress.started')
+                thisExp.timestampOnFlip(win, 'pracPress.started')
                 # update status
-                pracRespPress.status = STARTED
+                pracPress.status = STARTED
+                # allowed keys looks like a variable named `allowedKeys`
+                if not type(allowedKeys) in [list, tuple, np.ndarray]:
+                    if not isinstance(allowedKeys, str):
+                        allowedKeys = str(allowedKeys)
+                    elif not ',' in allowedKeys:
+                        allowedKeys = (allowedKeys,)
+                    else:
+                        allowedKeys = eval(allowedKeys)
                 # keyboard checking is just starting
                 waitOnFlip = True
-                win.callOnFlip(pracRespPress.clock.reset)  # t=0 on next screen flip
-                win.callOnFlip(pracRespPress.clearEvents, eventType='keyboard')  # clear events on next screen flip
-            if pracRespPress.status == STARTED and not waitOnFlip:
-                theseKeys = pracRespPress.getKeys(keyList=['1','2'], ignoreKeys=["escape"], waitRelease=False)
-                _pracRespPress_allKeys.extend(theseKeys)
-                if len(_pracRespPress_allKeys):
-                    pracRespPress.keys = _pracRespPress_allKeys[0].name  # just the first key pressed
-                    pracRespPress.rt = _pracRespPress_allKeys[0].rt
-                    pracRespPress.duration = _pracRespPress_allKeys[0].duration
+                win.callOnFlip(pracPress.clock.reset)  # t=0 on next screen flip
+                win.callOnFlip(pracPress.clearEvents, eventType='keyboard')  # clear events on next screen flip
+            if pracPress.status == STARTED and not waitOnFlip:
+                theseKeys = pracPress.getKeys(keyList=list(allowedKeys), ignoreKeys=["escape"], waitRelease=False)
+                _pracPress_allKeys.extend(theseKeys)
+                if len(_pracPress_allKeys):
+                    pracPress.keys = _pracPress_allKeys[-1].name  # just the last key pressed
+                    pracPress.rt = _pracPress_allKeys[-1].rt
+                    pracPress.duration = _pracPress_allKeys[-1].duration
             
             # check for quit (typically the Esc key)
             if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -1415,20 +1392,16 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         pracDir1.tStop = globalClock.getTime(format='float')
         pracDir1.tStopRefresh = tThisFlipGlobal
         thisExp.addData('pracDir1.stopped', pracDir1.tStop)
+        # Run 'End Routine' code from selectionPracticeCode
+        selectionIndicatorPrac.setAutoDraw(False)
+        
         # check responses
-        if advanceScreenPress2.keys in ['', [], None]:  # No response was made
-            advanceScreenPress2.keys = None
-        pracBlock.addData('advanceScreenPress2.keys',advanceScreenPress2.keys)
-        if advanceScreenPress2.keys != None:  # we had a response
-            pracBlock.addData('advanceScreenPress2.rt', advanceScreenPress2.rt)
-            pracBlock.addData('advanceScreenPress2.duration', advanceScreenPress2.duration)
-        # check responses
-        if pracRespPress.keys in ['', [], None]:  # No response was made
-            pracRespPress.keys = None
-        pracBlock.addData('pracRespPress.keys',pracRespPress.keys)
-        if pracRespPress.keys != None:  # we had a response
-            pracBlock.addData('pracRespPress.rt', pracRespPress.rt)
-            pracBlock.addData('pracRespPress.duration', pracRespPress.duration)
+        if pracPress.keys in ['', [], None]:  # No response was made
+            pracPress.keys = None
+        pracBlock.addData('pracPress.keys',pracPress.keys)
+        if pracPress.keys != None:  # we had a response
+            pracBlock.addData('pracPress.rt', pracPress.rt)
+            pracBlock.addData('pracPress.duration', pracPress.duration)
         # the Routine "pracDir1" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -1582,7 +1555,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             method='sequential', 
             extraInfo=expInfo, 
             originPath=-1, 
-            trialList=data.importConditions('conditions/MIL_teen_prac.xlsx'), 
+            trialList=data.importConditions('conditions/practiceTrials.xlsx'), 
             seed=None, 
         )
         thisExp.addLoop(practice)  # add the loop to the experiment
@@ -3298,6 +3271,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if scannerTriggerKey.keys != None:  # we had a response
             runs.addData('scannerTriggerKey.rt', scannerTriggerKey.rt)
             runs.addData('scannerTriggerKey.duration', scannerTriggerKey.duration)
+        # Run 'End Routine' code from frameOnCode
+        frame.setAutoDraw(True)
         # the Routine "waitForScanner" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -3336,7 +3311,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # create an object to store info about Routine cue
             cue = data.Routine(
                 name='cue',
-                components=[startFixStatic, frame1, leftCue, rightCue, cueResp, staticISI, topFrameText, bottomFrameText],
+                components=[startFixStatic, leftCue, rightCue, cueResp, staticISI, topFrameText, bottomFrameText],
             )
             cue.status = NOT_STARTED
             continueRoutine = True
@@ -3491,40 +3466,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         # update status
                         startFixStatic.status = FINISHED
                         startFixStatic.setAutoDraw(False)
-                
-                # *frame1* updates
-                
-                # if frame1 is starting this frame...
-                if frame1.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    frame1.frameNStart = frameN  # exact frame index
-                    frame1.tStart = t  # local t and not account for scr refresh
-                    frame1.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(frame1, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'frame1.started')
-                    # update status
-                    frame1.status = STARTED
-                    frame1.setAutoDraw(True)
-                
-                # if frame1 is active this frame...
-                if frame1.status == STARTED:
-                    # update params
-                    pass
-                
-                # if frame1 is stopping this frame...
-                if frame1.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > frame1.tStartRefresh + 3-frameTolerance:
-                        # keep track of stop time/frame for later
-                        frame1.tStop = t  # not accounting for scr refresh
-                        frame1.tStopRefresh = tThisFlipGlobal  # on global time
-                        frame1.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'frame1.stopped')
-                        # update status
-                        frame1.status = FINISHED
-                        frame1.setAutoDraw(False)
                 # Run 'Each Frame' code from setImageTiming
                 if not cueTimeAdded: 
                     if leftCue.autoDraw==True:
@@ -3844,7 +3785,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # create an object to store info about Routine outcomeDelayRoutine
             outcomeDelayRoutine = data.Routine(
                 name='outcomeDelayRoutine',
-                components=[frame1Fix, outcomeDelayFix, topFrameTextFix, bottomFrameTextFix],
+                components=[outcomeDelayFix, topFrameTextFix, bottomFrameTextFix],
             )
             outcomeDelayRoutine.status = NOT_STARTED
             continueRoutine = True
@@ -3883,40 +3824,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 tThisFlipGlobal = win.getFutureFlipTime(clock=None)
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
-                
-                # *frame1Fix* updates
-                
-                # if frame1Fix is starting this frame...
-                if frame1Fix.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    frame1Fix.frameNStart = frameN  # exact frame index
-                    frame1Fix.tStart = t  # local t and not account for scr refresh
-                    frame1Fix.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(frame1Fix, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'frame1Fix.started')
-                    # update status
-                    frame1Fix.status = STARTED
-                    frame1Fix.setAutoDraw(True)
-                
-                # if frame1Fix is active this frame...
-                if frame1Fix.status == STARTED:
-                    # update params
-                    pass
-                
-                # if frame1Fix is stopping this frame...
-                if frame1Fix.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > frame1Fix.tStartRefresh + outcomeDelay-frameTolerance:
-                        # keep track of stop time/frame for later
-                        frame1Fix.tStop = t  # not accounting for scr refresh
-                        frame1Fix.tStopRefresh = tThisFlipGlobal  # on global time
-                        frame1Fix.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'frame1Fix.stopped')
-                        # update status
-                        frame1Fix.status = FINISHED
-                        frame1Fix.setAutoDraw(False)
                 
                 # *outcomeDelayFix* updates
                 
@@ -4066,7 +3973,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # create an object to store info about Routine outcomeRoutine
             outcomeRoutine = data.Routine(
                 name='outcomeRoutine',
-                components=[outcomeText, frameOut, topFrameTextOut, bottomFrameTextOut],
+                components=[outcomeText, topFrameTextOut, bottomFrameTextOut],
             )
             outcomeRoutine.status = NOT_STARTED
             continueRoutine = True
@@ -4202,40 +4109,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         outcomeText.status = FINISHED
                         outcomeText.setAutoDraw(False)
                 
-                # *frameOut* updates
-                
-                # if frameOut is starting this frame...
-                if frameOut.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    frameOut.frameNStart = frameN  # exact frame index
-                    frameOut.tStart = t  # local t and not account for scr refresh
-                    frameOut.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(frameOut, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'frameOut.started')
-                    # update status
-                    frameOut.status = STARTED
-                    frameOut.setAutoDraw(True)
-                
-                # if frameOut is active this frame...
-                if frameOut.status == STARTED:
-                    # update params
-                    pass
-                
-                # if frameOut is stopping this frame...
-                if frameOut.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > frameOut.tStartRefresh + 1-frameTolerance:
-                        # keep track of stop time/frame for later
-                        frameOut.tStop = t  # not accounting for scr refresh
-                        frameOut.tStopRefresh = tThisFlipGlobal  # on global time
-                        frameOut.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'frameOut.stopped')
-                        # update status
-                        frameOut.status = FINISHED
-                        frameOut.setAutoDraw(False)
-                
                 # *topFrameTextOut* updates
                 
                 # if topFrameTextOut is starting this frame...
@@ -4358,7 +4231,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # create an object to store info about Routine fixation
             fixation = data.Routine(
                 name='fixation',
-                components=[fixationCrosshair, frameFix],
+                components=[fixationCrosshair],
             )
             fixation.status = NOT_STARTED
             continueRoutine = True
@@ -4431,40 +4304,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         # update status
                         fixationCrosshair.status = FINISHED
                         fixationCrosshair.setAutoDraw(False)
-                
-                # *frameFix* updates
-                
-                # if frameFix is starting this frame...
-                if frameFix.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    frameFix.frameNStart = frameN  # exact frame index
-                    frameFix.tStart = t  # local t and not account for scr refresh
-                    frameFix.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(frameFix, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'frameFix.started')
-                    # update status
-                    frameFix.status = STARTED
-                    frameFix.setAutoDraw(True)
-                
-                # if frameFix is active this frame...
-                if frameFix.status == STARTED:
-                    # update params
-                    pass
-                
-                # if frameFix is stopping this frame...
-                if frameFix.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > frameFix.tStartRefresh + fixationDuration-frameTolerance:
-                        # keep track of stop time/frame for later
-                        frameFix.tStop = t  # not accounting for scr refresh
-                        frameFix.tStopRefresh = tThisFlipGlobal  # on global time
-                        frameFix.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'frameFix.stopped')
-                        # update status
-                        frameFix.status = FINISHED
-                        frameFix.setAutoDraw(False)
                 
                 # check for quit (typically the Esc key)
                 if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -4672,6 +4511,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if advanceScreenPress_2.keys != None:  # we had a response
             runs.addData('advanceScreenPress_2.rt', advanceScreenPress_2.rt)
             runs.addData('advanceScreenPress_2.duration', advanceScreenPress_2.duration)
+        # Run 'End Routine' code from frameOffCode
+        frame.setAutoDraw(False)
         # the Routine "breakScreen" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         thisExp.nextEntry()
