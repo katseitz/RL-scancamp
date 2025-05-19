@@ -1,0 +1,83 @@
+---
+title: "beh_dash_prep"
+author: "Katharina Seitz"
+date: "2025-05-09"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+df <- read_csv("/Users/katharinaseitz/Documents/projects/RL-scancamp/data/pilot-3_reward_learning_multises_2025-05-09_17h12.13.355.csv")
+```
+
+
+```{r cars}
+df_clean <- df %>%
+      mutate(
+        Participant = as.character(participant),
+        cue_onset = round(as.numeric(cueOnTime), 2),
+        cue_offset = round(as.numeric(cueOffTime), 2),
+        cue_duration = cue_offset - cue_onset,
+        outcome_onset = round(as.numeric(feedbackTime), 2),
+        outcome_offset = round(as.numeric(feedbackOffTime), 2),
+        outcome_duration = outcome_offset - outcome_onset,
+        fixation_onset = round(as.numeric(fixationTime), 2),
+        trial_id = as.numeric(trialOrder),
+        OutcomeValue = outcome,
+        ImageID = case_when(
+          grepl("img1", leftImage) | grepl("img1", rightImage) ~ "img1",
+          grepl("img2", leftImage) | grepl("img2", rightImage) ~ "img2",
+          grepl("img3", leftImage) | grepl("img3", rightImage) ~ "img3",
+          grepl("img4", leftImage) | grepl("img4", rightImage) ~ "img4",
+          grepl("img5", leftImage) | grepl("img5", rightImage) ~ "img5",
+          grepl("img6", leftImage) | grepl("img6", rightImage) ~ "img6",
+          grepl("img7", leftImage) | grepl("img7", rightImage) ~ "img7",
+          grepl("img8", leftImage) | grepl("img8", rightImage) ~ "img8",
+          TRUE ~ "Other"
+        ),
+        ImagePair = case_when(
+          str_detect(optedImg, "1.png") | str_detect(optedImg, "2.png") ~ "Pair 1",
+          str_detect(optedImg, "3.png") | str_detect(optedImg, "4.png") ~ "Pair 2",
+          str_detect(optedImg, "5.png") | str_detect(optedImg, "6.png") ~ "Pair 3",
+          str_detect(optedImg, "7.png") | str_detect(optedImg, "8.png") ~ "Pair 4",
+          TRUE ~ "Other"
+        ),
+        optedImg = ifelse(optedFor == "left", leftImage, rightImage)
+      ) %>%
+      select(Participant, condition, trial_id, cue_onset, cue_offset, cue_duration,
+             outcome_onset, outcome_offset, outcome_duration,
+             fixation_onset, optedFor, optimalResponse, accuracy,
+             OutcomeValue, leftImage, rightImage, ImageID, optedImg,
+             ImagePair) %>%
+      filter(!is.na(cue_onset))
+
+head(df_clean)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+df_clean <- df_clean  %>% arrange(trial_id) %>%
+      mutate(rolling_avg = zoo::rollmean(accuracy, k = 5, fill = NA, align = "right"))
+    
+    ggplot(df_clean, aes(x = trial_id)) +
+      geom_line(aes(y = rolling_avg), color = "#00A087FF", size = 1.2) +
+      geom_point(aes(y = rolling_avg), color = "#00A087FF", size = 2) +
+      ylim(0, 1) +
+      labs(title = paste("5-Trial Rolling Average Accuracy (Participant:"),
+           x = "Trial ID", y = "Rolling Avg Accuracy") +
+      theme_minimal(base_size = 14)
+```
+
+
+```{r pressure, echo=FALSE}
+    
+    ggplot(df_clean, aes(x = optedImg, fill = ImagePair)) +
+      geom_bar(position = position_dodge(width = 0.9)) +
+      labs(title = paste("Selection Frequency by Image (Grouped by Pair) - Participant:"),
+           x = "Chosen Image", y = "Count", fill = "Image Pair") +
+      theme_minimal(base_size = 14)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
