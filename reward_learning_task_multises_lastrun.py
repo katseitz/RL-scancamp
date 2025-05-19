@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Mon May 19 16:10:43 2025
+    on Mon May 19 17:37:01 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -466,7 +466,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     else:
         leftKey = "2"
         rightKey = "3"
-        responseKeys = dict(left = '1', right = '2')
+        responseKeys = dict(left = '2', right = '3')
         allowedKeys = ['2','3']
         PracCorrect = ["2", "2", "3", "3", "2", "3", "2", "2", "2", "3", "3", "2", "3", "2", "2"]
     
