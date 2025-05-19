@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Fri May 16 14:13:00 2025
+    on Mon May 19 15:13:10 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -498,7 +498,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     prac2Image = visual.ImageStim(
         win=win,
         name='prac2Image', 
-        image='images/prac2.png', mask=None, anchor='center',
+        image='stimuli_sets/prac2.png', mask=None, anchor='center',
         ori=0.0, pos=(-4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
@@ -506,7 +506,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     prac1Image = visual.ImageStim(
         win=win,
         name='prac1Image', 
-        image='images/prac1.png', mask=None, anchor='center',
+        image='stimuli_sets/prac1.png', mask=None, anchor='center',
         ori=0.0, pos=(4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
@@ -814,6 +814,23 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
+    leftCue = visual.ImageStim(
+        win=win,
+        name='leftCue', 
+        image='default.png', mask=None, anchor='center',
+        ori=0.0, pos=(-4, 0), draggable=False, size=(7, 7),
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=-1.0)
+    rightCue = visual.ImageStim(
+        win=win,
+        name='rightCue', 
+        image='default.png', mask=None, anchor='center',
+        ori=0.0, pos=(4, 0), draggable=False, size=(7, 7),
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=-2.0)
+    cueResp = keyboard.Keyboard(deviceName='cueResp')
     # Run 'Begin Experiment' code from setCues
     import json
     jsonfile = 'Subject_Data/' + expInfo['participant'] + '_' + expInfo['session'] +'.json'
@@ -841,23 +858,21 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     topLabel=None
     bottomLabel=None
     framecolor=None
-    leftCue = visual.ImageStim(
-        win=win,
-        name='leftCue', 
-        image='default.png', mask=None, anchor='center',
-        ori=0.0, pos=(-4, 0), draggable=False, size=(7, 7),
-        color=[1,1,1], colorSpace='rgb', opacity=None,
-        flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-4.0)
-    rightCue = visual.ImageStim(
-        win=win,
-        name='rightCue', 
-        image='default.png', mask=None, anchor='center',
-        ori=0.0, pos=(4, 0), draggable=False, size=(7, 7),
-        color=[1,1,1], colorSpace='rgb', opacity=None,
-        flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-5.0)
-    cueResp = keyboard.Keyboard(deviceName='cueResp')
+    
+    topFrameText = visual.TextStim(win=win, name='topFrameText',
+        text='',
+        font='Arial',
+        pos=(0, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-10.0);
+    bottomFrameText = visual.TextStim(win=win, name='bottomFrameText',
+        text='',
+        font='Arial',
+        pos=(0, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-11.0);
     staticISI = clock.StaticPeriod(win=win, screenHz=expInfo['frameRate'], name='staticISI')
     # Run 'Begin Experiment' code from manageTrialsLoop
     import time
@@ -877,23 +892,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     selectionIndicator = visual.Polygon(win, edges =4, ori=45, radius=180, 
                                     name = 'selectionIndicator', 
                                     lineColor = 'white', fillColor=None,
-                                    units ='pix', lineWidth=2, interpolate=True)
+                                    units ='pix', lineWidth=3, interpolate=True)
     
     Choice=None
-    topFrameText = visual.TextStim(win=win, name='topFrameText',
-        text='',
-        font='Arial',
-        pos=(0, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=-10.0);
-    bottomFrameText = visual.TextStim(win=win, name='bottomFrameText',
-        text='',
-        font='Arial',
-        pos=(0, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=-11.0);
     
     # --- Initialize components for Routine "outcomeDelayRoutine" ---
     outcomeDelayFix = visual.TextStim(win=win, name='outcomeDelayFix',
@@ -903,20 +904,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
-    topFrameTextFix = visual.TextStim(win=win, name='topFrameTextFix',
-        text='',
-        font='Arial',
-        pos=(0, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=-1.0);
-    bottomFrameTextFix = visual.TextStim(win=win, name='bottomFrameTextFix',
-        text='',
-        font='Arial',
-        pos=(0, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=-2.0);
     
     # --- Initialize components for Routine "outcomeRoutine" ---
     # Run 'Begin Experiment' code from rightChoice
@@ -943,21 +930,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         pos=(0, 0), draggable=False, height=1.3, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-2.0);
-    topFrameTextOut = visual.TextStim(win=win, name='topFrameTextOut',
-        text='',
-        font='Arial',
-        pos=(0, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
         depth=-3.0);
-    bottomFrameTextOut = visual.TextStim(win=win, name='bottomFrameTextOut',
-        text='',
-        font='Arial',
-        pos=(0, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=-4.0);
     
     # --- Initialize components for Routine "fixation" ---
     fixationCrosshair = visual.TextStim(win=win, name='fixationCrosshair',
@@ -3311,11 +3284,18 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # create an object to store info about Routine cue
             cue = data.Routine(
                 name='cue',
-                components=[startFixStatic, leftCue, rightCue, cueResp, staticISI, topFrameText, bottomFrameText],
+                components=[startFixStatic, leftCue, rightCue, cueResp, staticISI],
             )
             cue.status = NOT_STARTED
             continueRoutine = True
             # update component parameters for each repeat
+            # create starting attributes for cueResp
+            cueResp.keys = []
+            cueResp.rt = []
+            _cueResp_allKeys = []
+            # allowedKeys looks like a variable, so make sure it exists locally
+            if 'allowedKeys' in globals():
+                allowedKeys = globals()['allowedKeys']
             # Run 'Begin Routine' code from setCues
             logging.info("Iterating through thisTrial")
             for value in trials.trialList:
@@ -3377,18 +3357,16 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 incorrvalue=-0.5
                 topLabel="-$%.2f"%(abs(corrvalue))
                 bottomLabel="-$%.2f"%(abs(incorrvalue))
+                
+            topFrameText.setText(topLabel)
+            bottomFrameText.setText(bottomLabel)
+            topFrameText.setAutoDraw(True)
+            bottomFrameText.setAutoDraw(True)
             # Run 'Begin Routine' code from setImageTiming
             cueTimeAdded = False
             responseTimeAdded = False
             feedbackTimeAdded = False
             currentLoop.addData('startFixOnTime', fmriClock.getTime())
-            # create starting attributes for cueResp
-            cueResp.keys = []
-            cueResp.rt = []
-            _cueResp_allKeys = []
-            # allowedKeys looks like a variable, so make sure it exists locally
-            if 'allowedKeys' in globals():
-                allowedKeys = globals()['allowedKeys']
             # Run 'Begin Routine' code from manageTrialsLoop
             trialsClock.reset()
             # Run 'Begin Routine' code from selectionIndicatorCode
@@ -3398,8 +3376,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # time plus the selection duration.
             cueEndTime = 3
             selectionIndicator.status = NOT_STARTED
-            topFrameText.setText(topLabel)
-            bottomFrameText.setText(bottomLabel)
             # store start times for cue
             cue.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
             cue.tStart = globalClock.getTime(format='float')
@@ -3466,18 +3442,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         # update status
                         startFixStatic.status = FINISHED
                         startFixStatic.setAutoDraw(False)
-                # Run 'Each Frame' code from setImageTiming
-                if not cueTimeAdded: 
-                    if leftCue.autoDraw==True:
-                        currentLoop.addData('cueOnTime', fmriClock.getTime())
-                        cueTimeAdded = True
-                        
-                #if not chooseTimeAdded and chooseText.status == STARTED:
-                #    currentLoop.addData('chooseTime', fmriClock.getTime())
-                #    chooseTimeAdded = True
-                if not responseTimeAdded and len(cueResp.keys):
-                    currentLoop.addData('responseTime', fmriClock.getTime())
-                    responseTimeAdded = True
                 
                 # *leftCue* updates
                 
@@ -3599,6 +3563,18 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                             cueResp.corr = 1
                         else:
                             cueResp.corr = 0
+                # Run 'Each Frame' code from setImageTiming
+                if not cueTimeAdded: 
+                    if leftCue.autoDraw==True:
+                        currentLoop.addData('cueOnTime', fmriClock.getTime())
+                        cueTimeAdded = True
+                        
+                #if not chooseTimeAdded and chooseText.status == STARTED:
+                #    currentLoop.addData('chooseTime', fmriClock.getTime())
+                #    chooseTimeAdded = True
+                if not responseTimeAdded and len(cueResp.keys):
+                    currentLoop.addData('responseTime', fmriClock.getTime())
+                    responseTimeAdded = True
                 # Run 'Each Frame' code from selectionIndicatorCode
                 # If the selection has been drawn for the selection duration,
                 # or the trial should end (cutting off the selection duration), end the routine
@@ -3615,74 +3591,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     # Set End Time, clip to end of trial length (4 sec max)
                     # Don't worry about end of selection display in fMRI
                     #cueEndTime = t + selectionDuration
-                
-                # *topFrameText* updates
-                
-                # if topFrameText is starting this frame...
-                if topFrameText.status == NOT_STARTED and tThisFlip >= 0.5-frameTolerance:
-                    # keep track of start time/frame for later
-                    topFrameText.frameNStart = frameN  # exact frame index
-                    topFrameText.tStart = t  # local t and not account for scr refresh
-                    topFrameText.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(topFrameText, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'topFrameText.started')
-                    # update status
-                    topFrameText.status = STARTED
-                    topFrameText.setAutoDraw(True)
-                
-                # if topFrameText is active this frame...
-                if topFrameText.status == STARTED:
-                    # update params
-                    pass
-                
-                # if topFrameText is stopping this frame...
-                if topFrameText.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > topFrameText.tStartRefresh + 2.5-frameTolerance:
-                        # keep track of stop time/frame for later
-                        topFrameText.tStop = t  # not accounting for scr refresh
-                        topFrameText.tStopRefresh = tThisFlipGlobal  # on global time
-                        topFrameText.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'topFrameText.stopped')
-                        # update status
-                        topFrameText.status = FINISHED
-                        topFrameText.setAutoDraw(False)
-                
-                # *bottomFrameText* updates
-                
-                # if bottomFrameText is starting this frame...
-                if bottomFrameText.status == NOT_STARTED and tThisFlip >= 0.5-frameTolerance:
-                    # keep track of start time/frame for later
-                    bottomFrameText.frameNStart = frameN  # exact frame index
-                    bottomFrameText.tStart = t  # local t and not account for scr refresh
-                    bottomFrameText.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(bottomFrameText, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'bottomFrameText.started')
-                    # update status
-                    bottomFrameText.status = STARTED
-                    bottomFrameText.setAutoDraw(True)
-                
-                # if bottomFrameText is active this frame...
-                if bottomFrameText.status == STARTED:
-                    # update params
-                    pass
-                
-                # if bottomFrameText is stopping this frame...
-                if bottomFrameText.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > bottomFrameText.tStartRefresh + 2.5-frameTolerance:
-                        # keep track of stop time/frame for later
-                        bottomFrameText.tStop = t  # not accounting for scr refresh
-                        bottomFrameText.tStopRefresh = tThisFlipGlobal  # on global time
-                        bottomFrameText.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'bottomFrameText.stopped')
-                        # update status
-                        bottomFrameText.status = FINISHED
-                        bottomFrameText.setAutoDraw(False)
                 # *staticISI* period
                 
                 # if staticISI is starting this frame...
@@ -3744,6 +3652,20 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             cue.tStop = globalClock.getTime(format='float')
             cue.tStopRefresh = tThisFlipGlobal
             thisExp.addData('cue.stopped', cue.tStop)
+            # check responses
+            if cueResp.keys in ['', [], None]:  # No response was made
+                cueResp.keys = None
+                # was no response the correct answer?!
+                if str(correct).lower() == 'none':
+                   cueResp.corr = 1;  # correct non-response
+                else:
+                   cueResp.corr = 0;  # failed to respond (incorrectly)
+            # store data for trials (TrialHandler)
+            trials.addData('cueResp.keys',cueResp.keys)
+            trials.addData('cueResp.corr', cueResp.corr)
+            if cueResp.keys != None:  # we had a response
+                trials.addData('cueResp.rt', cueResp.rt)
+                trials.addData('cueResp.duration', cueResp.duration)
             # Run 'End Routine' code from setCues
             if cueResp.keys == responseKeys['left']:
                 currentLoop.addData('optedSide', 'left')
@@ -3759,20 +3681,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # Run 'End Routine' code from setImageTiming
             currentLoop.addData('cueOffTime', fmriClock.getTime())
             
-            # check responses
-            if cueResp.keys in ['', [], None]:  # No response was made
-                cueResp.keys = None
-                # was no response the correct answer?!
-                if str(correct).lower() == 'none':
-                   cueResp.corr = 1;  # correct non-response
-                else:
-                   cueResp.corr = 0;  # failed to respond (incorrectly)
-            # store data for trials (TrialHandler)
-            trials.addData('cueResp.keys',cueResp.keys)
-            trials.addData('cueResp.corr', cueResp.corr)
-            if cueResp.keys != None:  # we had a response
-                trials.addData('cueResp.rt', cueResp.rt)
-                trials.addData('cueResp.duration', cueResp.duration)
             # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
             if cue.maxDurationReached:
                 routineTimer.addTime(-cue.maxDuration)
@@ -3785,13 +3693,11 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # create an object to store info about Routine outcomeDelayRoutine
             outcomeDelayRoutine = data.Routine(
                 name='outcomeDelayRoutine',
-                components=[outcomeDelayFix, topFrameTextFix, bottomFrameTextFix],
+                components=[outcomeDelayFix],
             )
             outcomeDelayRoutine.status = NOT_STARTED
             continueRoutine = True
             # update component parameters for each repeat
-            topFrameTextFix.setText(topLabel)
-            bottomFrameTextFix.setText(bottomLabel)
             # store start times for outcomeDelayRoutine
             outcomeDelayRoutine.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
             outcomeDelayRoutine.tStart = globalClock.getTime(format='float')
@@ -3859,74 +3765,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         outcomeDelayFix.status = FINISHED
                         outcomeDelayFix.setAutoDraw(False)
                 
-                # *topFrameTextFix* updates
-                
-                # if topFrameTextFix is starting this frame...
-                if topFrameTextFix.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    topFrameTextFix.frameNStart = frameN  # exact frame index
-                    topFrameTextFix.tStart = t  # local t and not account for scr refresh
-                    topFrameTextFix.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(topFrameTextFix, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'topFrameTextFix.started')
-                    # update status
-                    topFrameTextFix.status = STARTED
-                    topFrameTextFix.setAutoDraw(True)
-                
-                # if topFrameTextFix is active this frame...
-                if topFrameTextFix.status == STARTED:
-                    # update params
-                    pass
-                
-                # if topFrameTextFix is stopping this frame...
-                if topFrameTextFix.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > topFrameTextFix.tStartRefresh + outcomeDelay-frameTolerance:
-                        # keep track of stop time/frame for later
-                        topFrameTextFix.tStop = t  # not accounting for scr refresh
-                        topFrameTextFix.tStopRefresh = tThisFlipGlobal  # on global time
-                        topFrameTextFix.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'topFrameTextFix.stopped')
-                        # update status
-                        topFrameTextFix.status = FINISHED
-                        topFrameTextFix.setAutoDraw(False)
-                
-                # *bottomFrameTextFix* updates
-                
-                # if bottomFrameTextFix is starting this frame...
-                if bottomFrameTextFix.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    bottomFrameTextFix.frameNStart = frameN  # exact frame index
-                    bottomFrameTextFix.tStart = t  # local t and not account for scr refresh
-                    bottomFrameTextFix.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(bottomFrameTextFix, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'bottomFrameTextFix.started')
-                    # update status
-                    bottomFrameTextFix.status = STARTED
-                    bottomFrameTextFix.setAutoDraw(True)
-                
-                # if bottomFrameTextFix is active this frame...
-                if bottomFrameTextFix.status == STARTED:
-                    # update params
-                    pass
-                
-                # if bottomFrameTextFix is stopping this frame...
-                if bottomFrameTextFix.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > bottomFrameTextFix.tStartRefresh + outcomeDelay-frameTolerance:
-                        # keep track of stop time/frame for later
-                        bottomFrameTextFix.tStop = t  # not accounting for scr refresh
-                        bottomFrameTextFix.tStopRefresh = tThisFlipGlobal  # on global time
-                        bottomFrameTextFix.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'bottomFrameTextFix.stopped')
-                        # update status
-                        bottomFrameTextFix.status = FINISHED
-                        bottomFrameTextFix.setAutoDraw(False)
-                
                 # check for quit (typically the Esc key)
                 if defaultKeyboard.getKeys(keyList=["escape"]):
                     thisExp.status = FINISHED
@@ -3973,7 +3811,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # create an object to store info about Routine outcomeRoutine
             outcomeRoutine = data.Routine(
                 name='outcomeRoutine',
-                components=[outcomeText, topFrameTextOut, bottomFrameTextOut],
+                components=[outcomeText],
             )
             outcomeRoutine.status = NOT_STARTED
             continueRoutine = True
@@ -4040,8 +3878,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             currentLoop.addData('feedbackTime', fmriClock.getTime())
             
             outcomeText.setText(outcome_msg)
-            topFrameTextOut.setText(topLabel)
-            bottomFrameTextOut.setText(bottomLabel)
             # store start times for outcomeRoutine
             outcomeRoutine.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
             outcomeRoutine.tStart = globalClock.getTime(format='float')
@@ -4109,74 +3945,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         outcomeText.status = FINISHED
                         outcomeText.setAutoDraw(False)
                 
-                # *topFrameTextOut* updates
-                
-                # if topFrameTextOut is starting this frame...
-                if topFrameTextOut.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
-                    # keep track of start time/frame for later
-                    topFrameTextOut.frameNStart = frameN  # exact frame index
-                    topFrameTextOut.tStart = t  # local t and not account for scr refresh
-                    topFrameTextOut.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(topFrameTextOut, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'topFrameTextOut.started')
-                    # update status
-                    topFrameTextOut.status = STARTED
-                    topFrameTextOut.setAutoDraw(True)
-                
-                # if topFrameTextOut is active this frame...
-                if topFrameTextOut.status == STARTED:
-                    # update params
-                    pass
-                
-                # if topFrameTextOut is stopping this frame...
-                if topFrameTextOut.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > topFrameTextOut.tStartRefresh + 1-frameTolerance:
-                        # keep track of stop time/frame for later
-                        topFrameTextOut.tStop = t  # not accounting for scr refresh
-                        topFrameTextOut.tStopRefresh = tThisFlipGlobal  # on global time
-                        topFrameTextOut.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'topFrameTextOut.stopped')
-                        # update status
-                        topFrameTextOut.status = FINISHED
-                        topFrameTextOut.setAutoDraw(False)
-                
-                # *bottomFrameTextOut* updates
-                
-                # if bottomFrameTextOut is starting this frame...
-                if bottomFrameTextOut.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
-                    # keep track of start time/frame for later
-                    bottomFrameTextOut.frameNStart = frameN  # exact frame index
-                    bottomFrameTextOut.tStart = t  # local t and not account for scr refresh
-                    bottomFrameTextOut.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(bottomFrameTextOut, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'bottomFrameTextOut.started')
-                    # update status
-                    bottomFrameTextOut.status = STARTED
-                    bottomFrameTextOut.setAutoDraw(True)
-                
-                # if bottomFrameTextOut is active this frame...
-                if bottomFrameTextOut.status == STARTED:
-                    # update params
-                    pass
-                
-                # if bottomFrameTextOut is stopping this frame...
-                if bottomFrameTextOut.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > bottomFrameTextOut.tStartRefresh + 1-frameTolerance:
-                        # keep track of stop time/frame for later
-                        bottomFrameTextOut.tStop = t  # not accounting for scr refresh
-                        bottomFrameTextOut.tStopRefresh = tThisFlipGlobal  # on global time
-                        bottomFrameTextOut.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'bottomFrameTextOut.stopped')
-                        # update status
-                        bottomFrameTextOut.status = FINISHED
-                        bottomFrameTextOut.setAutoDraw(False)
-                
                 # check for quit (typically the Esc key)
                 if defaultKeyboard.getKeys(keyList=["escape"]):
                     thisExp.status = FINISHED
@@ -4219,6 +3987,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # Run 'End Routine' code from defineOutcomes
             expInfo['bank'] = bank
             currentLoop.addData('feedbackOffTime', fmriClock.getTime())
+            # Run 'End Routine' code from frameLabelsOff
+            topFrameText.setAutoDraw(False)
+            bottomFrameText.setAutoDraw(False)
             # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
             if outcomeRoutine.maxDurationReached:
                 routineTimer.addTime(-outcomeRoutine.maxDuration)
@@ -4384,6 +4155,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         #   print("trying to end this damn round")
         #   #continueRoutine = False
         #   runs.finished == True
+        # Run 'Begin Routine' code from frameOffCode
+        frame.setAutoDraw(False)
         # store start times for breakScreen
         breakScreen.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
         breakScreen.tStart = globalClock.getTime(format='float')
@@ -4511,8 +4284,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if advanceScreenPress_2.keys != None:  # we had a response
             runs.addData('advanceScreenPress_2.rt', advanceScreenPress_2.rt)
             runs.addData('advanceScreenPress_2.duration', advanceScreenPress_2.duration)
-        # Run 'End Routine' code from frameOffCode
-        frame.setAutoDraw(False)
         # the Routine "breakScreen" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         thisExp.nextEntry()
