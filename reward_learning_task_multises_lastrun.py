@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Mon May 19 15:13:10 2025
+    on Mon May 19 16:10:43 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -3359,9 +3359,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 bottomLabel="-$%.2f"%(abs(incorrvalue))
                 
             topFrameText.setText(topLabel)
+            topFrameText.status = NOT_STARTED
             bottomFrameText.setText(bottomLabel)
-            topFrameText.setAutoDraw(True)
-            bottomFrameText.setAutoDraw(True)
+            bottomFrameText.status = NOT_STARTED
             # Run 'Begin Routine' code from setImageTiming
             cueTimeAdded = False
             responseTimeAdded = False
@@ -3563,6 +3563,11 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                             cueResp.corr = 1
                         else:
                             cueResp.corr = 0
+                # Run 'Each Frame' code from frameLabels
+                if t > .5 and topFrameText.status == NOT_STARTED:
+                    topFrameText.setAutoDraw(True)
+                    bottomFrameText.setAutoDraw(True)
+                    topFrameText.status = STARTED
                 # Run 'Each Frame' code from setImageTiming
                 if not cueTimeAdded: 
                     if leftCue.autoDraw==True:
@@ -3678,6 +3683,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             else: 
                 currentLoop.addData('optedSide', 'NA')
                 currentLoop.addData('optedImg', 'NA')
+            # Run 'End Routine' code from frameLabels
+            topFrameText.status = NOT_STARTED
             # Run 'End Routine' code from setImageTiming
             currentLoop.addData('cueOffTime', fmriClock.getTime())
             
