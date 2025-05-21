@@ -6,11 +6,11 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-df <- read_csv("/Users/katharinaseitz/Documents/projects/RL-scancamp/data/pilot-3_reward_learning_multises_2025-05-09_17h12.13.355.csv")
+df <- read_csv("/Users/katharinaseitz/Documents/projects/RL-scancamp/data_vis/pilot-3_reward_learning_multises_2025-05-09_17h12.13.355.csv")
 ```
 
 
-```{r cars}
+```{r}
 df_clean <- df %>%
       mutate(
         Participant = as.character(participant),
@@ -72,8 +72,15 @@ df_clean <- df_clean  %>% arrange(trial_id) %>%
 
 
 ```{r pressure, echo=FALSE}
-    
-    ggplot(df_clean, aes(x = optedImg, fill = ImagePair)) +
+df_clean %>%
+  filter(trial_id > 60) %>% ggplot(aes(x = optedImg, fill = ImagePair)) +
+      geom_bar(position = position_dodge(width = 0.9)) +
+      labs(title = paste("Selection Frequency by Image (Grouped by Pair) - Participant:"),
+           x = "Chosen Image", y = "Count", fill = "Image Pair") +
+      theme_minimal(base_size = 14)
+
+df_clean %>%
+  filter(trial_id <= 60) %>% ggplot(aes(x = optedImg, fill = ImagePair)) +
       geom_bar(position = position_dodge(width = 0.9)) +
       labs(title = paste("Selection Frequency by Image (Grouped by Pair) - Participant:"),
            x = "Chosen Image", y = "Count", fill = "Image Pair") +
