@@ -41,7 +41,11 @@ ui <- fluidPage(
         tabPanel("Accuracy Plot", plotOutput("accuracyPlot", height = "400px")),
         tabPanel("Rolling Avg Plot", plotOutput("rollingAvgPlot", height = "400px")),
         tabPanel("Outcome Plot", plotOutput("outcomePlot", height = "400px")),
-        tabPanel("Image Selection Histogram", plotOutput("selectionHistogram", height = "400px"))
+        tabPanel("Image Selection Histogram", plotOutput("selectionHistogram", height = "400px")),
+        tabPanel("Cumulative Bank", plotOutput("bankPlot", height = "400px")),
+        tabPanel("Feedback by Trial", plotOutput("rewardPlot", height = "400px")),
+        tabPanel("Optimal Choice Rate", plotOutput("optimalityPlot", height = "400px")),
+        tabPanel("Reaction Time", plotOutput("rtPlot", height = "400px"))
       )
     )
   )
@@ -177,6 +181,62 @@ server <- function(input, output, session) {
            x = "Chosen Image", y = "Count", fill = "Image Pair") +
       theme_minimal(base_size = 14)
   })
+  output$bankPlot <- renderPlot({
+    df <- participant_data()
+    if (!"bank" %in% colnames(df)) return()
+    
+    ggplot(df, aes(x = trial_id, y = bank)) +
+      geom_line(color = "#4DBBD5FF", size = 1.2) +
+      labs(title = paste("Cumulative Bank Over Trials (Participant:", input$participant, ")"),
+           x = "Trial ID", y = "Bank Value") +
+      theme_minimal(base_size = 14)
+  })
+  
+  output$rewardPlot <- renderPlot({
+    df <- participant_data()
+    if (!"OutcomeValue" %in% colnames(df)) return()
+    
+    ggplot(df, aes(x = trial_id, y = OutcomeValue, color = condition)) +
+      geom_point(alpha = 0.7) +
+      geom_smooth(se = FALSE) +
+      labs(title = paste("Reward Feedback by Trial (Participant:", input$participant, ")"),
+           x = "Trial ID", y = "Reward/Feedback Value") +
+      theme_minimal(base_size = 14)
+  })
+  
+  output$optimalityPlot <- renderPlot({
+    df <- participant_data()
+    if (!"optimalResponse" %in% colnames(df) || !"optedFor" %in% colnames(df)) return()
+    
+    df <- df %>%
+      mutate(optimal = as.numeric(optedFor == optimalResponse)) %>%
+      arrange(trial_id) %>%
+      mutate(rolling_opt = zoo::rollmean(optimal, k = 5, fill = NA, align = "right"))
+    
+    ggplot(df, aes(x = trial_id, y = rolling_opt)) +
+      geom_line(color = "#F39B7FFF", size = 1.2) +
+      labs(title = paste("5-Trial Rolling Optimal Choice Rate (Participant:", input$participant, ")"),
+           x = "Trial ID", y = "Proportion Optimal") +
+      ylim(0, 1) +
+      theme_minimal(base_size = 14)
+  })
+  
+  output$rtPlot <- renderPlot({
+    df <- participant_data()
+    rt_cols <- grep("rt", names(df), value = TRUE)
+    rt_col <- rt_cols[1]
+    if (is.null(rt_col)) return()
+    
+    df <- df %>% rename(rt = all_of(rt_col))
+    
+    ggplot(df, aes(x = trial_id, y = rt)) +
+      geom_point(alpha = 0.6, color = "#8491B4FF") +
+      geom_smooth(se = FALSE, color = "#8491B4FF") +
+      labs(title = paste("Reaction Time by Trial (Participant:", input$participant, ")"),
+           x = "Trial ID", y = "RT (seconds)") +
+      theme_minimal(base_size = 14)
+  })
+  
 }
 
 shinyApp(ui, server)
