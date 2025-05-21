@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Wed May 21 15:35:54 2025
+    on Wed May 21 15:38:35 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -491,7 +491,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     choiceDirText = visual.TextStim(win=win, name='choiceDirText',
         text='There will be two pictures on the screen, one on the left and one on the right. Press the button with your pointer finger to choose the picture on the left, and press the button with your middle finger to choose the picture on the right. The pictures will change sides, but this does not affect whether or not the picture is correct.\n\n\n\n\n\n\n\n\n\n\nMake your choice as fast as you can. Once you choose, a box will show up on the screen. If you choose too late, your choice will not count.\n\nPractice selecting an image now by pressing with either finger. ',
         font='Arial',
-        pos=(0, 0), draggable=False, height=1.0, wrapWidth=36.0, ori=0.0, 
+        pos=(0, 0), draggable=False, height=1.0, wrapWidth=30.0, ori=0.0, 
         color=[1.0000, 1.0000, 1.0000], colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
