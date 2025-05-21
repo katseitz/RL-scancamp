@@ -1922,7 +1922,7 @@
         <Param val="There will be two pictures on the screen, one on the left and one on the right. Press the button with your pointer finger to choose the picture on the left, and press the button with your middle finger to choose the picture on the right. The pictures will change sides, but this does not affect whether or not the picture is correct.&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;Make your choice as fast as you can. Once you choose, a box will show up on the screen. If you choose too late, your choice will not count.&amp;#10;&amp;#10;Practice selecting an image now by pressing with either finger. " valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="code" updates="None" name="validator"/>
-        <Param val="36" valType="num" updates="constant" name="wrapWidth"/>
+        <Param val="30" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
       <ImageComponent name="prac2Image" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
