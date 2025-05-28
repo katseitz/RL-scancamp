@@ -5,17 +5,17 @@
     <Param val="ptb" valType="str" updates="None" name="Audio lib"/>
     <Param val="" valType="str" updates="None" name="Completed URL"/>
     <Param val="auto" valType="str" updates="None" name="Data file delimiter"/>
-    <Param val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code" updates="None" name="Data filename"/>
+    <Param val="u'data/%s_%s_%s_%s' % (expInfo['participant'], expName, expInfo['session'], expInfo['date'])" valType="code" updates="None" name="Data filename"/>
     <Param val="True" valType="bool" updates="None" name="Enable Escape"/>
     <Param val="Thank you for your patience." valType="str" updates="None" name="End Message"/>
-    <Param val="{'participant': '[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;pilot-1&quot;, &quot;pilot-2&quot;, &quot;pilot-3&quot;, &quot;pilot-4&quot;, &quot;pilot-5&quot;, &quot;pilot-6&quot;, &quot;pilot-7&quot;, &quot;pilot-8&quot;, &quot;pilot-9&quot;, &quot;pilot-10&quot;]', 'session': '[&quot;ses-1&quot;, &quot;ses-2&quot;, &quot;ses-3&quot;, &quot;ses-4&quot;, &quot;ses-5&quot;, &quot;ses-6&quot;, &quot;ses-7&quot;, &quot;ses-8&quot;]', 'startFromRun': '[&quot;1&quot;, &quot;2&quot;]', 'mode': '[&quot;pilot&quot;, &quot;scan&quot;]', 'practice': '[&quot;yes&quot;, &quot;no&quot;]'}" valType="code" updates="None" name="Experiment info"/>
+    <Param val="{'participant': '[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;pilot-1&quot;, &quot;pilot-2&quot;, &quot;pilot-3&quot;, &quot;pilot-4&quot;, &quot;pilot-5&quot;, &quot;pilot-6&quot;, &quot;pilot-7&quot;, &quot;pilot-8&quot;]', 'session': '[&quot;ses-1&quot;, &quot;ses-2&quot;, &quot;ses-3&quot;, &quot;ses-4&quot;, &quot;ses-5&quot;, &quot;ses-6&quot;, &quot;ses-7&quot;, &quot;ses-8&quot;]', 'startFromRun': '[&quot;1&quot;, &quot;2&quot;]', 'mode': '[&quot;pilot&quot;, &quot;scan&quot;]', 'practice': '[&quot;yes&quot;, &quot;no&quot;]'}" valType="code" updates="None" name="Experiment info"/>
     <Param val="True" valType="bool" updates="None" name="Force stereo"/>
     <Param val="True" valType="bool" updates="None" name="Full-screen window"/>
     <Param val="" valType="str" updates="None" name="HTML path"/>
     <Param val="" valType="str" updates="None" name="Incomplete URL"/>
     <Param val="testMonitor" valType="str" updates="None" name="Monitor"/>
     <Param val="[]" valType="list" updates="None" name="Resources"/>
-    <Param val="False" valType="bool" updates="None" name="Save csv file"/>
+    <Param val="True" valType="bool" updates="None" name="Save csv file"/>
     <Param val="False" valType="bool" updates="None" name="Save excel file"/>
     <Param val="False" valType="bool" updates="None" name="Save hdf5 file"/>
     <Param val="True" valType="bool" updates="None" name="Save log file"/>
@@ -46,7 +46,7 @@
     <Param val="False" valType="bool" updates="None" name="elSimMode"/>
     <Param val="RIGHT_EYE" valType="str" updates="None" name="elTrackEyes"/>
     <Param val="PUPIL_CR_TRACKING" valType="str" updates="None" name="elTrackingMode"/>
-    <Param val="reward_learning_multises" valType="str" updates="None" name="expName"/>
+    <Param val="RL_multises" valType="str" updates="None" name="expName"/>
     <Param val="on Sync" valType="str" updates="None" name="exportHTML"/>
     <Param val="None" valType="str" updates="None" name="eyetracker"/>
     <Param val="" valType="code" updates="None" name="frameRate"/>
@@ -419,7 +419,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="Sometimes you can win money during the game!&amp;#10;&amp;#10;For the HIGH WIN pair, you can win 50 cents if you are correct or win 0 cents if you are incorrect. &amp;#10;&amp;#10;For the LOW WIN pair, you can win 25 cents if you are correct or win 0 cents if you are incorrect. &amp;#10;&amp;#10;There will be a box around the pictures. The numbers in the box will tell you whether you can win a high or low amount. &amp;#10;&amp;#10;The money you win will be paid to you as bonus at the end of the game, so try your best!" valType="str" updates="constant" name="text"/>
+        <Param val="Sometimes you can win money during the game!&amp;#10;&amp;#10;For the HIGH WIN pair, you can win 1 dollar if you are correct or win 0 cents if you are incorrect. &amp;#10;&amp;#10;For the LOW WIN pair, you can win 50 cents if you are correct or win 0 cents if you are incorrect. &amp;#10;&amp;#10;There will be a box around the pictures. The numbers in the box will tell you whether you can win a high or low amount. &amp;#10;&amp;#10;The money you win will be paid to you as bonus at the end of the game, so try your best!" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="code" updates="None" name="validator"/>
         <Param val="20" valType="num" updates="constant" name="wrapWidth"/>
@@ -504,7 +504,7 @@
         <Param val="condition" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="+$0.50" valType="str" updates="constant" name="text"/>
+        <Param val="+$1.00" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="code" updates="None" name="validator"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
@@ -531,7 +531,7 @@
         <Param val="condition" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="+$0.25" valType="str" updates="constant" name="text"/>
+        <Param val="+$0.20" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="code" updates="None" name="validator"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
@@ -721,7 +721,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="Sometimes you can lose money during the game!&amp;#10;&amp;#10;For the HIGH LOSE pair, you can lose 0 cents if you are correct or lose 50 cents if you are incorrect.&amp;#10;&amp;#10;For the LOW LOSE pair, you can lose 0 cents if you are correct or lose 25 cents if you are incorrect.&amp;#10;&amp;#10;There will be a box around the pictures. The The numbers in the box will tell you whether you can lose a high or low amount.&amp;#10;&amp;#10;The money you lose will be taken away from the bonus money you win at the end of the game, so try your best!" valType="str" updates="constant" name="text"/>
+        <Param val="Sometimes you can lose money during the game!&amp;#10;&amp;#10;For the HIGH LOSE pair, you can lose 0 cents if you are correct or lose 1 dollar if you are incorrect.&amp;#10;&amp;#10;For the LOW LOSE pair, you can lose 0 cents if you are correct or lose 20 cents if you are incorrect.&amp;#10;&amp;#10;There will be a box around the pictures. The The numbers in the box will tell you whether you can lose a high or low amount.&amp;#10;&amp;#10;The money you lose will be taken away from the bonus money you win at the end of the game, so try your best!" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="code" updates="None" name="validator"/>
         <Param val="20" valType="num" updates="constant" name="wrapWidth"/>
@@ -860,7 +860,7 @@
         <Param val="condition" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="-$0.50" valType="str" updates="constant" name="text"/>
+        <Param val="-$1.00" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="code" updates="None" name="validator"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
@@ -887,7 +887,7 @@
         <Param val="condition" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="-$0.25" valType="str" updates="constant" name="text"/>
+        <Param val="-$0.20" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="code" updates="None" name="validator"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
@@ -1316,8 +1316,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="topLabel=None&amp;#10;bottomLabel=None&amp;#10;framecolor=None&amp;#10;&amp;#10;topFrameText = visual.TextStim(win=win, name='topFrameText',&amp;#10;    text='',&amp;#10;    font='Arial',&amp;#10;    pos=(0, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, &amp;#10;    color='white', colorSpace='rgb', opacity=None, &amp;#10;    languageStyle='LTR',&amp;#10;    depth=-10.0);&amp;#10;bottomFrameText = visual.TextStim(win=win, name='bottomFrameText',&amp;#10;    text='',&amp;#10;    font='Arial',&amp;#10;    pos=(0, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, &amp;#10;    color='white', colorSpace='rgb', opacity=None, &amp;#10;    languageStyle='LTR',&amp;#10;    depth=-11.0);" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="topLabel = null;&amp;#10;bottomLabel = null;&amp;#10;framecolor = null;&amp;#10;topFrameText = new visual.TextStim({&quot;win&quot;: psychoJS.window, &quot;name&quot;: &quot;topFrameText&quot;, &quot;text&quot;: &quot;&quot;, &quot;font&quot;: &quot;Arial&quot;, &quot;pos&quot;: [0, 5.5], &quot;draggable&quot;: false, &quot;height&quot;: 0.7, &quot;wrapWidth&quot;: null, &quot;ori&quot;: 0.0, &quot;color&quot;: &quot;white&quot;, &quot;colorSpace&quot;: &quot;rgb&quot;, &quot;opacity&quot;: null, &quot;languageStyle&quot;: &quot;LTR&quot;, &quot;depth&quot;: (- 10.0)});&amp;#10;bottomFrameText = new visual.TextStim({&quot;win&quot;: psychoJS.window, &quot;name&quot;: &quot;bottomFrameText&quot;, &quot;text&quot;: &quot;&quot;, &quot;font&quot;: &quot;Arial&quot;, &quot;pos&quot;: [0, (- 5.5)], &quot;draggable&quot;: false, &quot;height&quot;: 0.7, &quot;wrapWidth&quot;: null, &quot;ori&quot;: 0.0, &quot;color&quot;: &quot;white&quot;, &quot;colorSpace&quot;: &quot;rgb&quot;, &quot;opacity&quot;: null, &quot;languageStyle&quot;: &quot;LTR&quot;, &quot;depth&quot;: (- 11.0)});&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="if ((condition === &quot;lowgain&quot;)) {&amp;#10;    corrvalue = 0.25;&amp;#10;    incorrvalue = 0;&amp;#10;    topLabel = `+$${Math.abs(corrvalue)}`;&amp;#10;    bottomLabel = `+$${Math.abs(incorrvalue)}`;&amp;#10;}&amp;#10;if ((condition === &quot;highgain&quot;)) {&amp;#10;    corrvalue = 0.5;&amp;#10;    incorrvalue = 0;&amp;#10;    topLabel = `+$${Math.abs(corrvalue)}`;&amp;#10;    bottomLabel = `+$${Math.abs(incorrvalue)}`;&amp;#10;}&amp;#10;if ((condition === &quot;lowloss&quot;)) {&amp;#10;    corrvalue = 0;&amp;#10;    incorrvalue = (- 0.25);&amp;#10;    topLabel = `-$${Math.abs(corrvalue)}`;&amp;#10;    bottomLabel = `-$${Math.abs(incorrvalue)}`;&amp;#10;}&amp;#10;if ((condition === &quot;highloss&quot;)) {&amp;#10;    corrvalue = 0;&amp;#10;    incorrvalue = (- 0.5);&amp;#10;    topLabel = `-$${Math.abs(corrvalue)}`;&amp;#10;    bottomLabel = `-$${Math.abs(incorrvalue)}`;&amp;#10;}&amp;#10;topFrameText.setText(topLabel);&amp;#10;topFrameText.status = NOT_STARTED;&amp;#10;bottomFrameText.setText(bottomLabel);&amp;#10;bottomFrameText.status = NOT_STARTED;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="if condition == &quot;lowgain&quot;:&amp;#10;    corrvalue=0.25&amp;#10;    incorrvalue=0&amp;#10;    topLabel=&quot;+$%.2f&quot;%(abs(corrvalue))&amp;#10;    bottomLabel=&quot;+$%.2f&quot;%(abs(incorrvalue))&amp;#10;&amp;#10;if condition == &quot;highgain&quot;:&amp;#10;    corrvalue=0.50&amp;#10;    incorrvalue=0&amp;#10;    topLabel=&quot;+$%.2f&quot;%(abs(corrvalue))&amp;#10;    bottomLabel=&quot;+$%.2f&quot;%(abs(incorrvalue))&amp;#10;&amp;#10;if condition == &quot;lowloss&quot;:&amp;#10;    corrvalue=0&amp;#10;    incorrvalue=-0.25&amp;#10;    topLabel=&quot;-$%.2f&quot;%(abs(corrvalue))&amp;#10;    bottomLabel=&quot;-$%.2f&quot;%(abs(incorrvalue))&amp;#10;&amp;#10;if condition == &quot;highloss&quot;:&amp;#10;    corrvalue=0&amp;#10;    incorrvalue=-0.5&amp;#10;    topLabel=&quot;-$%.2f&quot;%(abs(corrvalue))&amp;#10;    bottomLabel=&quot;-$%.2f&quot;%(abs(incorrvalue))&amp;#10;    &amp;#10;topFrameText.setText(topLabel)&amp;#10;topFrameText.status = NOT_STARTED&amp;#10;bottomFrameText.setText(bottomLabel)&amp;#10;bottomFrameText.status = NOT_STARTED" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="if ((condition === &quot;lowgain&quot;)) {&amp;#10;    corrvalue = 0.2;&amp;#10;    incorrvalue = 0;&amp;#10;    topLabel = `+$${Math.abs(corrvalue)}`;&amp;#10;    bottomLabel = `+$${Math.abs(incorrvalue)}`;&amp;#10;}&amp;#10;if ((condition === &quot;highgain&quot;)) {&amp;#10;    corrvalue = 1.0;&amp;#10;    incorrvalue = 0;&amp;#10;    topLabel = `+$${Math.abs(corrvalue)}`;&amp;#10;    bottomLabel = `+$${Math.abs(incorrvalue)}`;&amp;#10;}&amp;#10;if ((condition === &quot;lowloss&quot;)) {&amp;#10;    corrvalue = 0;&amp;#10;    incorrvalue = (- 0.2);&amp;#10;    topLabel = `-$${Math.abs(corrvalue)}`;&amp;#10;    bottomLabel = `-$${Math.abs(incorrvalue)}`;&amp;#10;}&amp;#10;if ((condition === &quot;highloss&quot;)) {&amp;#10;    corrvalue = 0;&amp;#10;    incorrvalue = (- 1.0);&amp;#10;    topLabel = `-$${Math.abs(corrvalue)}`;&amp;#10;    bottomLabel = `-$${Math.abs(incorrvalue)}`;&amp;#10;}&amp;#10;topFrameText.setText(topLabel);&amp;#10;topFrameText.status = NOT_STARTED;&amp;#10;bottomFrameText.setText(bottomLabel);&amp;#10;bottomFrameText.status = NOT_STARTED;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="if condition == &quot;lowgain&quot;:&amp;#10;    corrvalue=0.20&amp;#10;    incorrvalue=0&amp;#10;    topLabel=&quot;+$%.2f&quot;%(abs(corrvalue))&amp;#10;    bottomLabel=&quot;+$%.2f&quot;%(abs(incorrvalue))&amp;#10;&amp;#10;if condition == &quot;highgain&quot;:&amp;#10;    corrvalue=1.00&amp;#10;    incorrvalue=0&amp;#10;    topLabel=&quot;+$%.2f&quot;%(abs(corrvalue))&amp;#10;    bottomLabel=&quot;+$%.2f&quot;%(abs(incorrvalue))&amp;#10;&amp;#10;if condition == &quot;lowloss&quot;:&amp;#10;    corrvalue=0&amp;#10;    incorrvalue=-0.20&amp;#10;    topLabel=&quot;-$%.2f&quot;%(abs(corrvalue))&amp;#10;    bottomLabel=&quot;-$%.2f&quot;%(abs(incorrvalue))&amp;#10;&amp;#10;if condition == &quot;highloss&quot;:&amp;#10;    corrvalue=0&amp;#10;    incorrvalue=-1.00&amp;#10;    topLabel=&quot;-$%.2f&quot;%(abs(corrvalue))&amp;#10;    bottomLabel=&quot;-$%.2f&quot;%(abs(incorrvalue))&amp;#10;    &amp;#10;topFrameText.setText(topLabel)&amp;#10;topFrameText.status = NOT_STARTED&amp;#10;bottomFrameText.setText(bottomLabel)&amp;#10;bottomFrameText.status = NOT_STARTED" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="if t &gt; .5 and topFrameText.status == NOT_STARTED:&amp;#10;    topFrameText.setAutoDraw(True)&amp;#10;    bottomFrameText.setAutoDraw(True)&amp;#10;    topFrameText.status = STARTED" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="if (((t &gt; 0.5) &amp;&amp; (topFrameText.status === NOT_STARTED))) {&amp;#10;    topFrameText.setAutoDraw(true);&amp;#10;    bottomFrameText.setAutoDraw(true);&amp;#10;    topFrameText.status = PsychoJS.Status.STARTED;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -1516,7 +1516,7 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="1.3" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="1.75" valType="num" updates="constant" name="letterHeight"/>
         <Param val="outcomeText" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>

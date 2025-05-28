@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Wed May 21 15:38:35 2025
+    on Wed May 28 10:04:04 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -40,10 +40,10 @@ deviceManager = hardware.DeviceManager()
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 # store info about the experiment session
 psychopyVersion = '2024.2.4'
-expName = 'reward_learning_multises'  # from the Builder filename that created this script
+expName = 'RL_multises'  # from the Builder filename that created this script
 # information about this experiment
 expInfo = {
-    'participant': ["1", "2", "3", "4", "5", "6", "7", "8", "pilot-1", "pilot-2", "pilot-3", "pilot-4", "pilot-5", "pilot-6", "pilot-7", "pilot-8", "pilot-9", "pilot-10"],
+    'participant': ["1", "2", "3", "4", "5", "6", "7", "8", "pilot-1", "pilot-2", "pilot-3", "pilot-4", "pilot-5", "pilot-6", "pilot-7", "pilot-8"],
     'session': ["ses-1", "ses-2", "ses-3", "ses-4", "ses-5", "ses-6", "ses-7", "ses-8"],
     'startFromRun': ["1", "2"],
     'mode': ["pilot", "scan"],
@@ -119,7 +119,7 @@ def setupData(expInfo, dataDir=None):
     # data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
     if dataDir is None:
         dataDir = _thisDir
-    filename = u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])
+    filename = u'data/%s_%s_%s_%s' % (expInfo['participant'], expName, expInfo['session'], expInfo['date'])
     # make sure filename is relative to dataDir
     if os.path.isabs(filename):
         dataDir = os.path.commonprefix([dataDir, filename])
@@ -593,7 +593,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # --- Initialize components for Routine "gainDirs" ---
     advanceScreenPress3 = keyboard.Keyboard(deviceName='advanceScreenPress3')
     gainDirText = visual.TextStim(win=win, name='gainDirText',
-        text='Sometimes you can win money during the game!\n\nFor the HIGH WIN pair, you can win 50 cents if you are correct or win 0 cents if you are incorrect. \n\nFor the LOW WIN pair, you can win 25 cents if you are correct or win 0 cents if you are incorrect. \n\nThere will be a box around the pictures. The numbers in the box will tell you whether you can win a high or low amount. \n\nThe money you win will be paid to you as bonus at the end of the game, so try your best!',
+        text='Sometimes you can win money during the game!\n\nFor the HIGH WIN pair, you can win 1 dollar if you are correct or win 0 cents if you are incorrect. \n\nFor the LOW WIN pair, you can win 50 cents if you are correct or win 0 cents if you are incorrect. \n\nThere will be a box around the pictures. The numbers in the box will tell you whether you can win a high or low amount. \n\nThe money you win will be paid to you as bonus at the end of the game, so try your best!',
         font='Arial',
         pos=(-6, 0), draggable=False, height=1.0, wrapWidth=20.0, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -614,14 +614,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         colorSpace='rgb', lineColor='white', fillColor=None,
         opacity=None, depth=-3.0, interpolate=True)
     highgainTopLabel = visual.TextStim(win=win, name='highgainTopLabel',
-        text='+$0.50',
+        text='+$1.00',
         font='Arial',
         pos=(10, 10.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-4.0);
     lowgainTopLabel = visual.TextStim(win=win, name='lowgainTopLabel',
-        text='+$0.25',
+        text='+$0.20',
         font='Arial',
         pos=(10, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -659,7 +659,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # --- Initialize components for Routine "lossDirs" ---
     advanceScreen4 = keyboard.Keyboard(deviceName='advanceScreen4')
     lossDirText = visual.TextStim(win=win, name='lossDirText',
-        text='Sometimes you can lose money during the game!\n\nFor the HIGH LOSE pair, you can lose 0 cents if you are correct or lose 50 cents if you are incorrect.\n\nFor the LOW LOSE pair, you can lose 0 cents if you are correct or lose 25 cents if you are incorrect.\n\nThere will be a box around the pictures. The The numbers in the box will tell you whether you can lose a high or low amount.\n\nThe money you lose will be taken away from the bonus money you win at the end of the game, so try your best!',
+        text='Sometimes you can lose money during the game!\n\nFor the HIGH LOSE pair, you can lose 0 cents if you are correct or lose 1 dollar if you are incorrect.\n\nFor the LOW LOSE pair, you can lose 0 cents if you are correct or lose 20 cents if you are incorrect.\n\nThere will be a box around the pictures. The The numbers in the box will tell you whether you can lose a high or low amount.\n\nThe money you lose will be taken away from the bonus money you win at the end of the game, so try your best!',
         font='Arial',
         pos=(-6, 0), draggable=False, height=1.0, wrapWidth=20.0, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -694,14 +694,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         languageStyle='LTR',
         depth=-5.0);
     highLossBottomLabel = visual.TextStim(win=win, name='highLossBottomLabel',
-        text='-$0.50',
+        text='-$1.00',
         font='Arial',
         pos=(10, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-6.0);
     lowLossBottomLabel = visual.TextStim(win=win, name='lowLossBottomLabel',
-        text='-$0.25',
+        text='-$0.20',
         font='Arial',
         pos=(10, -10.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -927,7 +927,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     outcomeText = visual.TextStim(win=win, name='outcomeText',
         text='',
         font='Arial',
-        pos=(0, 0), draggable=False, height=1.3, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), draggable=False, height=1.75, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-3.0);
@@ -2105,6 +2105,15 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if thisSession is not None:
             # if running in a Session with a Liaison client, send data up to now
             thisSession.sendExperimentData()
+        # get names of stimulus parameters
+        if practice.trialList in ([], [None], None):
+            params = []
+        else:
+            params = practice.trialList[0].keys()
+        # save data for this loop
+        practice.saveAsText(filename + 'practice.csv', delim=',',
+            stimOut=params,
+            dataOut=['n','all_mean','all_std', 'all_raw'])
         
         # --- Prepare to start Routine "gainDirs" ---
         # create an object to store info about Routine gainDirs
@@ -2726,6 +2735,15 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     if thisSession is not None:
         # if running in a Session with a Liaison client, send data up to now
         thisSession.sendExperimentData()
+    # get names of stimulus parameters
+    if pracBlock.trialList in ([], [None], None):
+        params = []
+    else:
+        params = pracBlock.trialList[0].keys()
+    # save data for this loop
+    pracBlock.saveAsText(filename + 'pracBlock.csv', delim=',',
+        stimOut=params,
+        dataOut=['n','all_mean','all_std', 'all_raw'])
     
     # --- Prepare to start Routine "summaryDirections" ---
     # create an object to store info about Routine summaryDirections
@@ -3335,26 +3353,26 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             correct = sidePositions[optimalImg]
             # Run 'Begin Routine' code from frameLabels
             if condition == "lowgain":
-                corrvalue=0.25
+                corrvalue=0.20
                 incorrvalue=0
                 topLabel="+$%.2f"%(abs(corrvalue))
                 bottomLabel="+$%.2f"%(abs(incorrvalue))
             
             if condition == "highgain":
-                corrvalue=0.50
+                corrvalue=1.00
                 incorrvalue=0
                 topLabel="+$%.2f"%(abs(corrvalue))
                 bottomLabel="+$%.2f"%(abs(incorrvalue))
             
             if condition == "lowloss":
                 corrvalue=0
-                incorrvalue=-0.25
+                incorrvalue=-0.20
                 topLabel="-$%.2f"%(abs(corrvalue))
                 bottomLabel="-$%.2f"%(abs(incorrvalue))
             
             if condition == "highloss":
                 corrvalue=0
-                incorrvalue=-0.5
+                incorrvalue=-1.00
                 topLabel="-$%.2f"%(abs(corrvalue))
                 bottomLabel="-$%.2f"%(abs(incorrvalue))
                 
@@ -4134,6 +4152,15 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if thisSession is not None:
             # if running in a Session with a Liaison client, send data up to now
             thisSession.sendExperimentData()
+        # get names of stimulus parameters
+        if trials.trialList in ([], [None], None):
+            params = []
+        else:
+            params = trials.trialList[0].keys()
+        # save data for this loop
+        trials.saveAsText(filename + 'trials.csv', delim=',',
+            stimOut=params,
+            dataOut=['n','all_mean','all_std', 'all_raw'])
         
         # --- Prepare to start Routine "breakScreen" ---
         # create an object to store info about Routine breakScreen
@@ -4300,6 +4327,15 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     if thisSession is not None:
         # if running in a Session with a Liaison client, send data up to now
         thisSession.sendExperimentData()
+    # get names of stimulus parameters
+    if runs.trialList in ([], [None], None):
+        params = []
+    else:
+        params = runs.trialList[0].keys()
+    # save data for this loop
+    runs.saveAsText(filename + 'runs.csv', delim=',',
+        stimOut=params,
+        dataOut=['n','all_mean','all_std', 'all_raw'])
     
     # --- Prepare to start Routine "done" ---
     # create an object to store info about Routine done

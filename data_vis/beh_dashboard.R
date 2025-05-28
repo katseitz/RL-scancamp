@@ -93,7 +93,7 @@ server <- function(input, output, session) {
              outcome_onset, outcome_offset, outcome_duration,
              fixation_onset, optedFor, optimalResponse, accuracy,
              OutcomeValue, leftImage, rightImage, ImageID, optedImg,
-             ImagePair) %>%
+             ImagePair, runningBankTotal) %>%
       filter(!is.na(cue_onset))
     
     return(df)
@@ -175,17 +175,20 @@ server <- function(input, output, session) {
   })
   
   output$selectionHistogram <- renderPlot({
-    ggplot(df_clean, aes(x = optedImg, fill = condition)) +
+    df <- participant_data()
+    
+    ggplot(df, aes(x = optedImg, fill = ImagePair)) +
       geom_bar(position = position_dodge(width = 0.9)) +
-      labs(title = paste("Selection Frequency by Image (Grouped by Pair) - Participant:"),
+      labs(title = paste("Selection Frequency by Image (Grouped by Pair) - Participant:", input$participant),
            x = "Chosen Image", y = "Count", fill = "Image Pair") +
       theme_minimal(base_size = 14)
   })
+  
   output$bankPlot <- renderPlot({
     df <- participant_data()
-    if (!"bank" %in% colnames(df)) return()
+    if (!"runningBankTotal" %in% colnames(df)) return()
     
-    ggplot(df, aes(x = trial_id, y = bank)) +
+    ggplot(df, aes(x = trial_id, y = runningBankTotal)) +
       geom_line(color = "#4DBBD5FF", size = 1.2) +
       labs(title = paste("Cumulative Bank Over Trials (Participant:", input$participant, ")"),
            x = "Trial ID", y = "Bank Value") +
