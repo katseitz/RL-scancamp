@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Wed May 28 11:08:29 2025
+    on Thu Jun 12 10:08:22 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -659,7 +659,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # --- Initialize components for Routine "lossDirs" ---
     advanceScreen4 = keyboard.Keyboard(deviceName='advanceScreen4')
     lossDirText = visual.TextStim(win=win, name='lossDirText',
-        text='Sometimes you can lose money during the game!\n\nFor the HIGH LOSE pair, you can lose $0.00 if you are correct or lose $1.00 if you are incorrect.\n\nFor the LOW LOSE pair, you can lose $0.20 if you are correct or lose $0.20 if you are incorrect.\n\nThere will be a box around the pictures. The numbers in the box will tell you whether you can lose a high or low amount.\n\nThe money you lose will be taken away from the bonus money you win at the end of the game, so try your best!',
+        text='Sometimes you can lose money during the game!\n\nFor the HIGH LOSE pair, you can lose $0.00 if you are correct or lose $1.00 if you are incorrect.\n\nFor the LOW LOSE pair, you can lose $0.00 if you are correct or lose $0.20 if you are incorrect.\n\nThere will be a box around the pictures. The numbers in the box will tell you whether you can lose a high or low amount.\n\nThe money you lose will be taken away from the bonus money you win at the end of the game, so try your best!',
         font='Arial',
         pos=(-6, 0), draggable=False, height=1.0, wrapWidth=20.0, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
