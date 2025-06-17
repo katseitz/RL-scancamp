@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Tue Jun 17 14:32:44 2025
+    on Tue Jun 17 15:10:56 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -829,7 +829,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     Accuracy = None
     # Run 'Begin Experiment' code from definePracOut
     bank = 0
-    def choose_outcome_from_cue(response):
+    def choose_prac_outcome_from_cue(response):
         '''Choose an outcome to display (if True, then the trial action will occur, if False it won't) 
         by setting a high or low threshold based on the response and image chosen, and then
         see if a random "roll" exceeds the threshold.
@@ -3080,8 +3080,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # set up handler to look after randomisation of conditions etc
         practice2 = data.TrialHandler2(
             name='practice2',
-            nReps=5.0, 
-            method='random', 
+            nReps=1.0, 
+            method='sequential', 
             extraInfo=expInfo, 
             originPath=-1, 
             trialList=data.importConditions('conditions/prac2Trials.csv'), 
@@ -3625,8 +3625,16 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             #    operator = ""
                 trueOperator = "-"
                 falseOperator = "-"
+            print('-----------------------------')
+            print(sidePositions[optimalImg])
+            print(prac2Resp.keys)
+            print(choose_prac_outcome_from_cue(prac2Resp))
+            print('first if')
+            print(sidePositions[optimalImg] == prac2Resp.keys)
+            print('second if')
+            print(optcorrect)
             if prac2Resp.keys:
-                outcome = choose_outcome_from_cue(prac2Resp)
+                outcome = choose_prac_outcome_from_cue(prac2Resp)
                 currentLoop.addData('outcome', outcome)
                 if outcome:
                     # If the outcome was true, display the change. 
@@ -3640,7 +3648,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     # If outcome was False, the trial doesn't change anything.
                     # Still display the operator for trial condition
                     change = incorrvalue
-                    outcome_msg = "%s$%.2f\nInorrect" % (falseOperator,abs(change))
+                    outcome_msg = "%s$%.2f\nIncorrect" % (falseOperator,abs(change))
                     outcome_image = None
                     Feedback=0
             else: # give incorrect outcome for missed trials
@@ -3782,7 +3790,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 routineTimer.addTime(-1.000000)
             thisExp.nextEntry()
             
-        # completed 5.0 repeats of 'practice2'
+        # completed 1.0 repeats of 'practice2'
         
         if thisSession is not None:
             # if running in a Session with a Liaison client, send data up to now
@@ -4950,7 +4958,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     # If outcome was False, the trial doesn't change anything.
                     # Still display the operator for trial condition
                     change = incorrvalue
-                    outcome_msg = "%s$%.2f\nInorrect" % (falseOperator,abs(change))
+                    outcome_msg = "%s$%.2f\nIncorrect" % (falseOperator,abs(change))
                     outcome_image = None
                     Feedback=0
             else: # give incorrect outcome for missed trials
