@@ -963,6 +963,23 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="lossTextCode" valType="code" updates="None" name="name"/>
       </CodeComponent>
+      <CodeComponent name="framePracOn" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="frame = visual.Rect(&amp;#10;    win=win, name='frame1',&amp;#10;    width=(20,13)[0], height=(20,13)[1],&amp;#10;    ori=0.0, pos=(0, 0), draggable=False, anchor='center',&amp;#10;    lineWidth=4.0,&amp;#10;    colorSpace='rgb', lineColor='white', fillColor=None,&amp;#10;    opacity=None, depth=-3.0, interpolate=True)" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="frame = new visual.Rect({&quot;win&quot;: psychoJS.window, &quot;name&quot;: &quot;frame1&quot;, &quot;width&quot;: [20, 13][0], &quot;height&quot;: [20, 13][1], &quot;ori&quot;: 0.0, &quot;pos&quot;: [0, 0], &quot;draggable&quot;: false, &quot;anchor&quot;: &quot;center&quot;, &quot;lineWidth&quot;: 4.0, &quot;colorSpace&quot;: &quot;rgb&quot;, &quot;lineColor&quot;: &quot;white&quot;, &quot;fillColor&quot;: null, &quot;opacity&quot;: null, &quot;depth&quot;: (- 3.0), &quot;interpolate&quot;: true});&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="frame.setAutoDraw(true);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="frame.setAutoDraw(True)" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="framePracOn" valType="code" updates="None" name="name"/>
+      </CodeComponent>
     </Routine>
     <Routine name="routine_1">
       <RoutineSettingsComponent name="routine_1" plugin="None">
@@ -1478,7 +1495,7 @@
         <Param val="bank = 0&amp;#10;def choose_outcome_from_cue(response):&amp;#10;    '''Choose an outcome to display (if True, then the trial action will occur, if False it won't) &amp;#10;    by setting a high or low threshold based on the response and image chosen, and then&amp;#10;    see if a random &quot;roll&quot; exceeds the threshold.&amp;#10;&amp;#10;     The roll must be greater than threshold to return True, so a high probability will have a low&amp;#10;     threshold, and vice versa.'''&amp;#10;       &amp;#10;    if sidePositions[optimalImg] == cueResp.keys:&amp;#10;        return True if (optcorrect==1) else False&amp;#10;    elif sidePositions[suboptimalImg] == cueResp.keys:&amp;#10;        return True if (optcorrect==0) else False&amp;#10;&amp;#10;Accuracy_OptChoice=None" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="bank = 0;&amp;#10;function choose_outcome_from_cue(response) {&amp;#10;    /*Choose an outcome to display (if True, then the trial action will occur, if False it won't)&amp;#10;    by setting a high or low threshold based on the response and image chosen, and then&amp;#10;    see if a random &quot;roll&quot; exceeds the threshold.&amp;#10;&amp;#10;    The roll must be greater than threshold to return True, so a high probability will have a low&amp;#10;    threshold, and vice versa.*/&amp;#10;    if ((sidePositions[optimalImg] === cueResp.keys)) {&amp;#10;        return ((optcorrect === 1) ? true : false);&amp;#10;    } else {&amp;#10;        if ((sidePositions[suboptimalImg] === cueResp.keys)) {&amp;#10;            return ((optcorrect === 0) ? true : false);&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;Accuracy_OptChoice = null;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="if ((condition === &quot;highgain&quot;)) {&amp;#10;    trueOperator = &quot;+&quot;;&amp;#10;    falseOperator = &quot;+&quot;;&amp;#10;} else {&amp;#10;    if ((condition === &quot;lowgain&quot;)) {&amp;#10;        trueOperator = &quot;+&quot;;&amp;#10;        falseOperator = &quot;+&quot;;&amp;#10;    } else {&amp;#10;        if ((condition === &quot;highloss&quot;)) {&amp;#10;            trueOperator = &quot;-&quot;;&amp;#10;            falseOperator = &quot;-&quot;;&amp;#10;        } else {&amp;#10;            trueOperator = &quot;-&quot;;&amp;#10;            falseOperator = &quot;-&quot;;&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;if (cueResp.keys) {&amp;#10;    outcome = choose_outcome_from_cue(cueResp);&amp;#10;    currentLoop.addData(&quot;outcome&quot;, outcome);&amp;#10;    if (outcome) {&amp;#10;        change = corrvalue;&amp;#10;        outcome_msg = `${trueOperator}$${Math.abs(change)}`;&amp;#10;        outcome_image = null;&amp;#10;        Feedback = 1;&amp;#10;    } else {&amp;#10;        change = incorrvalue;&amp;#10;        outcome_msg = `${falseOperator}$${Math.abs(change)}`;&amp;#10;        outcome_image = null;&amp;#10;        Feedback = 0;&amp;#10;    }&amp;#10;} else {&amp;#10;    change = incorrvalue;&amp;#10;    currentLoop.addData(&quot;outcome&quot;, null);&amp;#10;    outcome_msg = `${falseOperator}$${Math.abs(change)}`;&amp;#10;    outcome_image = null;&amp;#10;    Feedback = &quot;NA&quot;;&amp;#10;}&amp;#10;bank += change;&amp;#10;currentLoop.addData(&quot;Feedback&quot;, Feedback);&amp;#10;currentLoop.addData(&quot;gainLossAmount&quot;, change);&amp;#10;currentLoop.addData(&quot;runningBankTotal&quot;, bank);&amp;#10;currentLoop.addData(&quot;feedbackTime&quot;, fmriClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="if condition == 'highgain':&amp;#10;    trueOperator = &quot;+&quot;&amp;#10;    falseOperator = &quot;+&quot;&amp;#10;elif condition == 'lowgain':&amp;#10;    trueOperator = &quot;+&quot;&amp;#10;    falseOperator= &quot;+&quot;&amp;#10;elif condition == 'highloss':&amp;#10;    trueOperator = &quot;-&quot;&amp;#10;    falseOperator= &quot;-&quot;&amp;#10;else: # condition == 'lowloss'&amp;#10;#    operator = &quot;&quot;&amp;#10;    trueOperator = &quot;-&quot;&amp;#10;    falseOperator = &quot;-&quot;&amp;#10;if cueResp.keys:&amp;#10;    outcome = choose_outcome_from_cue(cueResp)&amp;#10;    currentLoop.addData('outcome', outcome)&amp;#10;    if outcome:&amp;#10;        # If the outcome was true, display the change. &amp;#10;        # Format prettily using the operator instead of just using the change value.&amp;#10;        change = corrvalue&amp;#10;        outcome_msg = &quot;%s$%.2f&quot;%(trueOperator, abs(change))&amp;#10;        outcome_image = None&amp;#10;        Feedback=1&amp;#10;&amp;#10;    else: &amp;#10;        # If outcome was False, the trial doesn't change anything.&amp;#10;        # Still display the operator for trial condition&amp;#10;        change = incorrvalue&amp;#10;        outcome_msg = &quot;%s$%.2f&quot; % (falseOperator,abs(change))&amp;#10;        outcome_image = None&amp;#10;        Feedback=0&amp;#10;else: # give incorrect outcome for missed trials&amp;#10;    change = incorrvalue&amp;#10;    currentLoop.addData('outcome', None)&amp;#10;    outcome_msg = &quot;%s$%.2f&quot; % (falseOperator,abs(change))&amp;#10;    outcome_image = None&amp;#10;    Feedback=&quot;NA&quot;&amp;#10;&amp;#10;&amp;#10;&amp;#10;# Add a positive or negative change&amp;#10;bank += change&amp;#10;&amp;#10;currentLoop.addData('Feedback', Feedback)&amp;#10;currentLoop.addData('gainLossAmount', change)&amp;#10;currentLoop.addData('runningBankTotal', bank)&amp;#10;currentLoop.addData('feedbackTime', fmriClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="if condition == 'highgain':&amp;#10;    trueOperator = &quot;+&quot;&amp;#10;    falseOperator = &quot;+&quot;&amp;#10;elif condition == 'lowgain':&amp;#10;    trueOperator = &quot;+&quot;&amp;#10;    falseOperator= &quot;+&quot;&amp;#10;elif condition == 'highloss':&amp;#10;    trueOperator = &quot;-&quot;&amp;#10;    falseOperator= &quot;-&quot;&amp;#10;else: # condition == 'lowloss'&amp;#10;#    operator = &quot;&quot;&amp;#10;    trueOperator = &quot;-&quot;&amp;#10;    falseOperator = &quot;-&quot;&amp;#10;if cueResp.keys:&amp;#10;    outcome = choose_outcome_from_cue(cueResp)&amp;#10;    currentLoop.addData('outcome', outcome)&amp;#10;    if outcome:&amp;#10;        # If the outcome was true, display the change. &amp;#10;        # Format prettily using the operator instead of just using the change value.&amp;#10;        change = corrvalue&amp;#10;        outcome_msg = &quot;%s$%.2f\nCorrect&quot;%(trueOperator, abs(change))&amp;#10;        outcome_image = None&amp;#10;        Feedback=1&amp;#10;&amp;#10;    else: &amp;#10;        # If outcome was False, the trial doesn't change anything.&amp;#10;        # Still display the operator for trial condition&amp;#10;        change = incorrvalue&amp;#10;        outcome_msg = &quot;%s$%.2f\nInorrect&quot; % (falseOperator,abs(change))&amp;#10;        outcome_image = None&amp;#10;        Feedback=0&amp;#10;else: # give incorrect outcome for missed trials&amp;#10;    change = incorrvalue&amp;#10;    currentLoop.addData('outcome', None)&amp;#10;    outcome_msg = &quot;%s$%.2f\nIncorrect&quot; % (falseOperator,abs(change))&amp;#10;    outcome_image = None&amp;#10;    Feedback=&quot;NA&quot;&amp;#10;&amp;#10;&amp;#10;&amp;#10;# Add a positive or negative change&amp;#10;bank += change&amp;#10;&amp;#10;currentLoop.addData('Feedback', Feedback)&amp;#10;currentLoop.addData('gainLossAmount', change)&amp;#10;currentLoop.addData('runningBankTotal', bank)&amp;#10;currentLoop.addData('feedbackTime', fmriClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -2150,6 +2167,447 @@
         <Param val="True" valType="bool" updates="constant" name="syncScreenRefresh"/>
       </KeyboardComponent>
     </Routine>
+    <Routine name="prac2Cue">
+      <RoutineSettingsComponent name="prac2Cue" plugin="None">
+        <Param val="none" valType="str" updates="None" name="backgroundFit"/>
+        <Param val="" valType="str" updates="None" name="backgroundImg"/>
+        <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
+        <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
+        <Param val="" valType="str" updates="constant" name="desc"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
+        <Param val="prac2Cue" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="constant" name="skipIf"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
+      </RoutineSettingsComponent>
+      <ImageComponent name="prac2LeftCue" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
+        <Param val="False" valType="bool" updates="constant" name="flipVert"/>
+        <Param val="$leftImage" valType="file" updates="set during: prac2Cue.ISI" name="image"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="" valType="str" updates="constant" name="mask"/>
+        <Param val="prac2LeftCue" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(-4, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="(7, 7)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.5" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="2.5" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="128" valType="num" updates="constant" name="texture resolution"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+      </ImageComponent>
+      <ImageComponent name="prac2RightCue" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
+        <Param val="False" valType="bool" updates="constant" name="flipVert"/>
+        <Param val="$rightImage" valType="file" updates="set during: prac2Cue.ISI" name="image"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="" valType="str" updates="constant" name="mask"/>
+        <Param val="prac2RightCue" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(4, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="(7, 7)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.5" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="2.5" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="128" valType="num" updates="constant" name="texture resolution"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+      </ImageComponent>
+      <KeyboardComponent name="prac2Resp" plugin="None">
+        <Param val="allowedKeys" valType="list" updates="constant" name="allowedKeys"/>
+        <Param val="$correct" valType="str" updates="constant" name="correctAns"/>
+        <Param val="" valType="str" updates="None" name="deviceLabel"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="True" valType="bool" updates="constant" name="discard previous"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="forceEndRoutine"/>
+        <Param val="prac2Resp" valType="code" updates="None" name="name"/>
+        <Param val="press" valType="str" updates="constant" name="registerOn"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.5" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="2.5" valType="code" updates="constant" name="stopVal"/>
+        <Param val="first key" valType="str" updates="constant" name="store"/>
+        <Param val="True" valType="bool" updates="constant" name="storeCorrect"/>
+        <Param val="True" valType="bool" updates="constant" name="syncScreenRefresh"/>
+      </KeyboardComponent>
+      <CodeComponent name="setCuesPrac" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="cuePairPrac = {&amp;#10;    'highgain': {'optimalChoice':  'prac1.png', 'suboptimalChoice': 'prac2.png'}, &amp;#10;    'lowgain': {'optimalChoice': 'prac3.png', 'suboptimalChoice': 'prac4.png'}, &amp;#10;    'highloss': {'optimalChoice': 'prac5.png', 'suboptimalChoice': 'prac6.png'},&amp;#10;    'lowloss': {'optimalChoice': 'prac7.png', 'suboptimalChoice': 'prac8.png'}&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="cuePairPrac = {&quot;highgain&quot;: {&quot;optimalChoice&quot;: &quot;prac1.png&quot;, &quot;suboptimalChoice&quot;: &quot;prac2.png&quot;}, &quot;lowgain&quot;: {&quot;optimalChoice&quot;: &quot;prac3.png&quot;, &quot;suboptimalChoice&quot;: &quot;prac4.png&quot;}, &quot;highloss&quot;: {&quot;optimalChoice&quot;: &quot;prac5.png&quot;, &quot;suboptimalChoice&quot;: &quot;prac6.png&quot;}, &quot;lowloss&quot;: {&quot;optimalChoice&quot;: &quot;prac7.png&quot;, &quot;suboptimalChoice&quot;: &quot;prac8.png&quot;}};&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="logging.info(&quot;Iterating through thisTrial&quot;)&amp;#10;for value in practice2.trialList:&amp;#10;    logging.info(value)&amp;#10;&amp;#10;# update component parameters for each repeat&amp;#10;optimalImg = cuePairPrac[condition]['optimalChoice']&amp;#10;suboptimalImg = cuePairPrac[condition]['suboptimalChoice']&amp;#10;currentLoop.addData('optimalImg', optimalImg)&amp;#10;currentLoop.addData('suboptimalImg', suboptimalImg)&amp;#10;&amp;#10;&amp;#10;# Assumes button box responses are '1' for index and '2' for middle finger.&amp;#10;if np.random.uniform() &gt; 0.5:&amp;#10;    cuePositions = {responseKeys['left']:optimalImg, responseKeys['right']:suboptimalImg}&amp;#10;&amp;#10;else:&amp;#10;    cuePositions =  {responseKeys['left']:suboptimalImg, responseKeys['right']:optimalImg}&amp;#10;    &amp;#10;sidePositions = dict([(v, k) for (k, v) in cuePositions.items()])&amp;#10;&amp;#10;optimalSide='left' if sidePositions[optimalImg]==responseKeys['left'] else 'right'&amp;#10;suboptimalSide='left' if sidePositions[suboptimalImg]==responseKeys['left'] else 'right'&amp;#10;&amp;#10;currentLoop.addData('optimalSide', optimalSide)&amp;#10;currentLoop.addData('suboptimalSide', suboptimalSide)&amp;#10;currentLoop.addData('optimalResponse',sidePositions[optimalImg])&amp;#10;currentLoop.addData('suboptimalResponse',sidePositions[suboptimalImg])&amp;#10;leftImage = 'stimuli_sets/'+cuePositions[responseKeys['left']]&amp;#10;currentLoop.addData('leftImage', leftImage)&amp;#10;rightImage = 'stimuli_sets/' +cuePositions[responseKeys['right']]&amp;#10;currentLoop.addData('rightImage', rightImage)&amp;#10;print(leftImage)&amp;#10;print(rightImage)&amp;#10;&amp;#10;# Set the &quot;correct&quot; response by choosing the one that will give the better outcome.&amp;#10;# That's a higher probability of winning in gain conditions and a lower probability &amp;#10;# of losing in loss conditions. Used for analysis, not for choosing outcomes.&amp;#10;correct = sidePositions[optimalImg]" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="if ((prac2Resp.keys === responseKeys[&quot;left&quot;])) {&amp;#10;    currentLoop.addData(&quot;optedSide&quot;, &quot;left&quot;);&amp;#10;    currentLoop.addData(&quot;optedImg&quot;, leftImage);&amp;#10;} else {&amp;#10;    if ((prac2Resp.keys === responseKeys[&quot;right&quot;])) {&amp;#10;        currentLoop.addData(&quot;optedSide&quot;, &quot;right&quot;);&amp;#10;        currentLoop.addData(&quot;optedImg&quot;, rightImage);&amp;#10;    } else {&amp;#10;        currentLoop.addData(&quot;optedSide&quot;, &quot;NA&quot;);&amp;#10;        currentLoop.addData(&quot;optedImg&quot;, &quot;NA&quot;);&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="if prac2Resp.keys == responseKeys['left']:&amp;#10;    currentLoop.addData('optedSide', 'left')&amp;#10;    currentLoop.addData('optedImg', leftImage)&amp;#10;    &amp;#10;elif prac2Resp.keys == responseKeys['right']:&amp;#10;    currentLoop.addData('optedSide', 'right')&amp;#10;    currentLoop.addData('optedImg', rightImage)&amp;#10;    &amp;#10;else: &amp;#10;    currentLoop.addData('optedSide', 'NA')&amp;#10;    currentLoop.addData('optedImg', 'NA')" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="setCuesPrac" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <CodeComponent name="pracSelect" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="cueEndTime = 3;&amp;#10;selectionIndicator.status = NOT_STARTED;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="# Initialize cue end time for cues and selection indicator.&amp;#10;# If no response is made in this time, the trial ends.&amp;#10;# Otherwise, cueEndTime is updated to response&amp;#10;# time plus the selection duration.&amp;#10;cueEndTime = 3&amp;#10;selectionIndicator.status = NOT_STARTED" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="# If the selection has been drawn for the selection duration,&amp;#10;# or the trial should end (cutting off the selection duration), end the routine&amp;#10;if t &gt; cueEndTime:&amp;#10;    continueRoutine = False&amp;#10;&amp;#10;# Start Drawing Selection Indicator if Selection has been made&amp;#10;if prac2Resp.keys and selectionIndicator.status == NOT_STARTED:&amp;#10;    #cueComponents.append(selectionIndicator)&amp;#10;    selectionIndicator.status = STARTED&amp;#10;    selectionIndicator.setPos(selectionPosition(prac2Resp.keys))&amp;#10;    selectionIndicator.setAutoDraw(True)&amp;#10;    #if getSnapshots: win.getMovieFrame()&amp;#10;    # Set End Time, clip to end of trial length (4 sec max)&amp;#10;    # Don't worry about end of selection display in fMRI&amp;#10;    #cueEndTime = t + selectionDuration" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="if ((t &gt; cueEndTime)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;if ((prac2Resp.keys &amp;&amp; (selectionIndicator.status === NOT_STARTED))) {&amp;#10;    selectionIndicator.status = PsychoJS.Status.STARTED;&amp;#10;    selectionIndicator.setPos(selectionPosition(prac2Resp.keys));&amp;#10;    selectionIndicator.setAutoDraw(true);&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="selectionIndicator.setAutoDraw(false);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="selectionIndicator.setAutoDraw(False)" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="pracSelect" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <StaticComponent name="ISI" plugin="None">
+        <Param val="" valType="code" updates="None" name="code"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="ISI" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="0.5" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="None" name="syncScreenRefresh"/>
+      </StaticComponent>
+      <CodeComponent name="pracFrameLabels" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="topLabel=None&amp;#10;bottomLabel=None&amp;#10;framecolor=None&amp;#10;&amp;#10;topFrameText = visual.TextStim(win=win, name='topFrameText',&amp;#10;    text='',&amp;#10;    font='Arial',&amp;#10;    pos=(0, 5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, &amp;#10;    color='white', colorSpace='rgb', opacity=None, &amp;#10;    languageStyle='LTR',&amp;#10;    depth=-10.0);&amp;#10;bottomFrameText = visual.TextStim(win=win, name='bottomFrameText',&amp;#10;    text='',&amp;#10;    font='Arial',&amp;#10;    pos=(0, -5.5), draggable=False, height=0.7, wrapWidth=None, ori=0.0, &amp;#10;    color='white', colorSpace='rgb', opacity=None, &amp;#10;    languageStyle='LTR',&amp;#10;    depth=-11.0);" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="topLabel = null;&amp;#10;bottomLabel = null;&amp;#10;framecolor = null;&amp;#10;topFrameText = new visual.TextStim({&quot;win&quot;: psychoJS.window, &quot;name&quot;: &quot;topFrameText&quot;, &quot;text&quot;: &quot;&quot;, &quot;font&quot;: &quot;Arial&quot;, &quot;pos&quot;: [0, 5.5], &quot;draggable&quot;: false, &quot;height&quot;: 0.7, &quot;wrapWidth&quot;: null, &quot;ori&quot;: 0.0, &quot;color&quot;: &quot;white&quot;, &quot;colorSpace&quot;: &quot;rgb&quot;, &quot;opacity&quot;: null, &quot;languageStyle&quot;: &quot;LTR&quot;, &quot;depth&quot;: (- 10.0)});&amp;#10;bottomFrameText = new visual.TextStim({&quot;win&quot;: psychoJS.window, &quot;name&quot;: &quot;bottomFrameText&quot;, &quot;text&quot;: &quot;&quot;, &quot;font&quot;: &quot;Arial&quot;, &quot;pos&quot;: [0, (- 5.5)], &quot;draggable&quot;: false, &quot;height&quot;: 0.7, &quot;wrapWidth&quot;: null, &quot;ori&quot;: 0.0, &quot;color&quot;: &quot;white&quot;, &quot;colorSpace&quot;: &quot;rgb&quot;, &quot;opacity&quot;: null, &quot;languageStyle&quot;: &quot;LTR&quot;, &quot;depth&quot;: (- 11.0)});&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="if ((condition === &quot;lowgain&quot;)) {&amp;#10;    corrvalue = 0.2;&amp;#10;    incorrvalue = 0;&amp;#10;    topLabel = `+$${Math.abs(corrvalue)}`;&amp;#10;    bottomLabel = `+$${Math.abs(incorrvalue)}`;&amp;#10;}&amp;#10;if ((condition === &quot;highgain&quot;)) {&amp;#10;    corrvalue = 1.0;&amp;#10;    incorrvalue = 0;&amp;#10;    topLabel = `+$${Math.abs(corrvalue)}`;&amp;#10;    bottomLabel = `+$${Math.abs(incorrvalue)}`;&amp;#10;}&amp;#10;if ((condition === &quot;lowloss&quot;)) {&amp;#10;    corrvalue = 0;&amp;#10;    incorrvalue = (- 0.2);&amp;#10;    topLabel = `-$${Math.abs(corrvalue)}`;&amp;#10;    bottomLabel = `-$${Math.abs(incorrvalue)}`;&amp;#10;}&amp;#10;if ((condition === &quot;highloss&quot;)) {&amp;#10;    corrvalue = 0;&amp;#10;    incorrvalue = (- 1.0);&amp;#10;    topLabel = `-$${Math.abs(corrvalue)}`;&amp;#10;    bottomLabel = `-$${Math.abs(incorrvalue)}`;&amp;#10;}&amp;#10;topFrameText.setText(topLabel);&amp;#10;topFrameText.status = NOT_STARTED;&amp;#10;bottomFrameText.setText(bottomLabel);&amp;#10;bottomFrameText.status = NOT_STARTED;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="if condition == &quot;lowgain&quot;:&amp;#10;    corrvalue=0.20&amp;#10;    incorrvalue=0&amp;#10;    topLabel=&quot;+$%.2f&quot;%(abs(corrvalue))&amp;#10;    bottomLabel=&quot;+$%.2f&quot;%(abs(incorrvalue))&amp;#10;&amp;#10;if condition == &quot;highgain&quot;:&amp;#10;    corrvalue=1.00&amp;#10;    incorrvalue=0&amp;#10;    topLabel=&quot;+$%.2f&quot;%(abs(corrvalue))&amp;#10;    bottomLabel=&quot;+$%.2f&quot;%(abs(incorrvalue))&amp;#10;&amp;#10;if condition == &quot;lowloss&quot;:&amp;#10;    corrvalue=0&amp;#10;    incorrvalue=-0.20&amp;#10;    topLabel=&quot;-$%.2f&quot;%(abs(corrvalue))&amp;#10;    bottomLabel=&quot;-$%.2f&quot;%(abs(incorrvalue))&amp;#10;&amp;#10;if condition == &quot;highloss&quot;:&amp;#10;    corrvalue=0&amp;#10;    incorrvalue=-1.00&amp;#10;    topLabel=&quot;-$%.2f&quot;%(abs(corrvalue))&amp;#10;    bottomLabel=&quot;-$%.2f&quot;%(abs(incorrvalue))&amp;#10;    &amp;#10;topFrameText.setText(topLabel)&amp;#10;topFrameText.status = NOT_STARTED&amp;#10;bottomFrameText.setText(bottomLabel)&amp;#10;bottomFrameText.status = NOT_STARTED" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="if t &gt; .5 and topFrameText.status == NOT_STARTED:&amp;#10;    topFrameText.setAutoDraw(True)&amp;#10;    bottomFrameText.setAutoDraw(True)&amp;#10;    topFrameText.status = STARTED" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="if (((t &gt; 0.5) &amp;&amp; (topFrameText.status === NOT_STARTED))) {&amp;#10;    topFrameText.setAutoDraw(true);&amp;#10;    bottomFrameText.setAutoDraw(true);&amp;#10;    topFrameText.status = PsychoJS.Status.STARTED;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="topFrameText.status = NOT_STARTED;&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="topFrameText.status = NOT_STARTED" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="pracFrameLabels" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+    </Routine>
+    <Routine name="prac2Jitter">
+      <RoutineSettingsComponent name="prac2Jitter" plugin="None">
+        <Param val="none" valType="str" updates="None" name="backgroundFit"/>
+        <Param val="" valType="str" updates="None" name="backgroundImg"/>
+        <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
+        <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
+        <Param val="" valType="str" updates="constant" name="desc"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
+        <Param val="prac2Jitter" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="constant" name="skipIf"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
+      </RoutineSettingsComponent>
+      <TextComponent name="prac2Fix" plugin="None">
+        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Arial" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="prac2Fix" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="$outcomeDelay" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="+" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+    </Routine>
+    <Routine name="prac2Out">
+      <RoutineSettingsComponent name="prac2Out" plugin="None">
+        <Param val="none" valType="str" updates="None" name="backgroundFit"/>
+        <Param val="" valType="str" updates="None" name="backgroundImg"/>
+        <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
+        <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
+        <Param val="" valType="str" updates="constant" name="desc"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
+        <Param val="prac2Out" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="constant" name="skipIf"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
+      </RoutineSettingsComponent>
+      <CodeComponent name="pracRightChoice" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="Accuracy = None" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="Accuracy = null;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="if ((prac2Resp.keys === sidePositions[optimalImg])) {&amp;#10;    Choice = &quot;optimal&quot;;&amp;#10;} else {&amp;#10;    if ((prac2Resp.keys === sidePositions[suboptimalImg])) {&amp;#10;        Choice = &quot;suboptimal&quot;;&amp;#10;    } else {&amp;#10;        Choice = &quot;NA&quot;;&amp;#10;    }&amp;#10;}&amp;#10;Accuracy = prac2Resp.corr;&amp;#10;currentLoop.addData(&quot;optedFor&quot;, Choice);&amp;#10;currentLoop.addData(&quot;accuracy&quot;, Accuracy);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="if prac2Resp.keys==sidePositions[optimalImg]:&amp;#10;    Choice=&quot;optimal&quot;&amp;#10;elif prac2Resp.keys==sidePositions[suboptimalImg]:&amp;#10;    Choice=&quot;suboptimal&quot;&amp;#10;else: &amp;#10;    Choice=&quot;NA&quot;&amp;#10;    &amp;#10;Accuracy=prac2Resp.corr&amp;#10;&amp;#10;currentLoop.addData('optedFor', Choice)&amp;#10;currentLoop.addData('accuracy', Accuracy)" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="pracRightChoice" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <CodeComponent name="definePracOut" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="bank = 0&amp;#10;def choose_outcome_from_cue(response):&amp;#10;    '''Choose an outcome to display (if True, then the trial action will occur, if False it won't) &amp;#10;    by setting a high or low threshold based on the response and image chosen, and then&amp;#10;    see if a random &quot;roll&quot; exceeds the threshold.&amp;#10;&amp;#10;     The roll must be greater than threshold to return True, so a high probability will have a low&amp;#10;     threshold, and vice versa.'''&amp;#10;       &amp;#10;    if sidePositions[optimalImg] == prac2Resp.keys:&amp;#10;        return True if (optcorrect==1) else False&amp;#10;    elif sidePositions[suboptimalImg] == prac2Resp.keys:&amp;#10;        return True if (optcorrect==0) else False&amp;#10;&amp;#10;Accuracy_OptChoice=None" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="bank = 0;&amp;#10;function choose_outcome_from_cue(response) {&amp;#10;    /*Choose an outcome to display (if True, then the trial action will occur, if False it won't)&amp;#10;    by setting a high or low threshold based on the response and image chosen, and then&amp;#10;    see if a random &quot;roll&quot; exceeds the threshold.&amp;#10;&amp;#10;    The roll must be greater than threshold to return True, so a high probability will have a low&amp;#10;    threshold, and vice versa.*/&amp;#10;    if ((sidePositions[optimalImg] === prac2Resp.keys)) {&amp;#10;        return ((optcorrect === 1) ? true : false);&amp;#10;    } else {&amp;#10;        if ((sidePositions[suboptimalImg] === prac2Resp.keys)) {&amp;#10;            return ((optcorrect === 0) ? true : false);&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;Accuracy_OptChoice = null;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="if ((condition === &quot;highgain&quot;)) {&amp;#10;    trueOperator = &quot;+&quot;;&amp;#10;    falseOperator = &quot;+&quot;;&amp;#10;} else {&amp;#10;    if ((condition === &quot;lowgain&quot;)) {&amp;#10;        trueOperator = &quot;+&quot;;&amp;#10;        falseOperator = &quot;+&quot;;&amp;#10;    } else {&amp;#10;        if ((condition === &quot;highloss&quot;)) {&amp;#10;            trueOperator = &quot;-&quot;;&amp;#10;            falseOperator = &quot;-&quot;;&amp;#10;        } else {&amp;#10;            trueOperator = &quot;-&quot;;&amp;#10;            falseOperator = &quot;-&quot;;&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;if (prac2Resp.keys) {&amp;#10;    outcome = choose_outcome_from_cue(prac2Resp);&amp;#10;    currentLoop.addData(&quot;outcome&quot;, outcome);&amp;#10;    if (outcome) {&amp;#10;        change = corrvalue;&amp;#10;        outcome_msg = `${trueOperator}$${Math.abs(change)}`;&amp;#10;        outcome_image = null;&amp;#10;        Feedback = 1;&amp;#10;    } else {&amp;#10;        change = incorrvalue;&amp;#10;        outcome_msg = `${falseOperator}$${Math.abs(change)}`;&amp;#10;        outcome_image = null;&amp;#10;        Feedback = 0;&amp;#10;    }&amp;#10;} else {&amp;#10;    change = incorrvalue;&amp;#10;    currentLoop.addData(&quot;outcome&quot;, null);&amp;#10;    outcome_msg = `${falseOperator}$${Math.abs(change)}`;&amp;#10;    outcome_image = null;&amp;#10;    Feedback = &quot;NA&quot;;&amp;#10;}&amp;#10;bank += change;&amp;#10;currentLoop.addData(&quot;Feedback&quot;, Feedback);&amp;#10;currentLoop.addData(&quot;gainLossAmount&quot;, change);&amp;#10;currentLoop.addData(&quot;runningBankTotal&quot;, bank);&amp;#10;currentLoop.addData(&quot;feedbackTime&quot;, fmriClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="if condition == 'highgain':&amp;#10;    trueOperator = &quot;+&quot;&amp;#10;    falseOperator = &quot;+&quot;&amp;#10;elif condition == 'lowgain':&amp;#10;    trueOperator = &quot;+&quot;&amp;#10;    falseOperator= &quot;+&quot;&amp;#10;elif condition == 'highloss':&amp;#10;    trueOperator = &quot;-&quot;&amp;#10;    falseOperator= &quot;-&quot;&amp;#10;else: # condition == 'lowloss'&amp;#10;#    operator = &quot;&quot;&amp;#10;    trueOperator = &quot;-&quot;&amp;#10;    falseOperator = &quot;-&quot;&amp;#10;if prac2Resp.keys:&amp;#10;    outcome = choose_outcome_from_cue(prac2Resp)&amp;#10;    currentLoop.addData('outcome', outcome)&amp;#10;    if outcome:&amp;#10;        # If the outcome was true, display the change. &amp;#10;        # Format prettily using the operator instead of just using the change value.&amp;#10;        change = corrvalue&amp;#10;        outcome_msg = &quot;%s$%.2f\nCorrect&quot;%(trueOperator, abs(change))&amp;#10;        outcome_image = None&amp;#10;        Feedback=1&amp;#10;&amp;#10;    else: &amp;#10;        # If outcome was False, the trial doesn't change anything.&amp;#10;        # Still display the operator for trial condition&amp;#10;        change = incorrvalue&amp;#10;        outcome_msg = &quot;%s$%.2f\nInorrect&quot; % (falseOperator,abs(change))&amp;#10;        outcome_image = None&amp;#10;        Feedback=0&amp;#10;else: # give incorrect outcome for missed trials&amp;#10;    change = incorrvalue&amp;#10;    currentLoop.addData('outcome', None)&amp;#10;    outcome_msg = &quot;%s$%.2f\nIncorrect&quot; % (falseOperator,abs(change))&amp;#10;    outcome_image = None&amp;#10;    Feedback=&quot;NA&quot;&amp;#10;&amp;#10;&amp;#10;&amp;#10;# Add a positive or negative change&amp;#10;bank += change&amp;#10;&amp;#10;currentLoop.addData('Feedback', Feedback)&amp;#10;currentLoop.addData('gainLossAmount', change)&amp;#10;currentLoop.addData('runningBankTotal', bank)&amp;#10;currentLoop.addData('feedbackTime', fmriClock.getTime())&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="expInfo[&quot;bank&quot;] = bank;&amp;#10;currentLoop.addData(&quot;feedbackOffTime&quot;, fmriClock.getTime());&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="expInfo['bank'] = bank&amp;#10;currentLoop.addData('feedbackOffTime', fmriClock.getTime())" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="definePracOut" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <CodeComponent name="frameOff" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="topFrameText.setAutoDraw(false);&amp;#10;bottomFrameText.setAutoDraw(false);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="topFrameText.setAutoDraw(False)&amp;#10;bottomFrameText.setAutoDraw(False)" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="frameOff" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <TextComponent name="outcomePracText" plugin="None">
+        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Arial" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="1.75" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="outcomePracText" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="1.0" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="$outcome_msg" valType="str" updates="set every repeat" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+    </Routine>
+    <Routine name="check1">
+      <RoutineSettingsComponent name="check1" plugin="None">
+        <Param val="none" valType="str" updates="None" name="backgroundFit"/>
+        <Param val="" valType="str" updates="None" name="backgroundImg"/>
+        <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
+        <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
+        <Param val="" valType="str" updates="constant" name="desc"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
+        <Param val="check1" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="constant" name="skipIf"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
+      </RoutineSettingsComponent>
+      <TextComponent name="check1Text" plugin="None">
+        <Param val="1.0000, 1.0000, 1.0000" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Arial" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="check1Text" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="Which image was correct most of the time?&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;Select the image now. " valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+        <Param val="30" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <ImageComponent name="check2Image" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
+        <Param val="False" valType="bool" updates="constant" name="flipVert"/>
+        <Param val="stimuli_sets/prac2.png" valType="file" updates="constant" name="image"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="" valType="str" updates="constant" name="mask"/>
+        <Param val="check2Image" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(-4, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="(7, 7)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="128" valType="num" updates="constant" name="texture resolution"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+      </ImageComponent>
+      <ImageComponent name="check2Image_2" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
+        <Param val="False" valType="bool" updates="constant" name="flipVert"/>
+        <Param val="stimuli_sets/prac1.png" valType="file" updates="constant" name="image"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="" valType="str" updates="constant" name="mask"/>
+        <Param val="check2Image_2" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(4, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="(7, 7)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="128" valType="num" updates="constant" name="texture resolution"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+      </ImageComponent>
+      <CodeComponent name="check1Select" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="selectionIndicatorPrac.status = NOT_STARTED;&amp;#10;t_started = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="# Initialize cue end time for cues and selection indicator.&amp;#10;# If no response is made in this time, the trial ends.&amp;#10;# Otherwise, cueEndTime is updated to response&amp;#10;# time plus the selection duration.&amp;#10;&amp;#10;selectionIndicatorPrac.status = NOT_STARTED&amp;#10;t_started = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="# If the selection has been drawn for the selection duration,&amp;#10;# or the trial should end (cutting off the selection duration), end the routine&amp;#10;if t_started:&amp;#10;    if t &gt; t_started + 5:&amp;#10;        continueRoutine = False&amp;#10;&amp;#10;# Start Drawing Selection Indicator if Selection has been made&amp;#10;if check1Press.keys and selectionIndicatorPrac.status == NOT_STARTED:&amp;#10;    #cueComponents.append(selectionIndicatorPrac)&amp;#10;    selectionIndicatorPrac.status = STARTED&amp;#10;    selectionIndicatorPrac.setPos(selectionPosition(check1Press.keys))&amp;#10;    selectionIndicatorPrac.setAutoDraw(True)&amp;#10;    t_started = core.Clock().getTime()" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="if (t_started) {&amp;#10;    if ((t &gt; (t_started + 5))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;if ((check1Press.keys &amp;&amp; (selectionIndicatorPrac.status === NOT_STARTED))) {&amp;#10;    selectionIndicatorPrac.status = PsychoJS.Status.STARTED;&amp;#10;    selectionIndicatorPrac.setPos(selectionPosition(check1Press.keys));&amp;#10;    selectionIndicatorPrac.setAutoDraw(true);&amp;#10;    t_started = new util.Clock().getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="check1Select" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <KeyboardComponent name="check1Press" plugin="None">
+        <Param val="allowedKeys" valType="list" updates="constant" name="allowedKeys"/>
+        <Param val="" valType="str" updates="constant" name="correctAns"/>
+        <Param val="" valType="str" updates="None" name="deviceLabel"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="True" valType="bool" updates="constant" name="discard previous"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="forceEndRoutine"/>
+        <Param val="check1Press" valType="code" updates="None" name="name"/>
+        <Param val="press" valType="str" updates="constant" name="registerOn"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="last key" valType="str" updates="constant" name="store"/>
+        <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
+        <Param val="True" valType="bool" updates="constant" name="syncScreenRefresh"/>
+      </KeyboardComponent>
+    </Routine>
   </Routines>
   <Flow>
     <Routine name="introDir"/>
@@ -2168,12 +2626,12 @@
     <Routine name="pracDir2"/>
     <LoopInitiator loopType="TrialHandler" name="practice">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
-      <Param name="conditions" updates="None" val="[{'Trial': 1, 'leftImgPath': 'images/prac1.png', 'rightImgPath': 'images/prac2.png', 'PracCorrectScan': 1, 'PracCorrectPilot': 'left'}, {'Trial': 2, 'leftImgPath': 'images/prac2.png', 'rightImgPath': 'images/prac1.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'right'}, {'Trial': 3, 'leftImgPath': 'images/prac1.png', 'rightImgPath': 'images/prac2.png', 'PracCorrectScan': 1, 'PracCorrectPilot': 'left'}, {'Trial': 4, 'leftImgPath': 'images/prac2.png', 'rightImgPath': 'images/prac1.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'right'}, {'Trial': 5, 'leftImgPath': 'images/prac1.png', 'rightImgPath': 'images/prac2.png', 'PracCorrectScan': 1, 'PracCorrectPilot': 'left'}, {'Trial': 6, 'leftImgPath': 'images/prac2.png', 'rightImgPath': 'images/prac1.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'right'}, {'Trial': 7, 'leftImgPath': 'images/prac1.png', 'rightImgPath': 'images/prac2.png', 'PracCorrectScan': 1, 'PracCorrectPilot': 'left'}, {'Trial': 8, 'leftImgPath': 'images/prac2.png', 'rightImgPath': 'images/prac1.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'right'}, {'Trial': 9, 'leftImgPath': 'images/prac1.png', 'rightImgPath': 'images/prac2.png', 'PracCorrectScan': 1, 'PracCorrectPilot': 'left'}, {'Trial': 10, 'leftImgPath': 'images/prac2.png', 'rightImgPath': 'images/prac1.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'right'}, {'Trial': 11, 'leftImgPath': 'images/prac1.png', 'rightImgPath': 'images/prac2.png', 'PracCorrectScan': 1, 'PracCorrectPilot': 'left'}, {'Trial': 12, 'leftImgPath': 'images/prac2.png', 'rightImgPath': 'images/prac1.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'right'}, {'Trial': 13, 'leftImgPath': 'images/prac1.png', 'rightImgPath': 'images/prac2.png', 'PracCorrectScan': 1, 'PracCorrectPilot': 'left'}, {'Trial': 14, 'leftImgPath': 'images/prac1.png', 'rightImgPath': 'images/prac2.png', 'PracCorrectScan': 1, 'PracCorrectPilot': 'left'}, {'Trial': 15, 'leftImgPath': 'images/prac2.png', 'rightImgPath': 'images/prac1.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'right'}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'Trial': 1, 'leftImgPath': 'stimuli_sets/prac1.png', 'rightImgPath': 'stimuli_sets/prac2.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'left'}, {'Trial': 2, 'leftImgPath': 'stimuli_sets/prac1.png', 'rightImgPath': 'stimuli_sets/prac2.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'left'}, {'Trial': 3, 'leftImgPath': 'stimuli_sets/prac2.png', 'rightImgPath': 'stimuli_sets/prac1.png', 'PracCorrectScan': 3, 'PracCorrectPilot': 'right'}, {'Trial': 4, 'leftImgPath': 'stimuli_sets/prac2.png', 'rightImgPath': 'stimuli_sets/prac1.png', 'PracCorrectScan': 3, 'PracCorrectPilot': 'right'}, {'Trial': 5, 'leftImgPath': 'stimuli_sets/prac1.png', 'rightImgPath': 'stimuli_sets/prac2.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'left'}, {'Trial': 6, 'leftImgPath': 'stimuli_sets/prac2.png', 'rightImgPath': 'stimuli_sets/prac1.png', 'PracCorrectScan': 3, 'PracCorrectPilot': 'right'}, {'Trial': 7, 'leftImgPath': 'stimuli_sets/prac2.png', 'rightImgPath': 'stimuli_sets/prac1.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'left'}, {'Trial': 8, 'leftImgPath': 'stimuli_sets/prac1.png', 'rightImgPath': 'stimuli_sets/prac2.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'left'}, {'Trial': 9, 'leftImgPath': 'stimuli_sets/prac1.png', 'rightImgPath': 'stimuli_sets/prac2.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'left'}, {'Trial': 10, 'leftImgPath': 'stimuli_sets/prac2.png', 'rightImgPath': 'stimuli_sets/prac1.png', 'PracCorrectScan': 3, 'PracCorrectPilot': 'right'}, {'Trial': 11, 'leftImgPath': 'stimuli_sets/prac1.png', 'rightImgPath': 'stimuli_sets/prac2.png', 'PracCorrectScan': 3, 'PracCorrectPilot': 'right'}, {'Trial': 12, 'leftImgPath': 'stimuli_sets/prac1.png', 'rightImgPath': 'stimuli_sets/prac2.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'left'}, {'Trial': 13, 'leftImgPath': 'stimuli_sets/prac2.png', 'rightImgPath': 'stimuli_sets/prac1.png', 'PracCorrectScan': 3, 'PracCorrectPilot': 'right'}, {'Trial': 14, 'leftImgPath': 'stimuli_sets/prac2.png', 'rightImgPath': 'stimuli_sets/prac1.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'left'}, {'Trial': 15, 'leftImgPath': 'stimuli_sets/prac1.png', 'rightImgPath': 'stimuli_sets/prac2.png', 'PracCorrectScan': 2, 'PracCorrectPilot': 'left'}]" valType="str"/>
       <Param name="conditionsFile" updates="None" val="conditions/practiceTrials.xlsx" valType="file"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="pracOn" valType="num"/>
+      <Param name="nReps" updates="None" val="0" valType="num"/>
       <Param name="name" updates="None" val="practice" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
@@ -2181,8 +2639,24 @@
     <Routine name="pracJitter"/>
     <Routine name="pracOut"/>
     <LoopTerminator name="practice"/>
+    <Routine name="check1"/>
     <Routine name="gainDirs"/>
     <Routine name="lossDirs"/>
+    <LoopInitiator loopType="TrialHandler" name="practice2">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="[OrderedDict([('trialOrder', 1), ('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 12)]), OrderedDict([('trialOrder', 2), ('condition', 'highloss'), ('fixationDuration', 2.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 7)]), OrderedDict([('trialOrder', 3), ('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 14)]), OrderedDict([('trialOrder', 4), ('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 11)]), OrderedDict([('trialOrder', 5), ('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 3)]), OrderedDict([('trialOrder', 6), ('condition', 'lowgain'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 15)]), OrderedDict([('trialOrder', 7), ('condition', 'highgain'), ('fixationDuration', 2.0), ('outcomeDelay', 2.5), ('optcorrect', 0), ('CBDrifts', 'Drift2'), ('CondOrder', 15)]), OrderedDict([('trialOrder', 8), ('condition', 'lowloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 15)]), OrderedDict([('trialOrder', 9), ('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 2.5), ('optcorrect', 0), ('CBDrifts', 'Drift1'), ('CondOrder', 9)]), OrderedDict([('trialOrder', 10), ('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 0), ('CBDrifts', 'Drift1'), ('CondOrder', 12)]), OrderedDict([('trialOrder', 11), ('condition', 'lowgain'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 12)]), OrderedDict([('trialOrder', 12), ('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 11)]), OrderedDict([('trialOrder', 13), ('condition', 'highgain'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 6)]), OrderedDict([('trialOrder', 14), ('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 11)]), OrderedDict([('trialOrder', 15), ('condition', 'lowloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 6)]), OrderedDict([('trialOrder', 16), ('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 3)]), OrderedDict([('trialOrder', 17), ('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 2.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 8)]), OrderedDict([('trialOrder', 18), ('condition', 'lowgain'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 9)]), OrderedDict([('trialOrder', 19), ('condition', 'lowgain'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 8)]), OrderedDict([('trialOrder', 20), ('condition', 'highloss'), ('fixationDuration', 2.0), ('outcomeDelay', 2.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 2)]), OrderedDict([('trialOrder', 21), ('condition', 'highloss'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 12)]), OrderedDict([('trialOrder', 22), ('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 5)]), OrderedDict([('trialOrder', 23), ('condition', 'highloss'), ('fixationDuration', 2.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 13)]), OrderedDict([('trialOrder', 24), ('condition', 'lowgain'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 5)]), OrderedDict([('trialOrder', 25), ('condition', 'highgain'), ('fixationDuration', 1.5), ('outcomeDelay', 2.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 10)]), OrderedDict([('trialOrder', 26), ('condition', 'highgain'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 0), ('CBDrifts', 'Drift2'), ('CondOrder', 2)]), OrderedDict([('trialOrder', 27), ('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 6)]), OrderedDict([('trialOrder', 28), ('condition', 'highgain'), ('fixationDuration', 2.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 7)]), OrderedDict([('trialOrder', 29), ('condition', 'highgain'), ('fixationDuration', 2.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 13)]), OrderedDict([('trialOrder', 30), ('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 14)]), OrderedDict([('trialOrder', 31), ('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 15)]), OrderedDict([('trialOrder', 32), ('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 3)]), OrderedDict([('trialOrder', 33), ('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 2)]), OrderedDict([('trialOrder', 34), ('condition', 'highloss'), ('fixationDuration', 2.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 1)]), OrderedDict([('trialOrder', 35), ('condition', 'lowloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 0), ('CBDrifts', 'Drift1'), ('CondOrder', 8)]), OrderedDict([('trialOrder', 36), ('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 10)]), OrderedDict([('trialOrder', 37), ('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 0), ('CBDrifts', 'Drift3'), ('CondOrder', 1)]), OrderedDict([('trialOrder', 38), ('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.5), ('optcorrect', 0), ('CBDrifts', 'Drift2'), ('CondOrder', 9)]), OrderedDict([('trialOrder', 39), ('condition', 'lowloss'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 14)]), OrderedDict([('trialOrder', 40), ('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 7)]), OrderedDict([('trialOrder', 41), ('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 9)]), OrderedDict([('trialOrder', 42), ('condition', 'lowgain'), ('fixationDuration', 1.5), ('outcomeDelay', 2.5), ('optcorrect', 0), ('CBDrifts', 'Drift3'), ('CondOrder', 13)]), OrderedDict([('trialOrder', 43), ('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 0), ('CBDrifts', 'Drift1'), ('CondOrder', 7)]), OrderedDict([('trialOrder', 44), ('condition', 'highloss'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 6)]), OrderedDict([('trialOrder', 45), ('condition', 'highgain'), ('fixationDuration', 1.5), ('outcomeDelay', 2.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 1)]), OrderedDict([('trialOrder', 46), ('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 4)]), OrderedDict([('trialOrder', 47), ('condition', 'lowloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 0), ('CBDrifts', 'Drift1'), ('CondOrder', 2)]), OrderedDict([('trialOrder', 48), ('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 4)]), OrderedDict([('trialOrder', 49), ('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 10)]), OrderedDict([('trialOrder', 50), ('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 3)]), OrderedDict([('trialOrder', 51), ('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 1)]), OrderedDict([('trialOrder', 52), ('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 0), ('CBDrifts', 'Drift2'), ('CondOrder', 14)]), OrderedDict([('trialOrder', 53), ('condition', 'lowloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 4)]), OrderedDict([('trialOrder', 54), ('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 4)]), OrderedDict([('trialOrder', 55), ('condition', 'lowloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 13)]), OrderedDict([('trialOrder', 56), ('condition', 'lowgain'), ('fixationDuration', 2.0), ('outcomeDelay', 1.5), ('optcorrect', 0), ('CBDrifts', 'Drift3'), ('CondOrder', 10)]), OrderedDict([('trialOrder', 57), ('condition', 'lowloss'), ('fixationDuration', 2.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 5)]), OrderedDict([('trialOrder', 58), ('condition', 'highgain'), ('fixationDuration', 2.0), ('outcomeDelay', 2.0), ('optcorrect', 0), ('CBDrifts', 'Drift2'), ('CondOrder', 8)]), OrderedDict([('trialOrder', 59), ('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 11)]), OrderedDict([('trialOrder', 74), ('condition', 'highloss'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 5)])]" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="conditions/prac2Trials.csv" valType="file"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="5" valType="num"/>
+      <Param name="name" updates="None" val="practice2" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="prac2Cue"/>
+    <Routine name="prac2Jitter"/>
+    <Routine name="prac2Out"/>
+    <LoopTerminator name="practice2"/>
     <LoopTerminator name="pracBlock"/>
     <Routine name="summaryDirections"/>
     <LoopInitiator loopType="TrialHandler" name="runs">
