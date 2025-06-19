@@ -3665,7 +3665,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
-        <Param val="$stimuli_sets/ + imgSet + '_' + allImages[0]" valType="file" updates="constant" name="image"/>
+        <Param val="$hg1Img" valType="file" updates="set every repeat" name="image"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="" valType="str" updates="constant" name="mask"/>
         <Param val="check6ImageLeft" valType="code" updates="None" name="name"/>
@@ -3694,7 +3694,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
-        <Param val="$stimuli_sets/ + imgSet + '_' + allImages[1]" valType="file" updates="constant" name="image"/>
+        <Param val="$hg2Img" valType="file" updates="set every repeat" name="image"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="" valType="str" updates="constant" name="mask"/>
         <Param val="check6ImageRight" valType="code" updates="None" name="name"/>
@@ -3805,7 +3805,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
-        <Param val="$stimuli_sets/ + imgSet + '_' + allImages[3]" valType="file" updates="constant" name="image"/>
+        <Param val="$lg1Img" valType="file" updates="set every repeat" name="image"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="" valType="str" updates="constant" name="mask"/>
         <Param val="check7ImageLeft" valType="code" updates="None" name="name"/>
@@ -3834,7 +3834,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
-        <Param val="$stimuli_sets/ + imgSet + '_' + allImages[2]" valType="file" updates="constant" name="image"/>
+        <Param val="$lg2Img" valType="file" updates="set every repeat" name="image"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="" valType="str" updates="constant" name="mask"/>
         <Param val="check7ImageRight" valType="code" updates="None" name="name"/>
@@ -3945,7 +3945,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
-        <Param val="$stimuli_sets/ + imgSet + '_' + allImages[5]" valType="file" updates="constant" name="image"/>
+        <Param val="$hl1Img" valType="file" updates="set every repeat" name="image"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="" valType="str" updates="constant" name="mask"/>
         <Param val="check8ImageLeft" valType="code" updates="None" name="name"/>
@@ -3974,7 +3974,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
-        <Param val="$stimuli_sets/ + imgSet + '_' + allImages[4]" valType="file" updates="constant" name="image"/>
+        <Param val="$hl2Img" valType="file" updates="set every repeat" name="image"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="" valType="str" updates="constant" name="mask"/>
         <Param val="check8ImageRight" valType="code" updates="None" name="name"/>
@@ -4085,7 +4085,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
-        <Param val="$stimuli_sets/ + imgSet + '_' + allImages[6]" valType="file" updates="constant" name="image"/>
+        <Param val="$ll1Img" valType="file" updates="set every repeat" name="image"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="" valType="str" updates="constant" name="mask"/>
         <Param val="check9ImageLeft" valType="code" updates="None" name="name"/>
@@ -4114,7 +4114,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
-        <Param val="$stimuli_sets/ + imgSet + '_' + allImages[7]" valType="file" updates="constant" name="image"/>
+        <Param val="$ll2Img" valType="file" updates="set every repeat" name="image"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="" valType="str" updates="constant" name="mask"/>
         <Param val="check9ImageRight" valType="code" updates="None" name="name"/>

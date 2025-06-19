@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Thu Jun 19 01:24:40 2025
+    on Thu Jun 19 01:31:50 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1359,7 +1359,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     check6ImageLeft = visual.ImageStim(
         win=win,
         name='check6ImageLeft', 
-        image=stimuli_sets/ + imgSet + '_' + allImages[0], mask=None, anchor='center',
+        image='default.png', mask=None, anchor='center',
         ori=0.0, pos=(-4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
@@ -1367,7 +1367,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     check6ImageRight = visual.ImageStim(
         win=win,
         name='check6ImageRight', 
-        image=stimuli_sets/ + imgSet + '_' + allImages[1], mask=None, anchor='center',
+        image='default.png', mask=None, anchor='center',
         ori=0.0, pos=(4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
@@ -1385,7 +1385,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     check7ImageLeft = visual.ImageStim(
         win=win,
         name='check7ImageLeft', 
-        image=stimuli_sets/ + imgSet + '_' + allImages[3], mask=None, anchor='center',
+        image='default.png', mask=None, anchor='center',
         ori=0.0, pos=(-4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
@@ -1393,7 +1393,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     check7ImageRight = visual.ImageStim(
         win=win,
         name='check7ImageRight', 
-        image=stimuli_sets/ + imgSet + '_' + allImages[2], mask=None, anchor='center',
+        image='default.png', mask=None, anchor='center',
         ori=0.0, pos=(4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
@@ -1411,7 +1411,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     check8ImageLeft = visual.ImageStim(
         win=win,
         name='check8ImageLeft', 
-        image=stimuli_sets/ + imgSet + '_' + allImages[5], mask=None, anchor='center',
+        image='default.png', mask=None, anchor='center',
         ori=0.0, pos=(-4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
@@ -1419,7 +1419,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     check8ImageRight = visual.ImageStim(
         win=win,
         name='check8ImageRight', 
-        image=stimuli_sets/ + imgSet + '_' + allImages[4], mask=None, anchor='center',
+        image='default.png', mask=None, anchor='center',
         ori=0.0, pos=(4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
@@ -1437,7 +1437,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     check9ImageLeft = visual.ImageStim(
         win=win,
         name='check9ImageLeft', 
-        image=stimuli_sets/ + imgSet + '_' + allImages[6], mask=None, anchor='center',
+        image='default.png', mask=None, anchor='center',
         ori=0.0, pos=(-4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
@@ -1445,7 +1445,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     check9ImageRight = visual.ImageStim(
         win=win,
         name='check9ImageRight', 
-        image=stimuli_sets/ + imgSet + '_' + allImages[7], mask=None, anchor='center',
+        image='default.png', mask=None, anchor='center',
         ori=0.0, pos=(4, 0), draggable=False, size=(7, 7),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
@@ -7156,6 +7156,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     check6.status = NOT_STARTED
     continueRoutine = True
     # update component parameters for each repeat
+    check6ImageLeft.setImage(hg1Img)
+    check6ImageRight.setImage(hg2Img)
     # Run 'Begin Routine' code from check6Select
     # Initialize cue end time for cues and selection indicator.
     # If no response is made in this time, the trial ends.
@@ -7371,6 +7373,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     check7.status = NOT_STARTED
     continueRoutine = True
     # update component parameters for each repeat
+    check7ImageLeft.setImage(lg1Img)
+    check7ImageRight.setImage(lg2Img)
     # Run 'Begin Routine' code from check7Select
     # Initialize cue end time for cues and selection indicator.
     # If no response is made in this time, the trial ends.
@@ -7586,6 +7590,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     check8.status = NOT_STARTED
     continueRoutine = True
     # update component parameters for each repeat
+    check8ImageLeft.setImage(hl1Img)
+    check8ImageRight.setImage(hl2Img)
     # Run 'Begin Routine' code from check8Select
     # Initialize cue end time for cues and selection indicator.
     # If no response is made in this time, the trial ends.
@@ -7801,6 +7807,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     check9.status = NOT_STARTED
     continueRoutine = True
     # update component parameters for each repeat
+    check9ImageLeft.setImage(ll1Img)
+    check9ImageRight.setImage(ll2Img)
     # Run 'Begin Routine' code from check9Select
     # Initialize cue end time for cues and selection indicator.
     # If no response is made in this time, the trial ends.
