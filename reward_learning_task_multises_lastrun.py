@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.4),
-    on Thu Jun 19 01:31:50 2025
+    on Fri Jun 20 08:10:24 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -2025,7 +2025,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # set up handler to look after randomisation of conditions etc
         practice = data.TrialHandler2(
             name='practice',
-            nReps=0.0, 
+            nReps=pracOn, 
             method='sequential', 
             extraInfo=expInfo, 
             originPath=-1, 
@@ -2599,7 +2599,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 routineTimer.addTime(-2.500000)
             thisExp.nextEntry()
             
-        # completed 0.0 repeats of 'practice'
+        # completed pracOn repeats of 'practice'
         
         if thisSession is not None:
             # if running in a Session with a Liaison client, send data up to now
@@ -3632,7 +3632,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # set up handler to look after randomisation of conditions etc
         practice2 = data.TrialHandler2(
             name='practice2',
-            nReps=1.0, 
+            nReps=pracOn, 
             method='sequential', 
             extraInfo=expInfo, 
             originPath=-1, 
@@ -4198,7 +4198,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             else: # give incorrect outcome for missed trials
                 change = incorrvalue
                 currentLoop.addData('outcome', None)
-                outcome_msg = "%s$%.2f\nIncorrect" % (falseOperator,abs(change))
+                outcome_msg = "%s$%.2f\nMissed" % (falseOperator,abs(change))
                 outcome_image = None
                 Feedback="NA"
             
@@ -4334,7 +4334,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 routineTimer.addTime(-1.000000)
             thisExp.nextEntry()
             
-        # completed 1.0 repeats of 'practice2'
+        # completed pracOn repeats of 'practice2'
         
         if thisSession is not None:
             # if running in a Session with a Liaison client, send data up to now
@@ -6698,7 +6698,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             else: # give incorrect outcome for missed trials
                 change = incorrvalue
                 currentLoop.addData('outcome', None)
-                outcome_msg = "%s$%.2f\nIncorrect" % (falseOperator,abs(change))
+                outcome_msg = "%s$%.2f\nMissed" % (falseOperator,abs(change))
                 outcome_image = None
                 Feedback="NA"
             
