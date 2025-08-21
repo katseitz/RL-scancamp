@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on Thu Aug 21 13:49:14 2025
+    on Thu Aug 21 13:55:10 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -50,8 +50,8 @@ expInfo = {
     'participant': ["1", "2", "3", "4", "5", "6", "7", "8", "OS-1", "OS-2", "OS-3", "OS-4", "OS-5", "OS-6", "OS-7", "OS-8", "pilot-1", "pilot-2", "pilot-3", "pilot-4", "pilot-5", "pilot-6", "pilot-7", "pilot-8"],
     'session': ["ses-1", "ses-2", "ses-3", "ses-4", "ses-5", "ses-6", "ses-7", "ses-8"],
     'startFromRun': ["1", "2"],
-    'mode': ["pilot", "scan", "orientation"],
-    'practice': ["yes", "no"],
+    'mode': ["scan", "orientation", "pilot"],
+    'practice': ["no", "yes"],
     'date|hid': data.getDateStr(),
     'expName|hid': expName,
     'expVersion|hid': expVersion,
@@ -552,7 +552,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "introDir" ---
     pracDirText = visual.TextStim(win=win, name='pracDirText',
-        text='In this game, your job is to find the correct picture. Sometimes, you might have to guess. During the game, the correct picture might change. Try to choose the picture that is correct most of the time.\n\n\nPress the space bar to proceed.',
+        text='In this game, your job is to find the correct picture. Sometimes, you might have to guess. During the game, the correct picture might change. Try to choose the picture that is correct most of the time.',
         font='Arial',
         pos=(0, 0), draggable=False, height=1.0, wrapWidth=30.0, ori=0.0, 
         color=[1.0000, 1.0000, 1.0000], colorSpace='rgb', opacity=None, 
@@ -1097,7 +1097,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         else:
             id_num = int(expInfo["participant"][3:])
             id_num = int(expInfo["participant"][3:])
-        id_num = expInfo["participant"][6:]
         imgSet = "set" + str(id_num)
     #load conditions
     if expInfo["startFromRun"] == "1":
