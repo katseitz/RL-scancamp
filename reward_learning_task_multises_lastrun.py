@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on Thu Aug 21 13:55:10 2025
+    on Thu Aug 21 14:02:08 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -2899,6 +2899,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # Run 'End Routine' code from check1Select
         selectionIndicatorPrac.setAutoDraw(False)
         
+        if(check1Press.keys == "right"):
+            currentLoop.addData('check1', "correct")
+        else:
+            currentLoop.addData('check1', "incorrect")
         # check responses
         if check1Press.keys in ['', [], None]:  # No response was made
             check1Press.keys = None
@@ -4653,6 +4657,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # Run 'End Routine' code from check3Select
         selectionIndicatorPrac.setAutoDraw(False)
         
+        if(check3Press.keys == "left"):
+            currentLoop.addData('check3', "correct")
+        else:
+            currentLoop.addData('check3', "incorrect")
         # check responses
         if check3Press.keys in ['', [], None]:  # No response was made
             check3Press.keys = None
@@ -4908,7 +4916,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         thisExp.addData('check2.stopped', check2.tStop)
         # Run 'End Routine' code from check2Select
         selectionIndicatorPrac.setAutoDraw(False)
-        
+        if(check2Press.keys == "right"):
+            currentLoop.addData('check2', "correct")
+        else:
+            currentLoop.addData('check2', "incorrect")
         # check responses
         if check2Press.keys in ['', [], None]:  # No response was made
             check2Press.keys = None
@@ -5164,7 +5175,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         thisExp.addData('check4.stopped', check4.tStop)
         # Run 'End Routine' code from check4Select
         selectionIndicatorPrac.setAutoDraw(False)
-        
+        if(check4Press.keys == "left"):
+            currentLoop.addData('check4', "correct")
+        else:
+            currentLoop.addData('check4', "incorrect")
         # check responses
         if check4Press.keys in ['', [], None]:  # No response was made
             check4Press.keys = None
@@ -5420,7 +5434,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         thisExp.addData('check5.stopped', check5.tStop)
         # Run 'End Routine' code from check5Select
         selectionIndicatorPrac.setAutoDraw(False)
-        
+        if(check5Press.keys == "left"):
+            currentLoop.addData('check5', "correct")
+        else:
+            currentLoop.addData('check5', "incorrect")
         # check responses
         if check5Press.keys in ['', [], None]:  # No response was made
             check5Press.keys = None

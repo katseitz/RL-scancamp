@@ -2863,8 +2863,8 @@
         <Param val="if (t_started) {&amp;#10;    if ((t &gt; (t_started + 5))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;if ((check1Press.keys &amp;&amp; (selectionIndicatorPrac.status === NOT_STARTED))) {&amp;#10;    selectionIndicatorPrac.status = PsychoJS.Status.STARTED;&amp;#10;    selectionIndicatorPrac.setPos(selectionPosition(check1Press.keys));&amp;#10;    selectionIndicatorPrac.setAutoDraw(true);&amp;#10;    t_started = new util.Clock().getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;if ((check1Press.keys === &quot;right&quot;)) {&amp;#10;    currentLoop.addData(&quot;check1&quot;, &quot;correct&quot;);&amp;#10;} else {&amp;#10;    currentLoop.addData(&quot;check1&quot;, &quot;incorrect&quot;);&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;&amp;#10;if(check1Press.keys == &quot;right&quot;):&amp;#10;    currentLoop.addData('check1', &quot;correct&quot;)&amp;#10;else:&amp;#10;    currentLoop.addData('check1', &quot;incorrect&quot;)" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="check1Select" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -3023,8 +3023,8 @@
         <Param val="if (t_started) {&amp;#10;    if ((t &gt; (t_started + 5))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;if ((check2Press.keys &amp;&amp; (selectionIndicatorPrac.status === NOT_STARTED))) {&amp;#10;    selectionIndicatorPrac.status = PsychoJS.Status.STARTED;&amp;#10;    selectionIndicatorPrac.setPos(selectionPosition(check2Press.keys));&amp;#10;    selectionIndicatorPrac.setAutoDraw(true);&amp;#10;    t_started = new util.Clock().getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;if ((check2Press.keys === &quot;right&quot;)) {&amp;#10;    currentLoop.addData(&quot;check2&quot;, &quot;correct&quot;);&amp;#10;} else {&amp;#10;    currentLoop.addData(&quot;check2&quot;, &quot;incorrect&quot;);&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;if(check2Press.keys == &quot;right&quot;):&amp;#10;    currentLoop.addData('check2', &quot;correct&quot;)&amp;#10;else:&amp;#10;    currentLoop.addData('check2', &quot;incorrect&quot;)" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="check2Select" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -3183,8 +3183,8 @@
         <Param val="if (t_started) {&amp;#10;    if ((t &gt; (t_started + 5))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;if ((check3Press.keys &amp;&amp; (selectionIndicatorPrac.status === NOT_STARTED))) {&amp;#10;    selectionIndicatorPrac.status = PsychoJS.Status.STARTED;&amp;#10;    selectionIndicatorPrac.setPos(selectionPosition(check3Press.keys));&amp;#10;    selectionIndicatorPrac.setAutoDraw(true);&amp;#10;    t_started = new util.Clock().getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;if ((check3Press.keys === &quot;left&quot;)) {&amp;#10;    currentLoop.addData(&quot;check3&quot;, &quot;correct&quot;);&amp;#10;} else {&amp;#10;    currentLoop.addData(&quot;check3&quot;, &quot;incorrect&quot;);&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;&amp;#10;if(check3Press.keys == &quot;left&quot;):&amp;#10;    currentLoop.addData('check3', &quot;correct&quot;)&amp;#10;else:&amp;#10;    currentLoop.addData('check3', &quot;incorrect&quot;)" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="check3Select" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -3343,8 +3343,8 @@
         <Param val="if (t_started) {&amp;#10;    if ((t &gt; (t_started + 5))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;if ((check4Press.keys &amp;&amp; (selectionIndicatorPrac.status === NOT_STARTED))) {&amp;#10;    selectionIndicatorPrac.status = PsychoJS.Status.STARTED;&amp;#10;    selectionIndicatorPrac.setPos(selectionPosition(check4Press.keys));&amp;#10;    selectionIndicatorPrac.setAutoDraw(true);&amp;#10;    t_started = new util.Clock().getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;if ((check4Press.keys === &quot;left&quot;)) {&amp;#10;    currentLoop.addData(&quot;check4&quot;, &quot;correct&quot;);&amp;#10;} else {&amp;#10;    currentLoop.addData(&quot;check4&quot;, &quot;incorrect&quot;);&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;if(check4Press.keys == &quot;left&quot;):&amp;#10;    currentLoop.addData('check4', &quot;correct&quot;)&amp;#10;else:&amp;#10;    currentLoop.addData('check4', &quot;incorrect&quot;)" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="check4Select" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -3503,8 +3503,8 @@
         <Param val="if (t_started) {&amp;#10;    if ((t &gt; (t_started + 5))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;if ((check5Press.keys &amp;&amp; (selectionIndicatorPrac.status === NOT_STARTED))) {&amp;#10;    selectionIndicatorPrac.status = PsychoJS.Status.STARTED;&amp;#10;    selectionIndicatorPrac.setPos(selectionPosition(check5Press.keys));&amp;#10;    selectionIndicatorPrac.setAutoDraw(true);&amp;#10;    t_started = new util.Clock().getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;if ((check5Press.keys === &quot;left&quot;)) {&amp;#10;    currentLoop.addData(&quot;check5&quot;, &quot;correct&quot;);&amp;#10;} else {&amp;#10;    currentLoop.addData(&quot;check5&quot;, &quot;incorrect&quot;);&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;if(check5Press.keys == &quot;left&quot;):&amp;#10;    currentLoop.addData('check5', &quot;correct&quot;)&amp;#10;else:&amp;#10;    currentLoop.addData('check5', &quot;incorrect&quot;)" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="check5Select" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -3728,8 +3728,8 @@
         <Param val="if (t_started) {&amp;#10;    if ((t &gt; (t_started + 5))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;if ((check6Press.keys &amp;&amp; (selectionIndicatorPrac.status === NOT_STARTED))) {&amp;#10;    selectionIndicatorPrac.status = PsychoJS.Status.STARTED;&amp;#10;    selectionIndicatorPrac.setPos(selectionPosition(check6Press.keys));&amp;#10;    selectionIndicatorPrac.setAutoDraw(true);&amp;#10;    t_started = new util.Clock().getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;if ((check6Press.keys === &quot;left&quot;)) {&amp;#10;    currentLoop.addData(&quot;check6&quot;, &quot;correct&quot;);&amp;#10;} else {&amp;#10;    currentLoop.addData(&quot;check6&quot;, &quot;incorrect&quot;);&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;&amp;#10;if(check6Press.keys == &quot;left&quot;):&amp;#10;    currentLoop.addData('check6', &quot;correct&quot;)&amp;#10;else:&amp;#10;    currentLoop.addData('check6', &quot;incorrect&quot;)" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="check6Select" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -3868,8 +3868,8 @@
         <Param val="if (t_started) {&amp;#10;    if ((t &gt; (t_started + 5))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;if ((check7Press.keys &amp;&amp; (selectionIndicatorPrac.status === NOT_STARTED))) {&amp;#10;    selectionIndicatorPrac.status = PsychoJS.Status.STARTED;&amp;#10;    selectionIndicatorPrac.setPos(selectionPosition(check7Press.keys));&amp;#10;    selectionIndicatorPrac.setAutoDraw(true);&amp;#10;    t_started = new util.Clock().getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;if ((check7Press.keys === &quot;right&quot;)) {&amp;#10;    currentLoop.addData(&quot;check7&quot;, &quot;correct&quot;);&amp;#10;} else {&amp;#10;    currentLoop.addData(&quot;check7&quot;, &quot;incorrect&quot;);&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;&amp;#10;&amp;#10;&amp;#10;if(check7Press.keys == &quot;right&quot;):&amp;#10;    currentLoop.addData('check7', &quot;correct&quot;)&amp;#10;else:&amp;#10;    currentLoop.addData('check7', &quot;incorrect&quot;)" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="check7Select" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -4008,8 +4008,8 @@
         <Param val="if (t_started) {&amp;#10;    if ((t &gt; (t_started + 5))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;if ((check8Press.keys &amp;&amp; (selectionIndicatorPrac.status === NOT_STARTED))) {&amp;#10;    selectionIndicatorPrac.status = PsychoJS.Status.STARTED;&amp;#10;    selectionIndicatorPrac.setPos(selectionPosition(check8Press.keys));&amp;#10;    selectionIndicatorPrac.setAutoDraw(true);&amp;#10;    t_started = new util.Clock().getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;if ((check8Press.keys === &quot;right&quot;)) {&amp;#10;    currentLoop.addData(&quot;check8&quot;, &quot;correct&quot;);&amp;#10;} else {&amp;#10;    currentLoop.addData(&quot;check8&quot;, &quot;incorrect&quot;);&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;&amp;#10;if(check8Press.keys == &quot;right&quot;):&amp;#10;    currentLoop.addData('check8', &quot;correct&quot;)&amp;#10;else:&amp;#10;    currentLoop.addData('check8', &quot;incorrect&quot;)" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="check8Select" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -4148,8 +4148,8 @@
         <Param val="if (t_started) {&amp;#10;    if ((t &gt; (t_started + 5))) {&amp;#10;        continueRoutine = false;&amp;#10;    }&amp;#10;}&amp;#10;if ((check9Press.keys &amp;&amp; (selectionIndicatorPrac.status === NOT_STARTED))) {&amp;#10;    selectionIndicatorPrac.status = PsychoJS.Status.STARTED;&amp;#10;    selectionIndicatorPrac.setPos(selectionPosition(check9Press.keys));&amp;#10;    selectionIndicatorPrac.setAutoDraw(true);&amp;#10;    t_started = new util.Clock().getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(false);&amp;#10;if ((check9Press.keys === &quot;left&quot;)) {&amp;#10;    currentLoop.addData(&quot;check9&quot;, &quot;correct&quot;);&amp;#10;} else {&amp;#10;    currentLoop.addData(&quot;check9&quot;, &quot;incorrect&quot;);&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="selectionIndicatorPrac.setAutoDraw(False)&amp;#10;&amp;#10;if(check9Press.keys == &quot;left&quot;):&amp;#10;    currentLoop.addData('check9', &quot;correct&quot;)&amp;#10;else:&amp;#10;    currentLoop.addData('check9', &quot;incorrect&quot;)" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="check9Select" valType="code" updates="None" name="name"/>
       </CodeComponent>
