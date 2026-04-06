@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on Thu Aug 21 14:02:08 2025
+    on Fri Nov 21 10:44:29 2025
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -7485,6 +7485,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # Run 'End Routine' code from check6Select
     selectionIndicatorPrac.setAutoDraw(False)
     
+    if(check6Press.keys == "left"):
+        currentLoop.addData('check6', "correct")
+    else:
+        currentLoop.addData('check6', "incorrect")
     # check responses
     if check6Press.keys in ['', [], None]:  # No response was made
         check6Press.keys = None
@@ -7702,6 +7706,12 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # Run 'End Routine' code from check7Select
     selectionIndicatorPrac.setAutoDraw(False)
     
+    
+    
+    if(check7Press.keys == "right"):
+        currentLoop.addData('check7', "correct")
+    else:
+        currentLoop.addData('check7', "incorrect")
     # check responses
     if check7Press.keys in ['', [], None]:  # No response was made
         check7Press.keys = None
@@ -7919,6 +7929,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # Run 'End Routine' code from check8Select
     selectionIndicatorPrac.setAutoDraw(False)
     
+    if(check8Press.keys == "right"):
+        currentLoop.addData('check8', "correct")
+    else:
+        currentLoop.addData('check8', "incorrect")
     # check responses
     if check8Press.keys in ['', [], None]:  # No response was made
         check8Press.keys = None
@@ -8136,6 +8150,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # Run 'End Routine' code from check9Select
     selectionIndicatorPrac.setAutoDraw(False)
     
+    if(check9Press.keys == "left"):
+        currentLoop.addData('check9', "correct")
+    else:
+        currentLoop.addData('check9', "incorrect")
     # check responses
     if check9Press.keys in ['', [], None]:  # No response was made
         check9Press.keys = None
