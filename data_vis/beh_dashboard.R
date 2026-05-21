@@ -141,14 +141,7 @@ server <- function(input, output, session) {
   output$accuracyPlot <- renderPlot({
     df <- participant_data()
     
-    ggplot(df, aes(x = trial_id, y = accuracy)) +
-      geom_point(color = "#E64B35FF", size = 2) +
-      geom_line(color = "#E64B35FF") +
-      scale_y_continuous(breaks = c(0, 1), labels = c("Incorrect", "Correct")) +
-      labs(title = paste("Accuracy Across Trials (Participant:", input$participant, ")"),
-           x = "Trial ID", y = "Accuracy") +
-      theme_minimal(base_size = 14)
-  })
+p
   
   output$rollingAvgPlot <- renderPlot({
     df <- participant_data() %>%

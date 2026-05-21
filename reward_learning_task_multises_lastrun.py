@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on Fri Nov 21 10:44:29 2025
+    on Thu May 21 09:41:26 2026
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -127,7 +127,7 @@ def setupData(expInfo, dataDir=None):
     # data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
     if dataDir is None:
         dataDir = _thisDir
-    filename = u'data/%s_%s_%s_%s' % (expInfo['participant'], expName, expInfo['session'], expInfo['date'])
+    filename = u'data/%s_%s_sc_long_%s_%s' % (expInfo['participant'], expName, expInfo['session'], expInfo['date'])
     # make sure filename is relative to dataDir
     if os.path.isabs(filename):
         dataDir = os.path.commonprefix([dataDir, filename])
@@ -588,7 +588,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     #what is the participant's version
     if(not("pilot" in expInfo["participant"]) and not("OS" in expInfo["participant"])):
-        version_df = pd.read_csv("stimuli_sets/which_vers.csv")
+        version_df = pd.read_csv("stimuli_sets/which_vers_sc_long.csv")
         version = version_df.loc[version_df['Participant'] == int(expInfo['participant']), expInfo['session']].values[0]
     else:
         if("pilot" in expInfo["participant"]):
@@ -1088,7 +1088,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     import pandas as pd
     #load img set
     if(not("pilot" in expInfo["participant"]) and not("OS" in expInfo["participant"])):
-        sets = pd.read_csv("stimuli_sets/which_set.csv")
+        sets = pd.read_csv("stimuli_sets/which_set_sc_long.csv")
         imgSet = sets.loc[sets['Participant'] == int(expInfo["participant"]), expInfo["session"]].values[0]
         
     else:    
@@ -2650,15 +2650,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if thisSession is not None:
             # if running in a Session with a Liaison client, send data up to now
             thisSession.sendExperimentData()
-        # get names of stimulus parameters
-        if practice.trialList in ([], [None], None):
-            params = []
-        else:
-            params = practice.trialList[0].keys()
-        # save data for this loop
-        practice.saveAsText(filename + '_practice.csv', delim=',',
-            stimOut=params,
-            dataOut=['n','all_mean','all_std', 'all_raw'])
         
         # --- Prepare to start Routine "check1" ---
         # create an object to store info about Routine check1
@@ -4408,15 +4399,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if thisSession is not None:
             # if running in a Session with a Liaison client, send data up to now
             thisSession.sendExperimentData()
-        # get names of stimulus parameters
-        if practice2.trialList in ([], [None], None):
-            params = []
-        else:
-            params = practice2.trialList[0].keys()
-        # save data for this loop
-        practice2.saveAsText(filename + '_practice2.csv', delim=',',
-            stimOut=params,
-            dataOut=['n','all_mean','all_std', 'all_raw'])
         
         # --- Prepare to start Routine "check3" ---
         # create an object to store info about Routine check3
@@ -5475,15 +5457,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     if thisSession is not None:
         # if running in a Session with a Liaison client, send data up to now
         thisSession.sendExperimentData()
-    # get names of stimulus parameters
-    if pracBlock.trialList in ([], [None], None):
-        params = []
-    else:
-        params = pracBlock.trialList[0].keys()
-    # save data for this loop
-    pracBlock.saveAsText(filename + '_pracBlock.csv', delim=',',
-        stimOut=params,
-        dataOut=['n','all_mean','all_std', 'all_raw'])
     
     # --- Prepare to start Routine "summaryDirections" ---
     # create an object to store info about Routine summaryDirections
@@ -7080,15 +7053,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if thisSession is not None:
             # if running in a Session with a Liaison client, send data up to now
             thisSession.sendExperimentData()
-        # get names of stimulus parameters
-        if trials.trialList in ([], [None], None):
-            params = []
-        else:
-            params = trials.trialList[0].keys()
-        # save data for this loop
-        trials.saveAsText(filename + '_trials.csv', delim=',',
-            stimOut=params,
-            dataOut=['n','all_mean','all_std', 'all_raw'])
         
         # --- Prepare to start Routine "breakScreen" ---
         # create an object to store info about Routine breakScreen
@@ -7269,15 +7233,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     if thisSession is not None:
         # if running in a Session with a Liaison client, send data up to now
         thisSession.sendExperimentData()
-    # get names of stimulus parameters
-    if runs.trialList in ([], [None], None):
-        params = []
-    else:
-        params = runs.trialList[0].keys()
-    # save data for this loop
-    runs.saveAsText(filename + '_runs.csv', delim=',',
-        stimOut=params,
-        dataOut=['n','all_mean','all_std', 'all_raw'])
     
     # --- Prepare to start Routine "check6" ---
     # create an object to store info about Routine check6
