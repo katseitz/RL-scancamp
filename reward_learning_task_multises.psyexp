@@ -8,7 +8,7 @@
     <Param val="u'data/sc-0%s_%s_sc_long_%s_%s' % (expInfo['participant'], expName, expInfo['session'], expInfo['date'])" valType="code" updates="None" name="Data filename"/>
     <Param val="True" valType="bool" updates="None" name="Enable Escape"/>
     <Param val="Thank you for your patience." valType="str" updates="None" name="End Message"/>
-    <Param val="{'participant': '[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;OS-1&quot;, &quot;OS-2&quot;, &quot;OS-3&quot;, &quot;OS-4&quot;, &quot;OS-5&quot;, &quot;OS-6&quot;, &quot;OS-7&quot;, &quot;OS-8&quot;, &quot;pilot-1&quot;, &quot;pilot-2&quot;, &quot;pilot-3&quot;, &quot;pilot-4&quot;, &quot;pilot-5&quot;, &quot;pilot-6&quot;, &quot;pilot-7&quot;, &quot;pilot-8&quot;]', 'session': '[&quot;ses-1&quot;, &quot;ses-2&quot;, &quot;ses-3&quot;, &quot;ses-4&quot;, &quot;ses-5&quot;, &quot;ses-6&quot;, &quot;ses-7&quot;, &quot;ses-8&quot;]', 'startFromRun': '[&quot;1&quot;, &quot;2&quot;]', 'mode': '[&quot;scan&quot;, &quot;orientation&quot;, &quot;pilot&quot;]', 'practice': '[&quot;no&quot;, &quot;yes&quot;]'}" valType="code" updates="None" name="Experiment info"/>
+    <Param val="{'participant': '[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;, &quot;11&quot;, &quot;12&quot;, &quot;13&quot;, &quot;14&quot;, &quot;15&quot;, &quot;16&quot;, &quot;OS-1&quot;, &quot;OS-2&quot;, &quot;OS-3&quot;, &quot;OS-4&quot;, &quot;OS-5&quot;, &quot;OS-6&quot;, &quot;OS-7&quot;, &quot;OS-8&quot;, &quot;pilot-1&quot;]', 'session': '[&quot;ses-1&quot;, &quot;ses-2&quot;, &quot;ses-3&quot;, &quot;ses-4&quot;, &quot;ses-5&quot;, &quot;ses-6&quot;, &quot;ses-7&quot;, &quot;ses-8&quot;]', 'startFromRun': '[&quot;1&quot;, &quot;2&quot;]', 'mode': '[&quot;scan&quot;, &quot;orientation&quot;, &quot;pilot&quot;]', 'practice': '[&quot;no&quot;, &quot;yes&quot;]'}" valType="code" updates="None" name="Experiment info"/>
     <Param val="True" valType="bool" updates="None" name="Force stereo"/>
     <Param val="True" valType="bool" updates="None" name="Full-screen window"/>
     <Param val="" valType="str" updates="None" name="HTML path"/>
@@ -258,7 +258,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="frame.setAutoDraw(true);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
         <Param val="frame.setAutoDraw(True)" valType="extendedCode" updates="constant" name="End Routine"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="True" valType="bool" updates="None" name="disabled"/>
         <Param val="frameOnCode" valType="code" updates="None" name="name"/>
       </CodeComponent>
       <ImageComponent name="sumTemplate" plugin="None">
@@ -587,7 +587,7 @@
       <CodeComponent name="conditionsFiles" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="import pandas as pd&amp;#10;#load img set&amp;#10;if(not(&quot;pilot&quot; in expInfo[&quot;participant&quot;]) and not(&quot;OS&quot; in expInfo[&quot;participant&quot;])):&amp;#10;    sets = pd.read_csv(&quot;stimuli_sets/which_set_sc_long.csv&quot;)&amp;#10;    imgSet = sets.loc[sets['Participant'] == int(expInfo[&quot;participant&quot;]), expInfo[&quot;session&quot;]].values[0]&amp;#10;    &amp;#10;else:    &amp;#10;    if(&quot;pilot&quot; in expInfo[&quot;participant&quot;]):&amp;#10;        id_num = int(expInfo[&quot;participant&quot;][6:])&amp;#10;    else:&amp;#10;        id_num = int(expInfo[&quot;participant&quot;][3:])&amp;#10;        id_num = int(expInfo[&quot;participant&quot;][3:])&amp;#10;    imgSet = &quot;set&quot; + str(id_num)&amp;#10;#load conditions&amp;#10;if expInfo[&quot;startFromRun&quot;] == &quot;1&quot;:&amp;#10;    milConditionsFile1 = 'conditions/MIL_stakes_cond' + version + '_block1.csv' &amp;#10;    milConditionsFile2 = 'conditions/MIL_stakes_cond' + version + '_block2.csv'&amp;#10;else:&amp;#10;    milConditionsFile1 = 'conditions/MIL_stakes_cond' + version + '_block2.csv' &amp;#10;    milConditionsFile2 = ''&amp;#10;logging.exp(&quot;Using conditions file 1: %s&quot; % milConditionsFile1)&amp;#10;logging.exp(&quot;Using conditions file 2: %s&quot; % milConditionsFile2)" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="import pandas as pd&amp;#10;#load img set&amp;#10;if(not(&quot;pilot&quot; in expInfo[&quot;participant&quot;]) and not(&quot;OS&quot; in expInfo[&quot;participant&quot;])):&amp;#10;    sets = pd.read_csv(&quot;stimuli_sets/which_set.csv&quot;)&amp;#10;    imgSet = sets.loc[sets['Participant'] == int(expInfo[&quot;participant&quot;]), expInfo[&quot;session&quot;]].values[0]&amp;#10;    &amp;#10;else:    &amp;#10;    if(&quot;pilot&quot; in expInfo[&quot;participant&quot;]):&amp;#10;        id_num = int(expInfo[&quot;participant&quot;][6:])&amp;#10;    else:&amp;#10;        id_num = int(expInfo[&quot;participant&quot;][3:])&amp;#10;        id_num = int(expInfo[&quot;participant&quot;][3:])&amp;#10;    imgSet = &quot;set&quot; + str(id_num)&amp;#10;#load conditions&amp;#10;if expInfo[&quot;startFromRun&quot;] == &quot;1&quot;:&amp;#10;    milConditionsFile1 = 'conditions/MIL_stakes_cond' + version + '_block1.csv' &amp;#10;    milConditionsFile2 = 'conditions/MIL_stakes_cond' + version + '_block2.csv'&amp;#10;else:&amp;#10;    milConditionsFile1 = 'conditions/MIL_stakes_cond' + version + '_block2.csv' &amp;#10;    milConditionsFile2 = ''&amp;#10;logging.exp(&quot;Using conditions file 1: %s&quot; % milConditionsFile1)&amp;#10;logging.exp(&quot;Using conditions file 2: %s&quot; % milConditionsFile2)" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
@@ -2162,7 +2162,7 @@
       <CodeComponent name="initializeVarCode" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="import pandas as pd&amp;#10;&amp;#10;#are we doing practice&amp;#10;if(expInfo[&quot;practice&quot;] == &quot;yes&quot;):&amp;#10;    pracBlockRepeats = 1&amp;#10;else:&amp;#10;    pracBlockRepeats = 0&amp;#10;    &amp;#10;#pilot mode (on computer) vs scan mode in scanner&amp;#10;if(expInfo[&quot;mode&quot;] == &quot;pilot&quot; or expInfo[&quot;mode&quot;] == &quot;orientation&quot;):&amp;#10;    leftKey = &quot;left&quot;&amp;#10;    rightKey = &quot;right&quot;&amp;#10;    responseKeys = dict(left = 'left', right = 'right')&amp;#10;    allowedKeys = ['left','right']&amp;#10;    PracCorrect = [&quot;left&quot;, &quot;left&quot;, &quot;right&quot;, &quot;right&quot;, &quot;left&quot;, &quot;right&quot;, &amp;#10;                    &quot;left&quot;, &quot;left&quot;, &quot;left&quot;, &quot;right&quot;, &quot;right&quot;, &quot;left&quot;, &amp;#10;                    &quot;right&quot;, &quot;left&quot;, &quot;left&quot;]&amp;#10;else:&amp;#10;    leftKey = &quot;2&quot;&amp;#10;    rightKey = &quot;3&quot;&amp;#10;    responseKeys = dict(left = '2', right = '3')&amp;#10;    allowedKeys = ['2','3']&amp;#10;    PracCorrect = [&quot;2&quot;, &quot;2&quot;, &quot;3&quot;, &quot;3&quot;, &quot;2&quot;, &quot;3&quot;, &quot;2&quot;, &quot;2&quot;, &quot;2&quot;, &quot;3&quot;, &quot;3&quot;, &quot;2&quot;, &quot;3&quot;, &quot;2&quot;, &quot;2&quot;]&amp;#10;&amp;#10;&amp;#10;&amp;#10;#what is the participant's version&amp;#10;if(not(&quot;pilot&quot; in expInfo[&quot;participant&quot;]) and not(&quot;OS&quot; in expInfo[&quot;participant&quot;])):&amp;#10;    version_df = pd.read_csv(&quot;stimuli_sets/which_vers_sc_long.csv&quot;)&amp;#10;    version = version_df.loc[version_df['Participant'] == int(expInfo['participant']), expInfo['session']].values[0]&amp;#10;else:&amp;#10;    if(&quot;pilot&quot; in expInfo[&quot;participant&quot;]):&amp;#10;        id_vers = int(expInfo[&quot;participant&quot;][6:]) % 4&amp;#10;    else:&amp;#10;        id_vers = int(expInfo[&quot;participant&quot;][3:]) % 4&amp;#10;    print(id_vers)&amp;#10;    if id_vers == 0:&amp;#10;        version = &quot;A&quot;&amp;#10;    elif id_vers == 1:&amp;#10;        version = &quot;B&quot;&amp;#10;    elif id_vers == 2:&amp;#10;        version = &quot;C&quot;&amp;#10;    else:&amp;#10;        version = &quot;D&quot;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="import pandas as pd&amp;#10;&amp;#10;#are we doing practice&amp;#10;if(expInfo[&quot;practice&quot;] == &quot;yes&quot;):&amp;#10;    pracBlockRepeats = 1&amp;#10;else:&amp;#10;    pracBlockRepeats = 0&amp;#10;    &amp;#10;#pilot mode (on computer) vs scan mode in scanner&amp;#10;if(expInfo[&quot;mode&quot;] == &quot;pilot&quot; or expInfo[&quot;mode&quot;] == &quot;orientation&quot;):&amp;#10;    leftKey = &quot;left&quot;&amp;#10;    rightKey = &quot;right&quot;&amp;#10;    responseKeys = dict(left = 'left', right = 'right')&amp;#10;    allowedKeys = ['left','right']&amp;#10;    PracCorrect = [&quot;left&quot;, &quot;left&quot;, &quot;right&quot;, &quot;right&quot;, &quot;left&quot;, &quot;right&quot;, &amp;#10;                    &quot;left&quot;, &quot;left&quot;, &quot;left&quot;, &quot;right&quot;, &quot;right&quot;, &quot;left&quot;, &amp;#10;                    &quot;right&quot;, &quot;left&quot;, &quot;left&quot;]&amp;#10;else:&amp;#10;    leftKey = &quot;2&quot;&amp;#10;    rightKey = &quot;3&quot;&amp;#10;    responseKeys = dict(left = '2', right = '3')&amp;#10;    allowedKeys = ['2','3']&amp;#10;    PracCorrect = [&quot;2&quot;, &quot;2&quot;, &quot;3&quot;, &quot;3&quot;, &quot;2&quot;, &quot;3&quot;, &quot;2&quot;, &quot;2&quot;, &quot;2&quot;, &quot;3&quot;, &quot;3&quot;, &quot;2&quot;, &quot;3&quot;, &quot;2&quot;, &quot;2&quot;]&amp;#10;&amp;#10;&amp;#10;&amp;#10;#what is the participant's version&amp;#10;if(not(&quot;pilot&quot; in expInfo[&quot;participant&quot;]) and not(&quot;OS&quot; in expInfo[&quot;participant&quot;])):&amp;#10;    version_df = pd.read_csv(&quot;stimuli_sets/which_vers.csv&quot;)&amp;#10;    version = version_df.loc[version_df['Participant'] == int(expInfo['participant']), expInfo['session']].values[0]&amp;#10;else:&amp;#10;    if(&quot;pilot&quot; in expInfo[&quot;participant&quot;]):&amp;#10;        id_vers = int(expInfo[&quot;participant&quot;][6:]) % 4&amp;#10;    else:&amp;#10;        id_vers = int(expInfo[&quot;participant&quot;][3:]) % 4&amp;#10;    print(id_vers)&amp;#10;    if id_vers == 0:&amp;#10;        version = &quot;A&quot;&amp;#10;    elif id_vers == 1:&amp;#10;        version = &quot;B&quot;&amp;#10;    elif id_vers == 2:&amp;#10;        version = &quot;C&quot;&amp;#10;    else:&amp;#10;        version = &quot;D&quot;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
@@ -4174,6 +4174,319 @@
         <Param val="True" valType="bool" updates="constant" name="syncScreenRefresh"/>
       </KeyboardComponent>
     </Routine>
+    <Routine name="wait15">
+      <RoutineSettingsComponent name="wait15" plugin="None">
+        <Param val="none" valType="str" updates="None" name="backgroundFit"/>
+        <Param val="" valType="str" updates="None" name="backgroundImg"/>
+        <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
+        <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
+        <Param val="" valType="str" updates="constant" name="desc"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
+        <Param val="wait15" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="constant" name="skipIf"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
+      </RoutineSettingsComponent>
+      <ImageComponent name="sumTemplate_2" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
+        <Param val="False" valType="bool" updates="constant" name="flipVert"/>
+        <Param val="summary.png" valType="file" updates="constant" name="image"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="" valType="str" updates="constant" name="mask"/>
+        <Param val="sumTemplate_2" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="(35, 18)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="15.1" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="128" valType="num" updates="constant" name="texture resolution"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+      </ImageComponent>
+      <CodeComponent name="setImg_2" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="hg1Img = (&quot;stimuli_sets/&quot; + cuePairs[&quot;highgain&quot;][&quot;optimalChoice&quot;]);&amp;#10;hg2Img = (&quot;stimuli_sets/&quot; + cuePairs[&quot;highgain&quot;][&quot;suboptimalChoice&quot;]);&amp;#10;lg1Img = (&quot;stimuli_sets/&quot; + cuePairs[&quot;lowgain&quot;][&quot;suboptimalChoice&quot;]);&amp;#10;lg2Img = (&quot;stimuli_sets/&quot; + cuePairs[&quot;lowgain&quot;][&quot;optimalChoice&quot;]);&amp;#10;hl1Img = (&quot;stimuli_sets/&quot; + cuePairs[&quot;highloss&quot;][&quot;suboptimalChoice&quot;]);&amp;#10;hl2Img = (&quot;stimuli_sets/&quot; + cuePairs[&quot;highloss&quot;][&quot;optimalChoice&quot;]);&amp;#10;ll1Img = (&quot;stimuli_sets/&quot; + cuePairs[&quot;lowloss&quot;][&quot;optimalChoice&quot;]);&amp;#10;ll2Img = (&quot;stimuli_sets/&quot; + cuePairs[&quot;lowloss&quot;][&quot;suboptimalChoice&quot;]);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="hg1Img = 'stimuli_sets/' + cuePairs['highgain']['optimalChoice']&amp;#10;hg2Img = 'stimuli_sets/' + cuePairs['highgain']['suboptimalChoice']&amp;#10;&amp;#10;lg1Img = 'stimuli_sets/' + cuePairs['lowgain']['suboptimalChoice']&amp;#10;lg2Img = 'stimuli_sets/' + cuePairs['lowgain']['optimalChoice']&amp;#10;&amp;#10;hl1Img = 'stimuli_sets/' + cuePairs['highloss']['suboptimalChoice']&amp;#10;hl2Img = 'stimuli_sets/' + cuePairs['highloss']['optimalChoice']&amp;#10;&amp;#10;ll1Img = 'stimuli_sets/' + cuePairs['lowloss']['optimalChoice']&amp;#10;ll2Img = 'stimuli_sets/' + cuePairs['lowloss']['suboptimalChoice']" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="setImg_2" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <ImageComponent name="hg1_2" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
+        <Param val="False" valType="bool" updates="constant" name="flipVert"/>
+        <Param val="$hg1Img" valType="file" updates="set every repeat" name="image"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="" valType="str" updates="constant" name="mask"/>
+        <Param val="hg1_2" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(-9.5, 1)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="(2.5, 2.5)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="15.1" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="128" valType="num" updates="constant" name="texture resolution"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+      </ImageComponent>
+      <ImageComponent name="hg2_2" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
+        <Param val="False" valType="bool" updates="constant" name="flipVert"/>
+        <Param val="$hg2Img" valType="file" updates="set every repeat" name="image"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="" valType="str" updates="constant" name="mask"/>
+        <Param val="hg2_2" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(-5.5, 1)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="(2.5, 2.5)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="15.1" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="128" valType="num" updates="constant" name="texture resolution"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+      </ImageComponent>
+      <ImageComponent name="lg1_2" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
+        <Param val="False" valType="bool" updates="constant" name="flipVert"/>
+        <Param val="$lg1Img" valType="file" updates="set every repeat" name="image"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="" valType="str" updates="constant" name="mask"/>
+        <Param val="lg1_2" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(-9.5, -5.3)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="(2.5, 2.5)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="15.1" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="128" valType="num" updates="constant" name="texture resolution"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+      </ImageComponent>
+      <ImageComponent name="lg2_2" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
+        <Param val="False" valType="bool" updates="constant" name="flipVert"/>
+        <Param val="$lg2Img" valType="file" updates="set every repeat" name="image"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="" valType="str" updates="constant" name="mask"/>
+        <Param val="lg2_2" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(-5.5, -5.3)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="(2.5, 2.5)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="15.1" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="128" valType="num" updates="constant" name="texture resolution"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+      </ImageComponent>
+      <ImageComponent name="hl1_2" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
+        <Param val="False" valType="bool" updates="constant" name="flipVert"/>
+        <Param val="$hl1Img" valType="file" updates="set every repeat" name="image"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="" valType="str" updates="constant" name="mask"/>
+        <Param val="hl1_2" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(9.5, 1)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="(2.5, 2.5)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="15.1" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="128" valType="num" updates="constant" name="texture resolution"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+      </ImageComponent>
+      <ImageComponent name="hl2_2" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
+        <Param val="False" valType="bool" updates="constant" name="flipVert"/>
+        <Param val="$hl2Img" valType="file" updates="set every repeat" name="image"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="" valType="str" updates="constant" name="mask"/>
+        <Param val="hl2_2" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(5.5, 1)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="(2.5, 2.5)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="15.1" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="128" valType="num" updates="constant" name="texture resolution"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+      </ImageComponent>
+      <ImageComponent name="ll1_2" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
+        <Param val="False" valType="bool" updates="constant" name="flipVert"/>
+        <Param val="$ll1Img" valType="file" updates="set every repeat" name="image"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="" valType="str" updates="constant" name="mask"/>
+        <Param val="ll1_2" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(9.5, -5.3)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="(2.5, 2.5)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="15.1" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="128" valType="num" updates="constant" name="texture resolution"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+      </ImageComponent>
+      <ImageComponent name="ll2_2" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="$[1,1,1]" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
+        <Param val="False" valType="bool" updates="constant" name="flipVert"/>
+        <Param val="$ll2Img" valType="file" updates="set every repeat" name="image"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="" valType="str" updates="constant" name="mask"/>
+        <Param val="ll2_2" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(5.5, -5.3)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="(2.5, 2.5)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="15.1" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="128" valType="num" updates="constant" name="texture resolution"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+      </ImageComponent>
+      <CodeComponent name="frameOnCode_2" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="frame = visual.Rect(&amp;#10;    win=win, name='frame1',&amp;#10;    width=(20,13)[0], height=(20,13)[1],&amp;#10;    ori=0.0, pos=(0, 0), draggable=False, anchor='center',&amp;#10;    lineWidth=4.0,&amp;#10;    colorSpace='rgb', lineColor='white', fillColor=None,&amp;#10;    opacity=None, depth=-3.0, interpolate=True)" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="frame = new visual.Rect({&quot;win&quot;: psychoJS.window, &quot;name&quot;: &quot;frame1&quot;, &quot;width&quot;: [20, 13][0], &quot;height&quot;: [20, 13][1], &quot;ori&quot;: 0.0, &quot;pos&quot;: [0, 0], &quot;draggable&quot;: false, &quot;anchor&quot;: &quot;center&quot;, &quot;lineWidth&quot;: 4.0, &quot;colorSpace&quot;: &quot;rgb&quot;, &quot;lineColor&quot;: &quot;white&quot;, &quot;fillColor&quot;: null, &quot;opacity&quot;: null, &quot;depth&quot;: (- 3.0), &quot;interpolate&quot;: true});&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="frame.setAutoDraw(true);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="frame.setAutoDraw(True)" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="frameOnCode_2" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+    </Routine>
   </Routines>
   <Flow>
     <Routine name="introDir"/>
@@ -4243,6 +4556,7 @@
     </LoopInitiator>
     <Routine name="getReady"/>
     <Routine name="waitForScanner"/>
+    <Routine name="wait15"/>
     <LoopInitiator loopType="TrialHandler" name="trials">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="[OrderedDict([('condition', 'highloss'), ('fixationDuration', 1.5), ('outcomeDelay', 2.5), ('optcorrect', 0), ('CBDrifts', 'Drift3'), ('CondOrder', 1), ('trialOrder', 1)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 2), ('trialOrder', 2)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 2.0), ('outcomeDelay', 1.5), ('optcorrect', 0), ('CBDrifts', 'Drift1'), ('CondOrder', 1), ('trialOrder', 3)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 3), ('trialOrder', 4)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 1), ('trialOrder', 5)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 2), ('trialOrder', 6)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 2.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 1), ('trialOrder', 7)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 2.5), ('optcorrect', 0), ('CBDrifts', 'Drift3'), ('CondOrder', 4), ('trialOrder', 8)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 2), ('trialOrder', 9)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 3), ('trialOrder', 10)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.5), ('optcorrect', 0), ('CBDrifts', 'Drift2'), ('CondOrder', 2), ('trialOrder', 11)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 2.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 4), ('trialOrder', 12)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 3), ('trialOrder', 13)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 2.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 5), ('trialOrder', 14)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 2.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 3), ('trialOrder', 15)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 2.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 4), ('trialOrder', 16)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 6), ('trialOrder', 17)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 7), ('trialOrder', 18)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 5), ('trialOrder', 19)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 5), ('trialOrder', 20)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 0), ('CBDrifts', 'Drift1'), ('CondOrder', 6), ('trialOrder', 21)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 6), ('trialOrder', 22)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 2.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 4), ('trialOrder', 23)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 1.0), ('outcomeDelay', 2.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 7), ('trialOrder', 24)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.5), ('optcorrect', 0), ('CBDrifts', 'Drift2'), ('CondOrder', 5), ('trialOrder', 25)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 8), ('trialOrder', 26)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 2.0), ('outcomeDelay', 2.0), ('optcorrect', 0), ('CBDrifts', 'Drift4'), ('CondOrder', 9), ('trialOrder', 27)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 2.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 7), ('trialOrder', 28)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 6), ('trialOrder', 29)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 0), ('CBDrifts', 'Drift3'), ('CondOrder', 8), ('trialOrder', 30)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 8), ('trialOrder', 31)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 0), ('CBDrifts', 'Drift1'), ('CondOrder', 9), ('trialOrder', 32)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 9), ('trialOrder', 33)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 10), ('trialOrder', 34)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 11), ('trialOrder', 35)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 7), ('trialOrder', 36)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 1.0), ('outcomeDelay', 2.5), ('optcorrect', 0), ('CBDrifts', 'Drift4'), ('CondOrder', 10), ('trialOrder', 37)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 11), ('trialOrder', 38)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 0), ('CBDrifts', 'Drift2'), ('CondOrder', 8), ('trialOrder', 39)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 9), ('trialOrder', 40)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 12), ('trialOrder', 41)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 10), ('trialOrder', 42)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 13), ('trialOrder', 43)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 10), ('trialOrder', 44)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 2.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 11), ('trialOrder', 45)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 12), ('trialOrder', 46)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift4'), ('CondOrder', 13), ('trialOrder', 47)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 2.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 12), ('trialOrder', 48)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 14), ('trialOrder', 49)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 13), ('trialOrder', 50)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 1.5), ('outcomeDelay', 2.0), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 11), ('trialOrder', 51)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 0), ('CBDrifts', 'Drift2'), ('CondOrder', 12), ('trialOrder', 52)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 0), ('CBDrifts', 'Drift2'), ('CondOrder', 13), ('trialOrder', 53)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 1.0), ('outcomeDelay', 2.0), ('optcorrect', 0), ('CBDrifts', 'Drift4'), ('CondOrder', 14), ('trialOrder', 54)]), OrderedDict([('condition', 'lowloss'), ('fixationDuration', 2.0), ('outcomeDelay', 2.0), ('optcorrect', 0), ('CBDrifts', 'Drift4'), ('CondOrder', 15), ('trialOrder', 55)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 14), ('trialOrder', 56)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 14), ('trialOrder', 57)]), OrderedDict([('condition', 'lowgain'), ('fixationDuration', 1.5), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift2'), ('CondOrder', 15), ('trialOrder', 58)]), OrderedDict([('condition', 'highgain'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift1'), ('CondOrder', 15), ('trialOrder', 59)]), OrderedDict([('condition', 'highloss'), ('fixationDuration', 1.0), ('outcomeDelay', 1.5), ('optcorrect', 1), ('CBDrifts', 'Drift3'), ('CondOrder', 15), ('trialOrder', 60)])]" valType="str"/>

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on Thu May 21 09:41:26 2026
+    on Thu Oct 29 10:48:31 2026
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -47,7 +47,7 @@ expVersion = ''
 runAtExit = []
 # information about this experiment
 expInfo = {
-    'participant': ["1", "2", "3", "4", "5", "6", "7", "8", "OS-1", "OS-2", "OS-3", "OS-4", "OS-5", "OS-6", "OS-7", "OS-8", "pilot-1", "pilot-2", "pilot-3", "pilot-4", "pilot-5", "pilot-6", "pilot-7", "pilot-8"],
+    'participant': ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "OS-1", "OS-2", "OS-3", "OS-4", "OS-5", "OS-6", "OS-7", "OS-8", "pilot-1"],
     'session': ["ses-1", "ses-2", "ses-3", "ses-4", "ses-5", "ses-6", "ses-7", "ses-8"],
     'startFromRun': ["1", "2"],
     'mode': ["scan", "orientation", "pilot"],
@@ -127,7 +127,7 @@ def setupData(expInfo, dataDir=None):
     # data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
     if dataDir is None:
         dataDir = _thisDir
-    filename = u'data/%s_%s_sc_long_%s_%s' % (expInfo['participant'], expName, expInfo['session'], expInfo['date'])
+    filename = u'data/sc-0%s_%s_sc_long_%s_%s' % (expInfo['participant'], expName, expInfo['session'], expInfo['date'])
     # make sure filename is relative to dataDir
     if os.path.isabs(filename):
         dataDir = os.path.commonprefix([dataDir, filename])
@@ -588,7 +588,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     #what is the participant's version
     if(not("pilot" in expInfo["participant"]) and not("OS" in expInfo["participant"])):
-        version_df = pd.read_csv("stimuli_sets/which_vers_sc_long.csv")
+        version_df = pd.read_csv("stimuli_sets/which_vers.csv")
         version = version_df.loc[version_df['Participant'] == int(expInfo['participant']), expInfo['session']].values[0]
     else:
         if("pilot" in expInfo["participant"]):
@@ -1088,7 +1088,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     import pandas as pd
     #load img set
     if(not("pilot" in expInfo["participant"]) and not("OS" in expInfo["participant"])):
-        sets = pd.read_csv("stimuli_sets/which_set_sc_long.csv")
+        sets = pd.read_csv("stimuli_sets/which_set.csv")
         imgSet = sets.loc[sets['Participant'] == int(expInfo["participant"]), expInfo["session"]].values[0]
         
     else:    
@@ -1148,14 +1148,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             }
     '''
     scannerTriggerKey = keyboard.Keyboard(deviceName='scannerTriggerKey')
-    # Run 'Begin Experiment' code from frameOnCode
-    frame = visual.Rect(
-        win=win, name='frame1',
-        width=(20,13)[0], height=(20,13)[1],
-        ori=0.0, pos=(0, 0), draggable=False, anchor='center',
-        lineWidth=4.0,
-        colorSpace='rgb', lineColor='white', fillColor=None,
-        opacity=None, depth=-3.0, interpolate=True)
     sumTemplate = visual.ImageStim(
         win=win,
         name='sumTemplate', 
@@ -1163,7 +1155,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         ori=0.0, pos=(0, 0), draggable=False, size=(35, 18),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-3.0)
+        texRes=128.0, interpolate=True, depth=-2.0)
     hg1 = visual.ImageStim(
         win=win,
         name='hg1', 
@@ -1171,7 +1163,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         ori=0.0, pos=(-9.5, 1), draggable=False, size=(2.5, 2.5),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-5.0)
+        texRes=128.0, interpolate=True, depth=-4.0)
     hg2 = visual.ImageStim(
         win=win,
         name='hg2', 
@@ -1179,7 +1171,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         ori=0.0, pos=(-5.5, 1), draggable=False, size=(2.5, 2.5),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-6.0)
+        texRes=128.0, interpolate=True, depth=-5.0)
     lg1 = visual.ImageStim(
         win=win,
         name='lg1', 
@@ -1187,7 +1179,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         ori=0.0, pos=(-9.5, -5.3), draggable=False, size=(2.5, 2.5),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-7.0)
+        texRes=128.0, interpolate=True, depth=-6.0)
     lg2 = visual.ImageStim(
         win=win,
         name='lg2', 
@@ -1195,7 +1187,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         ori=0.0, pos=(-5.5, -5.3), draggable=False, size=(2.5, 2.5),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-8.0)
+        texRes=128.0, interpolate=True, depth=-7.0)
     hl1 = visual.ImageStim(
         win=win,
         name='hl1', 
@@ -1203,7 +1195,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         ori=0.0, pos=(9.5, 1), draggable=False, size=(2.5, 2.5),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-9.0)
+        texRes=128.0, interpolate=True, depth=-8.0)
     hl2 = visual.ImageStim(
         win=win,
         name='hl2', 
@@ -1211,7 +1203,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         ori=0.0, pos=(5.5, 1), draggable=False, size=(2.5, 2.5),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-10.0)
+        texRes=128.0, interpolate=True, depth=-9.0)
     ll1 = visual.ImageStim(
         win=win,
         name='ll1', 
@@ -1219,7 +1211,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         ori=0.0, pos=(9.5, -5.3), draggable=False, size=(2.5, 2.5),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-11.0)
+        texRes=128.0, interpolate=True, depth=-10.0)
     ll2 = visual.ImageStim(
         win=win,
         name='ll2', 
@@ -1227,7 +1219,89 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         ori=0.0, pos=(5.5, -5.3), draggable=False, size=(2.5, 2.5),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=-12.0)
+        texRes=128.0, interpolate=True, depth=-11.0)
+    
+    # --- Initialize components for Routine "wait15" ---
+    sumTemplate_2 = visual.ImageStim(
+        win=win,
+        name='sumTemplate_2', 
+        image='summary.png', mask=None, anchor='center',
+        ori=0.0, pos=(0, 0), draggable=False, size=(35, 18),
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=0.0)
+    hg1_2 = visual.ImageStim(
+        win=win,
+        name='hg1_2', 
+        image='default.png', mask=None, anchor='center',
+        ori=0.0, pos=(-9.5, 1), draggable=False, size=(2.5, 2.5),
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=-2.0)
+    hg2_2 = visual.ImageStim(
+        win=win,
+        name='hg2_2', 
+        image='default.png', mask=None, anchor='center',
+        ori=0.0, pos=(-5.5, 1), draggable=False, size=(2.5, 2.5),
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=-3.0)
+    lg1_2 = visual.ImageStim(
+        win=win,
+        name='lg1_2', 
+        image='default.png', mask=None, anchor='center',
+        ori=0.0, pos=(-9.5, -5.3), draggable=False, size=(2.5, 2.5),
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=-4.0)
+    lg2_2 = visual.ImageStim(
+        win=win,
+        name='lg2_2', 
+        image='default.png', mask=None, anchor='center',
+        ori=0.0, pos=(-5.5, -5.3), draggable=False, size=(2.5, 2.5),
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=-5.0)
+    hl1_2 = visual.ImageStim(
+        win=win,
+        name='hl1_2', 
+        image='default.png', mask=None, anchor='center',
+        ori=0.0, pos=(9.5, 1), draggable=False, size=(2.5, 2.5),
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=-6.0)
+    hl2_2 = visual.ImageStim(
+        win=win,
+        name='hl2_2', 
+        image='default.png', mask=None, anchor='center',
+        ori=0.0, pos=(5.5, 1), draggable=False, size=(2.5, 2.5),
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=-7.0)
+    ll1_2 = visual.ImageStim(
+        win=win,
+        name='ll1_2', 
+        image='default.png', mask=None, anchor='center',
+        ori=0.0, pos=(9.5, -5.3), draggable=False, size=(2.5, 2.5),
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=-8.0)
+    ll2_2 = visual.ImageStim(
+        win=win,
+        name='ll2_2', 
+        image='default.png', mask=None, anchor='center',
+        ori=0.0, pos=(5.5, -5.3), draggable=False, size=(2.5, 2.5),
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=-9.0)
+    # Run 'Begin Experiment' code from frameOnCode_2
+    frame = visual.Rect(
+        win=win, name='frame1',
+        width=(20,13)[0], height=(20,13)[1],
+        ori=0.0, pos=(0, 0), draggable=False, anchor='center',
+        lineWidth=4.0,
+        colorSpace='rgb', lineColor='white', fillColor=None,
+        opacity=None, depth=-3.0, interpolate=True)
     
     # --- Initialize components for Routine "cue" ---
     startFixStatic = visual.TextStim(win=win, name='startFixStatic',
@@ -6144,10 +6218,425 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if scannerTriggerKey.keys != None:  # we had a response
             runs.addData('scannerTriggerKey.rt', scannerTriggerKey.rt)
             runs.addData('scannerTriggerKey.duration', scannerTriggerKey.duration)
-        # Run 'End Routine' code from frameOnCode
-        frame.setAutoDraw(True)
         # the Routine "waitForScanner" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
+        
+        # --- Prepare to start Routine "wait15" ---
+        # create an object to store info about Routine wait15
+        wait15 = data.Routine(
+            name='wait15',
+            components=[sumTemplate_2, hg1_2, hg2_2, lg1_2, lg2_2, hl1_2, hl2_2, ll1_2, ll2_2],
+        )
+        wait15.status = NOT_STARTED
+        continueRoutine = True
+        # update component parameters for each repeat
+        # Run 'Begin Routine' code from setImg_2
+        hg1Img = 'stimuli_sets/' + cuePairs['highgain']['optimalChoice']
+        hg2Img = 'stimuli_sets/' + cuePairs['highgain']['suboptimalChoice']
+        
+        lg1Img = 'stimuli_sets/' + cuePairs['lowgain']['suboptimalChoice']
+        lg2Img = 'stimuli_sets/' + cuePairs['lowgain']['optimalChoice']
+        
+        hl1Img = 'stimuli_sets/' + cuePairs['highloss']['suboptimalChoice']
+        hl2Img = 'stimuli_sets/' + cuePairs['highloss']['optimalChoice']
+        
+        ll1Img = 'stimuli_sets/' + cuePairs['lowloss']['optimalChoice']
+        ll2Img = 'stimuli_sets/' + cuePairs['lowloss']['suboptimalChoice']
+        hg1_2.setImage(hg1Img)
+        hg2_2.setImage(hg2Img)
+        lg1_2.setImage(lg1Img)
+        lg2_2.setImage(lg2Img)
+        hl1_2.setImage(hl1Img)
+        hl2_2.setImage(hl2Img)
+        ll1_2.setImage(ll1Img)
+        ll2_2.setImage(ll2Img)
+        # store start times for wait15
+        wait15.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
+        wait15.tStart = globalClock.getTime(format='float')
+        wait15.status = STARTED
+        thisExp.addData('wait15.started', wait15.tStart)
+        wait15.maxDuration = None
+        # keep track of which components have finished
+        wait15Components = wait15.components
+        for thisComponent in wait15.components:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        frameN = -1
+        
+        # --- Run Routine "wait15" ---
+        wait15.forceEnded = routineForceEnded = not continueRoutine
+        while continueRoutine and routineTimer.getTime() < 15.1:
+            # if trial has changed, end Routine now
+            if hasattr(thisRun, 'status') and thisRun.status == STOPPING:
+                continueRoutine = False
+            # get current time
+            t = routineTimer.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *sumTemplate_2* updates
+            
+            # if sumTemplate_2 is starting this frame...
+            if sumTemplate_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                sumTemplate_2.frameNStart = frameN  # exact frame index
+                sumTemplate_2.tStart = t  # local t and not account for scr refresh
+                sumTemplate_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(sumTemplate_2, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'sumTemplate_2.started')
+                # update status
+                sumTemplate_2.status = STARTED
+                sumTemplate_2.setAutoDraw(True)
+            
+            # if sumTemplate_2 is active this frame...
+            if sumTemplate_2.status == STARTED:
+                # update params
+                pass
+            
+            # if sumTemplate_2 is stopping this frame...
+            if sumTemplate_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > sumTemplate_2.tStartRefresh + 15.1-frameTolerance:
+                    # keep track of stop time/frame for later
+                    sumTemplate_2.tStop = t  # not accounting for scr refresh
+                    sumTemplate_2.tStopRefresh = tThisFlipGlobal  # on global time
+                    sumTemplate_2.frameNStop = frameN  # exact frame index
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'sumTemplate_2.stopped')
+                    # update status
+                    sumTemplate_2.status = FINISHED
+                    sumTemplate_2.setAutoDraw(False)
+            
+            # *hg1_2* updates
+            
+            # if hg1_2 is starting this frame...
+            if hg1_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                hg1_2.frameNStart = frameN  # exact frame index
+                hg1_2.tStart = t  # local t and not account for scr refresh
+                hg1_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(hg1_2, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'hg1_2.started')
+                # update status
+                hg1_2.status = STARTED
+                hg1_2.setAutoDraw(True)
+            
+            # if hg1_2 is active this frame...
+            if hg1_2.status == STARTED:
+                # update params
+                pass
+            
+            # if hg1_2 is stopping this frame...
+            if hg1_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > hg1_2.tStartRefresh + 15.1-frameTolerance:
+                    # keep track of stop time/frame for later
+                    hg1_2.tStop = t  # not accounting for scr refresh
+                    hg1_2.tStopRefresh = tThisFlipGlobal  # on global time
+                    hg1_2.frameNStop = frameN  # exact frame index
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'hg1_2.stopped')
+                    # update status
+                    hg1_2.status = FINISHED
+                    hg1_2.setAutoDraw(False)
+            
+            # *hg2_2* updates
+            
+            # if hg2_2 is starting this frame...
+            if hg2_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                hg2_2.frameNStart = frameN  # exact frame index
+                hg2_2.tStart = t  # local t and not account for scr refresh
+                hg2_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(hg2_2, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'hg2_2.started')
+                # update status
+                hg2_2.status = STARTED
+                hg2_2.setAutoDraw(True)
+            
+            # if hg2_2 is active this frame...
+            if hg2_2.status == STARTED:
+                # update params
+                pass
+            
+            # if hg2_2 is stopping this frame...
+            if hg2_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > hg2_2.tStartRefresh + 15.1-frameTolerance:
+                    # keep track of stop time/frame for later
+                    hg2_2.tStop = t  # not accounting for scr refresh
+                    hg2_2.tStopRefresh = tThisFlipGlobal  # on global time
+                    hg2_2.frameNStop = frameN  # exact frame index
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'hg2_2.stopped')
+                    # update status
+                    hg2_2.status = FINISHED
+                    hg2_2.setAutoDraw(False)
+            
+            # *lg1_2* updates
+            
+            # if lg1_2 is starting this frame...
+            if lg1_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                lg1_2.frameNStart = frameN  # exact frame index
+                lg1_2.tStart = t  # local t and not account for scr refresh
+                lg1_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(lg1_2, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'lg1_2.started')
+                # update status
+                lg1_2.status = STARTED
+                lg1_2.setAutoDraw(True)
+            
+            # if lg1_2 is active this frame...
+            if lg1_2.status == STARTED:
+                # update params
+                pass
+            
+            # if lg1_2 is stopping this frame...
+            if lg1_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > lg1_2.tStartRefresh + 15.1-frameTolerance:
+                    # keep track of stop time/frame for later
+                    lg1_2.tStop = t  # not accounting for scr refresh
+                    lg1_2.tStopRefresh = tThisFlipGlobal  # on global time
+                    lg1_2.frameNStop = frameN  # exact frame index
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'lg1_2.stopped')
+                    # update status
+                    lg1_2.status = FINISHED
+                    lg1_2.setAutoDraw(False)
+            
+            # *lg2_2* updates
+            
+            # if lg2_2 is starting this frame...
+            if lg2_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                lg2_2.frameNStart = frameN  # exact frame index
+                lg2_2.tStart = t  # local t and not account for scr refresh
+                lg2_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(lg2_2, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'lg2_2.started')
+                # update status
+                lg2_2.status = STARTED
+                lg2_2.setAutoDraw(True)
+            
+            # if lg2_2 is active this frame...
+            if lg2_2.status == STARTED:
+                # update params
+                pass
+            
+            # if lg2_2 is stopping this frame...
+            if lg2_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > lg2_2.tStartRefresh + 15.1-frameTolerance:
+                    # keep track of stop time/frame for later
+                    lg2_2.tStop = t  # not accounting for scr refresh
+                    lg2_2.tStopRefresh = tThisFlipGlobal  # on global time
+                    lg2_2.frameNStop = frameN  # exact frame index
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'lg2_2.stopped')
+                    # update status
+                    lg2_2.status = FINISHED
+                    lg2_2.setAutoDraw(False)
+            
+            # *hl1_2* updates
+            
+            # if hl1_2 is starting this frame...
+            if hl1_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                hl1_2.frameNStart = frameN  # exact frame index
+                hl1_2.tStart = t  # local t and not account for scr refresh
+                hl1_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(hl1_2, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'hl1_2.started')
+                # update status
+                hl1_2.status = STARTED
+                hl1_2.setAutoDraw(True)
+            
+            # if hl1_2 is active this frame...
+            if hl1_2.status == STARTED:
+                # update params
+                pass
+            
+            # if hl1_2 is stopping this frame...
+            if hl1_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > hl1_2.tStartRefresh + 15.1-frameTolerance:
+                    # keep track of stop time/frame for later
+                    hl1_2.tStop = t  # not accounting for scr refresh
+                    hl1_2.tStopRefresh = tThisFlipGlobal  # on global time
+                    hl1_2.frameNStop = frameN  # exact frame index
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'hl1_2.stopped')
+                    # update status
+                    hl1_2.status = FINISHED
+                    hl1_2.setAutoDraw(False)
+            
+            # *hl2_2* updates
+            
+            # if hl2_2 is starting this frame...
+            if hl2_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                hl2_2.frameNStart = frameN  # exact frame index
+                hl2_2.tStart = t  # local t and not account for scr refresh
+                hl2_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(hl2_2, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'hl2_2.started')
+                # update status
+                hl2_2.status = STARTED
+                hl2_2.setAutoDraw(True)
+            
+            # if hl2_2 is active this frame...
+            if hl2_2.status == STARTED:
+                # update params
+                pass
+            
+            # if hl2_2 is stopping this frame...
+            if hl2_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > hl2_2.tStartRefresh + 15.1-frameTolerance:
+                    # keep track of stop time/frame for later
+                    hl2_2.tStop = t  # not accounting for scr refresh
+                    hl2_2.tStopRefresh = tThisFlipGlobal  # on global time
+                    hl2_2.frameNStop = frameN  # exact frame index
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'hl2_2.stopped')
+                    # update status
+                    hl2_2.status = FINISHED
+                    hl2_2.setAutoDraw(False)
+            
+            # *ll1_2* updates
+            
+            # if ll1_2 is starting this frame...
+            if ll1_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                ll1_2.frameNStart = frameN  # exact frame index
+                ll1_2.tStart = t  # local t and not account for scr refresh
+                ll1_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(ll1_2, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'll1_2.started')
+                # update status
+                ll1_2.status = STARTED
+                ll1_2.setAutoDraw(True)
+            
+            # if ll1_2 is active this frame...
+            if ll1_2.status == STARTED:
+                # update params
+                pass
+            
+            # if ll1_2 is stopping this frame...
+            if ll1_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > ll1_2.tStartRefresh + 15.1-frameTolerance:
+                    # keep track of stop time/frame for later
+                    ll1_2.tStop = t  # not accounting for scr refresh
+                    ll1_2.tStopRefresh = tThisFlipGlobal  # on global time
+                    ll1_2.frameNStop = frameN  # exact frame index
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'll1_2.stopped')
+                    # update status
+                    ll1_2.status = FINISHED
+                    ll1_2.setAutoDraw(False)
+            
+            # *ll2_2* updates
+            
+            # if ll2_2 is starting this frame...
+            if ll2_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                ll2_2.frameNStart = frameN  # exact frame index
+                ll2_2.tStart = t  # local t and not account for scr refresh
+                ll2_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(ll2_2, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'll2_2.started')
+                # update status
+                ll2_2.status = STARTED
+                ll2_2.setAutoDraw(True)
+            
+            # if ll2_2 is active this frame...
+            if ll2_2.status == STARTED:
+                # update params
+                pass
+            
+            # if ll2_2 is stopping this frame...
+            if ll2_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > ll2_2.tStartRefresh + 15.1-frameTolerance:
+                    # keep track of stop time/frame for later
+                    ll2_2.tStop = t  # not accounting for scr refresh
+                    ll2_2.tStopRefresh = tThisFlipGlobal  # on global time
+                    ll2_2.frameNStop = frameN  # exact frame index
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'll2_2.stopped')
+                    # update status
+                    ll2_2.status = FINISHED
+                    ll2_2.setAutoDraw(False)
+            
+            # check for quit (typically the Esc key)
+            if defaultKeyboard.getKeys(keyList=["escape"]):
+                thisExp.status = FINISHED
+            if thisExp.status == FINISHED or endExpNow:
+                endExperiment(thisExp, win=win)
+                return
+            # pause experiment here if requested
+            if thisExp.status == PAUSED:
+                pauseExperiment(
+                    thisExp=thisExp, 
+                    win=win, 
+                    timers=[routineTimer, globalClock], 
+                    currentRoutine=wait15,
+                )
+                # skip the frame we paused on
+                continue
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                wait15.forceEnded = routineForceEnded = True
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in wait15.components:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # --- Ending Routine "wait15" ---
+        for thisComponent in wait15.components:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        # store stop times for wait15
+        wait15.tStop = globalClock.getTime(format='float')
+        wait15.tStopRefresh = tThisFlipGlobal
+        thisExp.addData('wait15.stopped', wait15.tStop)
+        # Run 'End Routine' code from frameOnCode_2
+        frame.setAutoDraw(True)
+        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
+        if wait15.maxDurationReached:
+            routineTimer.addTime(-wait15.maxDuration)
+        elif wait15.forceEnded:
+            routineTimer.reset()
+        else:
+            routineTimer.addTime(-15.100000)
         
         # set up handler to look after randomisation of conditions etc
         trials = data.TrialHandler2(
